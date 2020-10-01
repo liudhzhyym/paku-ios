@@ -26,7 +26,7 @@ struct Provider: IntentTimelineProvider {
             switch result {
             case .success(let aqi):
                 let currentDate = Date()
-                let refreshDate = Calendar.current.date(byAdding: .minute, value: 10, to: currentDate)!
+                let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
                 let entry = SimpleEntry(date: currentDate, configuration: configuration, aqi: aqi)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
@@ -45,53 +45,22 @@ struct SimpleEntry: TimelineEntry {
     let aqi: AQI
 }
 
-struct aqi_widgetEntryView : View {
-    var entry: Provider.Entry
-
-    var body: some View {
-        ZStack {
-            Color(entry.aqi.class.color)
-
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("\(Int(entry.aqi.value))")
-                        .font(.title)
-                        .foregroundColor(Color(entry.aqi.class.textColor))
-
-                    Text(entry.date, style: .time)
-                        .font(Font.caption)
-                        .foregroundColor(Color(entry.aqi.class.textColor))
-
-
-                    Spacer()
-
-                    Text(entry.aqi.class.description)
-                        .font(.body)
-                        .foregroundColor(Color(entry.aqi.class.textColor))
-                }
-
-                Spacer()
-            }.padding()
-        }
-    }
-}
-
 @main
 struct aqi_widget: Widget {
     let kind: String = "aqi_widget"
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            aqi_widgetEntryView(entry: entry)
+            AQIEntryView(aqi: entry.aqi)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("AQI")
+        .description("Displays the AQI from the closest Purple Air sensor.")
     }
 }
 
-struct aqi_widget_Previews: PreviewProvider {
+struct AQIWidget_Previews: PreviewProvider {
     static var previews: some View {
-        aqi_widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), aqi: .placeholder))
+        AQIEntryView(aqi: .placeholder)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

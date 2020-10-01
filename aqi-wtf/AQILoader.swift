@@ -163,7 +163,7 @@ struct SensorCache {
 
     static func cached() -> ([Sensor], Date)? {
         guard let cached = UserDefaults.shared.codable(Cache.self, forKey: key),
-              Date().timeIntervalSince(cached.date) < 5 * 60
+              Date().timeIntervalSince(cached.date) < 10 * 60
         else {
             return nil
         }

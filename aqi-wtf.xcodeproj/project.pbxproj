@@ -28,6 +28,8 @@
 		C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
 		C24ED0FD2525DE90001B3952 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FC2525DE90001B3952 /* SwiftLocation */; };
+		C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
+		C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,7 @@
 		C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = aqi_widget.intentdefinition; sourceTree = "<group>"; };
 		C24ED0DB2525DD1F001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24ED0DD2525DD1F001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C24ED1022525E570001B3952 /* AQIEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIEntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,7 @@
 				C24ED0642525BEAD001B3952 /* SceneDelegate.swift */,
 				C24ED0662525BEAD001B3952 /* ViewController.swift */,
 				C24ED0952525BEB9001B3952 /* AQILoader.swift */,
+				C24ED1022525E570001B3952 /* AQIEntryView.swift */,
 				C24ED0682525BEAD001B3952 /* Main.storyboard */,
 				C24ED06B2525BEAF001B3952 /* Assets.xcassets */,
 				C24ED06D2525BEAF001B3952 /* LaunchScreen.storyboard */,
@@ -381,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24ED0962525BEB9001B3952 /* AQILoader.swift in Sources */,
+				C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* ViewController.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
 				C24ED0DF2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */,
@@ -409,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24ED0DE2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */,
+				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* aqi_widget.swift in Sources */,
 				C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */,
 			);
