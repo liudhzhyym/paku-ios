@@ -9,6 +9,7 @@ import AnyCodable
 import CoreLocation
 import Foundation
 import SwiftLocation
+import UIKit
 
 let encoder = JSONEncoder()
 let decoder = JSONDecoder()
@@ -55,7 +56,11 @@ struct Sensor: Codable {
 struct AQI {
     let value: Double
     let distance: Double
-    let guidance: [String]
+    let date: Date
+
+    var `class`: AQIClass {
+        AQIClass(aqi: value)!
+    }
 }
 
 enum AQIClass {
@@ -77,6 +82,53 @@ enum AQIClass {
         case 51...: self = .moderate
         case 0...: self = .good
         default: return nil
+        }
+    }
+
+    var description: String {
+        switch self {
+        case .veryHazardous:
+            return "Very hazardous"
+        case .hazardous:
+            return "Hazardous"
+        case .veryUnhealthy:
+            return "Very unhealthy"
+        case .unhealthy:
+            return "Unhealthy"
+        case .unhealthyForSensitiveGroups:
+            return "Unhealthy for sensitive groups"
+        case .moderate:
+            return "Moderate"
+        case .good:
+            return "Good"
+        }
+    }
+
+    var color: UIColor {
+        switch self {
+        case .veryHazardous:
+            return UIColor(displayP3Red: 0.451, green: 0.078, blue: 0.145, alpha: 1)
+        case .hazardous:
+            return UIColor(displayP3Red: 0.549, green: 0.102, blue: 0.294, alpha: 1)
+        case .veryUnhealthy:
+            return UIColor(displayP3Red: 0.549, green: 0.102, blue: 0.294, alpha: 1)
+        case .unhealthy:
+            return UIColor(displayP3Red: 0.918, green: 0.2, blue: 0.141, alpha: 1)
+        case .unhealthyForSensitiveGroups:
+            return UIColor(displayP3Red: 0.937, green: 0.522, blue: 0.2, alpha: 1)
+        case .moderate:
+            return UIColor(displayP3Red: 1, green: 1, blue: 0.333, alpha: 1)
+        case .good:
+            return UIColor(displayP3Red: 0.408, green: 0.882, blue: 0.263, alpha: 1)
+        }
+    }
+
+    var textColor: UIColor {
+        switch self {
+        case .veryHazardous, .hazardous, .veryUnhealthy, .unhealthy:
+            return .white
+        default:
+            return .black
         }
     }
 }
@@ -109,21 +161,21 @@ struct SensorCache {
         UserDefaults.shared.set(codable: cached, forKey: key)
     }
 
-    static func cached() -> [Sensor]? {
+    static func cached() -> ([Sensor], Date)? {
         guard let cached = UserDefaults.shared.codable(Cache.self, forKey: key),
               Date().timeIntervalSince(cached.date) < 5 * 60
         else {
             return nil
         }
 
-        return cached.sensors
+        return (cached.sensors, cached.date)
     }
 }
 
 struct AQILoader {
     let cache = SensorCache()
 
-    func loadSensors(completion: @escaping (Result<[Sensor], Error>) -> Void) {
+    func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
         if let cached = SensorCache.cached() {
             return completion(.success(cached))
         }
@@ -141,7 +193,7 @@ struct AQILoader {
                 }
 
                 SensorCache.cache(sensors)
-                completion(.success(sensors))
+                completion(.success((sensors, Date())))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -174,11 +226,11 @@ struct AQILoader {
                 LocationManager.shared.locateFromGPS(.oneShot, accuracy: .block) { result in
                     switch result {
                     case .success(let location):
-                        let closest = closestSensor(in: sensors, from: location)
+                        let closest = closestSensor(in: sensors.0, from: location)
                         loadAQI(from: closest.sensor) { result in
                             switch result {
                             case .success(let aqi):
-                                completion(.success(AQI(value: aqi, distance: closest.distance, guidance: [])))
+                                completion(.success(AQI(value: aqi, distance: closest.distance, date: sensors.1)))
                             case .failure(let error):
                                 completion(.failure(error))
                             }

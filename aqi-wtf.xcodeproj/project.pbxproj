@@ -18,6 +18,16 @@
 		C24ED0962525BEB9001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED09B2525C171001B3952 /* AnyCodable */; };
 		C24ED0A52525D51C001B3952 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0A42525D51C001B3952 /* SwiftLocation */; };
+		C24ED0D52525DD1D001B3952 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24ED0AF2525DC5B001B3952 /* WidgetKit.framework */; };
+		C24ED0D62525DD1D001B3952 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24ED0B12525DC5B001B3952 /* SwiftUI.framework */; };
+		C24ED0D92525DD1D001B3952 /* aqi_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0D82525DD1D001B3952 /* aqi_widget.swift */; };
+		C24ED0DC2525DD1F001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED0DB2525DD1F001B3952 /* Assets.xcassets */; };
+		C24ED0DE2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */; };
+		C24ED0DF2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */; };
+		C24ED0E22525DD1F001B3952 /* aqi-widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
+		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
+		C24ED0FD2525DE90001B3952 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FC2525DE90001B3952 /* SwiftLocation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +45,28 @@
 			remoteGlobalIDString = C24ED05E2525BEAD001B3952;
 			remoteInfo = "aqi-wtf";
 		};
+		C24ED0E02525DD1F001B3952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C24ED0572525BEAD001B3952 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C24ED0D32525DD1D001B3952;
+			remoteInfo = "aqi-widgetExtension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C24ED0C22525DC5D001B3952 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C24ED0E22525DD1F001B3952 /* aqi-widgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C24ED05F2525BEAD001B3952 /* aqi-wtf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "aqi-wtf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +84,13 @@
 		C24ED0842525BEAF001B3952 /* aqi_wtfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aqi_wtfUITests.swift; sourceTree = "<group>"; };
 		C24ED0862525BEAF001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C24ED0952525BEB9001B3952 /* AQILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQILoader.swift; sourceTree = "<group>"; };
+		C24ED0AF2525DC5B001B3952 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C24ED0B12525DC5B001B3952 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "aqi-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24ED0D82525DD1D001B3952 /* aqi_widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aqi_widget.swift; sourceTree = "<group>"; };
+		C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = aqi_widget.intentdefinition; sourceTree = "<group>"; };
+		C24ED0DB2525DD1F001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C24ED0DD2525DD1F001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +117,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C24ED0D12525DD1D001B3952 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24ED0D62525DD1D001B3952 /* SwiftUI.framework in Frameworks */,
+				C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */,
+				C24ED0D52525DD1D001B3952 /* WidgetKit.framework in Frameworks */,
+				C24ED0FD2525DE90001B3952 /* SwiftLocation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +137,8 @@
 				C24ED0612525BEAD001B3952 /* aqi-wtf */,
 				C24ED0782525BEAF001B3952 /* aqi-wtfTests */,
 				C24ED0832525BEAF001B3952 /* aqi-wtfUITests */,
+				C24ED0D72525DD1D001B3952 /* aqi-widget */,
+				C24ED0AE2525DC5B001B3952 /* Frameworks */,
 				C24ED0602525BEAD001B3952 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +149,7 @@
 				C24ED05F2525BEAD001B3952 /* aqi-wtf.app */,
 				C24ED0752525BEAF001B3952 /* aqi-wtfTests.xctest */,
 				C24ED0802525BEAF001B3952 /* aqi-wtfUITests.xctest */,
+				C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +187,26 @@
 			path = "aqi-wtfUITests";
 			sourceTree = "<group>";
 		};
+		C24ED0AE2525DC5B001B3952 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C24ED0AF2525DC5B001B3952 /* WidgetKit.framework */,
+				C24ED0B12525DC5B001B3952 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C24ED0D72525DD1D001B3952 /* aqi-widget */ = {
+			isa = PBXGroup;
+			children = (
+				C24ED0D82525DD1D001B3952 /* aqi_widget.swift */,
+				C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */,
+				C24ED0DB2525DD1F001B3952 /* Assets.xcassets */,
+				C24ED0DD2525DD1F001B3952 /* Info.plist */,
+			);
+			path = "aqi-widget";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,10 +217,12 @@
 				C24ED05B2525BEAD001B3952 /* Sources */,
 				C24ED05C2525BEAD001B3952 /* Frameworks */,
 				C24ED05D2525BEAD001B3952 /* Resources */,
+				C24ED0C22525DC5D001B3952 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C24ED0E12525DD1F001B3952 /* PBXTargetDependency */,
 			);
 			name = "aqi-wtf";
 			packageProductDependencies = (
@@ -195,6 +269,27 @@
 			productReference = C24ED0802525BEAF001B3952 /* aqi-wtfUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C24ED0D32525DD1D001B3952 /* aqi-widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C24ED0E32525DD1F001B3952 /* Build configuration list for PBXNativeTarget "aqi-widgetExtension" */;
+			buildPhases = (
+				C24ED0D02525DD1D001B3952 /* Sources */,
+				C24ED0D12525DD1D001B3952 /* Frameworks */,
+				C24ED0D22525DD1D001B3952 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "aqi-widgetExtension";
+			packageProductDependencies = (
+				C24ED0FA2525DE8E001B3952 /* AnyCodable */,
+				C24ED0FC2525DE90001B3952 /* SwiftLocation */,
+			);
+			productName = "aqi-widgetExtension";
+			productReference = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -214,6 +309,9 @@
 					C24ED07F2525BEAF001B3952 = {
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = C24ED05E2525BEAD001B3952;
+					};
+					C24ED0D32525DD1D001B3952 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
@@ -237,6 +335,7 @@
 				C24ED05E2525BEAD001B3952 /* aqi-wtf */,
 				C24ED0742525BEAF001B3952 /* aqi-wtfTests */,
 				C24ED07F2525BEAF001B3952 /* aqi-wtfUITests */,
+				C24ED0D32525DD1D001B3952 /* aqi-widgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -266,6 +365,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C24ED0D22525DD1D001B3952 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24ED0DC2525DD1F001B3952 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -276,6 +383,7 @@
 				C24ED0962525BEB9001B3952 /* AQILoader.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* ViewController.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
+				C24ED0DF2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */,
 				C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +404,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C24ED0D02525DD1D001B3952 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24ED0DE2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */,
+				C24ED0D92525DD1D001B3952 /* aqi_widget.swift in Sources */,
+				C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -308,6 +426,11 @@
 			isa = PBXTargetDependency;
 			target = C24ED05E2525BEAD001B3952 /* aqi-wtf */;
 			targetProxy = C24ED0812525BEAF001B3952 /* PBXContainerItemProxy */;
+		};
+		C24ED0E12525DD1F001B3952 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C24ED0D32525DD1D001B3952 /* aqi-widgetExtension */;
+			targetProxy = C24ED0E02525DD1F001B3952 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,6 +573,7 @@
 		C24ED08A2525BEAF001B3952 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -469,6 +593,7 @@
 		C24ED08B2525BEAF001B3952 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -569,6 +694,48 @@
 			};
 			name = Release;
 		};
+		C24ED0E42525DD1F001B3952 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PXKS3W23A6;
+				INFOPLIST_FILE = "aqi-widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf.aqi-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C24ED0E52525DD1F001B3952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PXKS3W23A6;
+				INFOPLIST_FILE = "aqi-widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf.aqi-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -608,6 +775,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C24ED0E32525DD1F001B3952 /* Build configuration list for PBXNativeTarget "aqi-widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C24ED0E42525DD1F001B3952 /* Debug */,
+				C24ED0E52525DD1F001B3952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -636,6 +812,16 @@
 			productName = AnyCodable;
 		};
 		C24ED0A42525D51C001B3952 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
+		};
+		C24ED0FA2525DE8E001B3952 /* AnyCodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */;
+			productName = AnyCodable;
+		};
+		C24ED0FC2525DE90001B3952 /* SwiftLocation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
 			productName = SwiftLocation;

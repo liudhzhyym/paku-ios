@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We use your location to show you your AQI of course!</string>
+	<string>We use your location to show you your AQI</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We use your location to show you your AQI of course!</string>
+	<string>We use your location to show you your AQI</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
