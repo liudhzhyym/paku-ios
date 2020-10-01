@@ -10,15 +10,21 @@ import CoreLocation
 import Foundation
 import SwiftLocation
 
+let encoder = JSONEncoder()
+let decoder = JSONDecoder()
+
 enum SensorInitializerError: Error {
     case failedToParse
     case irrelevant
 }
 
-struct Sensor {
+struct Sensor: Codable {
     let id: Int
     let age: Int
-    let location: CLLocation
+    let lat: Double
+    let lon: Double
+
+    var location: CLLocation { CLLocation(latitude: lat, longitude: lon) }
 
     init?(fields: [String: Int], data: [AnyCodable]){
         guard let idIndex = fields["ID"],
@@ -41,7 +47,8 @@ struct Sensor {
 
         self.id = id
         self.age = age
-        self.location = CLLocation(latitude: lat, longitude: lon)
+        self.lat = lat
+        self.lon = lon
     }
 }
 
@@ -89,8 +96,38 @@ enum AQILoaderError: Error {
     case unknownError
 }
 
+struct SensorCache {
+    struct Cache: Codable {
+        let date: Date
+        let sensors: [Sensor]
+    }
+
+    private static let key = "sensors"
+
+    static func cache(_ sensors: [Sensor]) {
+        let cached = Cache(date: Date(), sensors: sensors)
+        UserDefaults.shared.set(codable: cached, forKey: key)
+    }
+
+    static func cached() -> [Sensor]? {
+        guard let cached = UserDefaults.shared.codable(Cache.self, forKey: key),
+              Date().timeIntervalSince(cached.date) < 5 * 60
+        else {
+            return nil
+        }
+
+        return cached.sensors
+    }
+}
+
 struct AQILoader {
+    let cache = SensorCache()
+
     func loadSensors(completion: @escaping (Result<[Sensor], Error>) -> Void) {
+        if let cached = SensorCache.cached() {
+            return completion(.success(cached))
+        }
+
         let url = URL(string: "https://www.purpleair.com/data.json?opt=1/mAQI/a10/cC0&fetch=true&fields=,")!
         URLSession.shared.load(SensorsResponse.self, from: url) { result in
             switch result {
@@ -103,6 +140,7 @@ struct AQILoader {
                     Sensor(fields: fields, data: $0)
                 }
 
+                SensorCache.cache(sensors)
                 completion(.success(sensors))
             case .failure(let error):
                 completion(.failure(error))
@@ -239,7 +277,7 @@ struct AQILoader {
 }
 
 extension URLSession {
-    func load<T: Decodable>(_ type: T.Type, from url: URL, using decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Result<T, Error>) -> Void) {
+    func load<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, Error>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -260,5 +298,27 @@ extension URLSession {
                 }
             }
         }.resume()
+    }
+}
+
+extension UserDefaults {
+
+    private static let encoder = JSONEncoder()
+    private static let decoder = JSONDecoder()
+
+    static let shared = UserDefaults(suiteName: "group.com.kylebashour.aqi-wtf")!
+
+    func codable<T: Codable>(_ type: T.Type, forKey key: String) -> T? {
+        guard let data = data(forKey: key),
+              let decoded = try? Self.decoder.decode(T.self, from: data)
+        else {
+            return nil
+        }
+
+        return decoded
+    }
+
+    func set<T: Codable>(codable value: T, forKey key: String) {
+        set(try? Self.encoder.encode(value), forKey: key)
     }
 }
