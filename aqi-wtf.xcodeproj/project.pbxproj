@@ -582,7 +582,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -605,7 +605,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -709,9 +709,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "aqi-widgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "aqi-widget/aqi-widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -733,9 +733,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "aqi-widgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "aqi-widget/aqi-widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
