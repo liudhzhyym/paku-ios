@@ -22,8 +22,6 @@
 		C24ED0D62525DD1D001B3952 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24ED0B12525DC5B001B3952 /* SwiftUI.framework */; };
 		C24ED0D92525DD1D001B3952 /* aqi_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0D82525DD1D001B3952 /* aqi_widget.swift */; };
 		C24ED0DC2525DD1F001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED0DB2525DD1F001B3952 /* Assets.xcassets */; };
-		C24ED0DE2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */; };
-		C24ED0DF2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */; };
 		C24ED0E22525DD1F001B3952 /* aqi-widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
@@ -91,7 +89,6 @@
 		C24ED0B12525DC5B001B3952 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "aqi-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0D82525DD1D001B3952 /* aqi_widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aqi_widget.swift; sourceTree = "<group>"; };
-		C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = aqi_widget.intentdefinition; sourceTree = "<group>"; };
 		C24ED0DB2525DD1F001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24ED0DD2525DD1F001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C24ED1022525E570001B3952 /* AQIEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIEntryView.swift; sourceTree = "<group>"; };
@@ -139,7 +136,6 @@
 		C24ED0562525BEAD001B3952 = {
 			isa = PBXGroup;
 			children = (
-				2724852A2525ED0F00866F1A /* aqi-widgetExtension.entitlements */,
 				C24ED0612525BEAD001B3952 /* aqi-wtf */,
 				C24ED0782525BEAF001B3952 /* aqi-wtfTests */,
 				C24ED0832525BEAF001B3952 /* aqi-wtfUITests */,
@@ -207,8 +203,8 @@
 		C24ED0D72525DD1D001B3952 /* aqi-widget */ = {
 			isa = PBXGroup;
 			children = (
+				2724852A2525ED0F00866F1A /* aqi-widgetExtension.entitlements */,
 				C24ED0D82525DD1D001B3952 /* aqi_widget.swift */,
-				C24ED0DA2525DD1D001B3952 /* aqi_widget.intentdefinition */,
 				C24ED0DB2525DD1F001B3952 /* Assets.xcassets */,
 				C24ED0DD2525DD1F001B3952 /* Info.plist */,
 			);
@@ -392,7 +388,6 @@
 				C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* ViewController.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
-				C24ED0DF2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */,
 				C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +412,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C24ED0DE2525DD1F001B3952 /* aqi_widget.intentdefinition in Sources */,
 				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* aqi_widget.swift in Sources */,
 				C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */,

@@ -9,25 +9,25 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
+struct Provider: TimelineProvider {
     let loader = AQILoader()
 
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), aqi: .placeholder)
+        SimpleEntry(date: Date(), aqi: .placeholder)
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, aqi: .placeholder)
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        let entry = SimpleEntry(date: Date(), aqi: .placeholder)
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         loader.loadClosestAQI { result in
             switch result {
             case .success(let aqi):
                 let currentDate = Date()
                 let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
-                let entry = SimpleEntry(date: currentDate, configuration: configuration, aqi: aqi)
+                let entry = SimpleEntry(date: currentDate, aqi: aqi)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
 
@@ -41,7 +41,6 @@ struct Provider: IntentTimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
     let aqi: AQI
 }
 
@@ -50,7 +49,7 @@ struct aqi_widget: Widget {
     let kind: String = "aqi_widget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
             AQIEntryView(aqi: entry.aqi)
         }
         .configurationDisplayName("AQI")
