@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 import SwiftUI
 
 class ViewController: UIViewController {
@@ -26,7 +27,9 @@ class ViewController: UIViewController {
             switch result {
             case .success(let value):
                 self.display(view: EntryWrapperView(aqi: value))
-            case .failure:
+                WidgetCenter.shared.reloadAllTimelines()
+            case .failure(let error):
+                print(error)
                 self.display(view: MessageView(message: "I coded this up at 3am so I'm not surprised something didn’t work"))
             }
         }
