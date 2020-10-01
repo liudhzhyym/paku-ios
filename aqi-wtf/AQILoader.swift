@@ -8,6 +8,7 @@
 import AnyCodable
 import CoreLocation
 import Foundation
+import SwiftLocation
 
 enum SensorInitializerError: Error {
     case failedToParse
@@ -17,7 +18,7 @@ enum SensorInitializerError: Error {
 struct Sensor {
     let id: Int
     let age: Int
-    let coordinate: CLLocationCoordinate2D
+    let location: CLLocation
 
     init?(fields: [String: Int], data: [AnyCodable]){
         guard let idIndex = fields["ID"],
@@ -40,7 +41,7 @@ struct Sensor {
 
         self.id = id
         self.age = age
-        self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        self.location = CLLocation(latitude: lat, longitude: lon)
     }
 }
 
@@ -132,24 +133,37 @@ struct AQILoader {
         loadSensors { result in
             switch result {
             case .success(let sensors):
-                let closest = closestSensor(in: sensors)
-                loadAQI(from: closest.sensor) { result in
+                LocationManager.shared.locateFromGPS(.oneShot, accuracy: .block) { result in
                     switch result {
-                    case .success(let aqi):
-                        completion(.success(AQI(value: aqi, distance: closest.distance, guidance: [])))
+                    case .success(let location):
+                        let closest = closestSensor(in: sensors, from: location)
+                        loadAQI(from: closest.sensor) { result in
+                            switch result {
+                            case .success(let aqi):
+                                completion(.success(AQI(value: aqi, distance: closest.distance, guidance: [])))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                        }
                     case .failure(let error):
                         completion(.failure(error))
                     }
                 }
-
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
 
-    private func closestSensor(in sensors: [Sensor]) -> (sensor: Sensor, distance: Double) {
-        return (sensors.randomElement()!, 10)
+    private func closestSensor(in sensors: [Sensor], from location: CLLocation) -> (sensor: Sensor, distance: Double) {
+        var closest: (sensor: Sensor?, distance: Double) = (nil, .greatestFiniteMagnitude)
+        for sensor in sensors {
+            let distance = sensor.location.distance(from: location)
+            if distance < closest.distance {
+                closest = (sensor, distance)
+            }
+        }
+        return (closest.sensor!, closest.distance)
     }
 
     private func pm2_5(from data: [String: AnyCodable]) -> Double? {

@@ -17,6 +17,7 @@
 		C24ED0852525BEAF001B3952 /* aqi_wtfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0842525BEAF001B3952 /* aqi_wtfUITests.swift */; };
 		C24ED0962525BEB9001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED09B2525C171001B3952 /* AnyCodable */; };
+		C24ED0A52525D51C001B3952 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0A42525D51C001B3952 /* SwiftLocation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */,
+				C24ED0A52525D51C001B3952 /* SwiftLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +153,7 @@
 			name = "aqi-wtf";
 			packageProductDependencies = (
 				C24ED09B2525C171001B3952 /* AnyCodable */,
+				C24ED0A42525D51C001B3952 /* SwiftLocation */,
 			);
 			productName = "aqi-wtf";
 			productReference = C24ED05F2525BEAD001B3952 /* aqi-wtf.app */;
@@ -225,6 +228,7 @@
 			mainGroup = C24ED0562525BEAD001B3952;
 			packageReferences = (
 				C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */,
+				C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 			);
 			productRefGroup = C24ED0602525BEAD001B3952 /* Products */;
 			projectDirPath = "";
@@ -615,6 +619,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftLocation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -622,6 +634,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */;
 			productName = AnyCodable;
+		};
+		C24ED0A42525D51C001B3952 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
