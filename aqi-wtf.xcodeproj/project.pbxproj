@@ -586,7 +586,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PXKS3W23A6;
+				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -607,7 +607,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PXKS3W23A6;
+				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
