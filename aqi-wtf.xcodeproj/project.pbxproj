@@ -94,6 +94,7 @@
 		C24ED0DB2525DD1F001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24ED0DD2525DD1F001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C24ED1022525E570001B3952 /* AQIEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIEntryView.swift; sourceTree = "<group>"; };
+		C24ED1192525EC4D001B3952 /* aqi-wtf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "aqi-wtf.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +161,7 @@
 		C24ED0612525BEAD001B3952 /* aqi-wtf */ = {
 			isa = PBXGroup;
 			children = (
+				C24ED1192525EC4D001B3952 /* aqi-wtf.entitlements */,
 				C24ED0622525BEAD001B3952 /* AppDelegate.swift */,
 				C24ED0642525BEAD001B3952 /* SceneDelegate.swift */,
 				C24ED0662525BEAD001B3952 /* ViewController.swift */,
@@ -582,6 +584,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PXKS3W23A6;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
@@ -602,6 +605,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PXKS3W23A6;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
