@@ -26,7 +26,7 @@ struct Provider: TimelineProvider {
             switch result {
             case .success(let aqi):
                 let currentDate = Date()
-                let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
+                let refreshDate = Calendar.current.date(byAdding: .minute, value: 10, to: currentDate)!
                 let entry = SimpleEntry(date: currentDate, aqi: aqi)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
