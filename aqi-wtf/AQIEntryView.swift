@@ -17,7 +17,8 @@ struct AQIEntryView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("\(Int(aqi.value))")
-                        .font(.headline)
+                        .font(.title2)
+                        .fontWeight(.bold)
                         .foregroundColor(Color(aqi.class.textColor))
 
                     Text(aqi.date, style: .time)

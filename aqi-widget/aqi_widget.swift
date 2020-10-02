@@ -44,7 +44,12 @@ struct WidgetView: View {
         if let aqi = entry.aqi {
             AQIEntryView(aqi: aqi)
         } else {
-            Text("We couldn't load anything 😕 try opening the app").padding()
+            HStack {
+                Text("We couldn't load anything 😕 try opening the app")
+                    .font(.caption)
+                    .padding()
+                Spacer()
+            }
         }
     }
 }

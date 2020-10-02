@@ -61,8 +61,11 @@ struct EntryWrapperView: View {
             Spacer()
 
             Text("AQI calculated using AQandU normalization")
+                .font(.caption)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
+
+            Spacer().frame(height: 20)
         }
     }
 }
