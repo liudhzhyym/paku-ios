@@ -176,7 +176,7 @@ struct AQILoader {
     let cache = SensorCache()
 
     func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
-        if let cached = SensorCache.cached(expiration: 5 * 60) {
+        if let cached = SensorCache.cached(expiration: 10 * 60) {
             return completion(.success((cached.sensors, cached.date)))
         }
 
