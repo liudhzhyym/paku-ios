@@ -23,7 +23,7 @@ class RootViewController: UIViewController {
         LocationManager.shared.onAuthorizationChange.add { state in
             switch state {
             case .available:
-                self.viewController = ViewController()
+                self.viewController = AQIViewController()
             default:
                 self.viewController = OnboardingViewController()
             }

@@ -9,7 +9,7 @@ import UIKit
 import WidgetKit
 import SwiftUI
 
-class ViewController: UIViewController {
+class AQIViewController: UIViewController {
 
     let loader = AQILoader()
 
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
                 WidgetCenter.shared.reloadAllTimelines()
             case .failure(let error):
                 print(error)
-                self.display(view: MessageView(message: "I coded this up at 3am so I'm not surprised something didn’t work"))
+                self.display(view: MessageView(message: "We couldn't load anything 😕 try again in a minute?"))
             }
         }
     }
@@ -50,10 +50,20 @@ struct EntryWrapperView: View {
     var aqi: AQI
 
     var body: some View {
-        AQIEntryView(aqi: aqi)
-            .frame(width: 180, height: 180, alignment: .center)
-            .cornerRadius(22)
-            .overlay(RoundedRectangle(cornerRadius: 22).stroke(Color(.label), lineWidth: 1))
+        VStack(alignment: .center) {
+            Spacer()
+
+            AQIEntryView(aqi: aqi)
+                .frame(width: 180, height: 180, alignment: .center)
+                .cornerRadius(22)
+                .overlay(RoundedRectangle(cornerRadius: 22).stroke(Color(.label), lineWidth: 1))
+
+            Spacer()
+
+            Text("AQI calculated using AQandU normalization")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+        }
     }
 }
 

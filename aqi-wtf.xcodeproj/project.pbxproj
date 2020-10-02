@@ -23,7 +23,7 @@
 		276E4B7A2526DBB500FA4D26 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B792526DBB500FA4D26 /* UIColor+Extensions.swift */; };
 		C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0622525BEAD001B3952 /* AppDelegate.swift */; };
 		C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0642525BEAD001B3952 /* SceneDelegate.swift */; };
-		C24ED0672525BEAD001B3952 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* ViewController.swift */; };
+		C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* AQIViewController.swift */; };
 		C24ED06C2525BEAF001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED06B2525BEAF001B3952 /* Assets.xcassets */; };
 		C24ED06F2525BEAF001B3952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C24ED06D2525BEAF001B3952 /* LaunchScreen.storyboard */; };
 		C24ED07A2525BEAF001B3952 /* aqi_wtfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0792525BEAF001B3952 /* aqi_wtfTests.swift */; };
@@ -100,7 +100,7 @@
 		C24ED05F2525BEAD001B3952 /* aqi-wtf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "aqi-wtf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0622525BEAD001B3952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C24ED0642525BEAD001B3952 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C24ED0662525BEAD001B3952 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C24ED0662525BEAD001B3952 /* AQIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIViewController.swift; sourceTree = "<group>"; };
 		C24ED06B2525BEAF001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24ED06E2525BEAF001B3952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C24ED0702525BEAF001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				276E4B632526D6FE00FA4D26 /* NSAttributedString+Extensions.swift */,
 				276E4B512526D67800FA4D26 /* Control.swift */,
 				276E4B792526DBB500FA4D26 /* UIColor+Extensions.swift */,
-				C24ED0662525BEAD001B3952 /* ViewController.swift */,
+				C24ED0662525BEAD001B3952 /* AQIViewController.swift */,
 				272485632526745F00866F1A /* UIViewController+Extensions.swift */,
 				27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */,
 				276E4B412526D5EA00FA4D26 /* Button.swift */,
@@ -435,7 +435,7 @@
 				276E4B7A2526DBB500FA4D26 /* UIColor+Extensions.swift in Sources */,
 				2724855E2526742C00866F1A /* RootViewController.swift in Sources */,
 				C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */,
-				C24ED0672525BEAD001B3952 /* ViewController.swift in Sources */,
+				C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */,
 				276E4B422526D5EA00FA4D26 /* Button.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
