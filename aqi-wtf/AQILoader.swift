@@ -161,14 +161,18 @@ struct SensorCache {
         UserDefaults.shared.set(codable: cached, forKey: key)
     }
 
-    static func cached() -> ([Sensor], Date)? {
+    static func cached() -> Cache? {
         guard let cached = UserDefaults.shared.codable(Cache.self, forKey: key),
-              Date().timeIntervalSince(cached.date) < 10 * 60
+              Date().timeIntervalSince(cached.date) < 5 * 60
         else {
             return nil
         }
 
-        return (cached.sensors, cached.date)
+        return cached
+    }
+
+    static func evenIfExpired() -> Cache? {
+        UserDefaults.shared.codable(Cache.self, forKey: key)
     }
 }
 
@@ -177,7 +181,7 @@ struct AQILoader {
 
     func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
         if let cached = SensorCache.cached() {
-            return completion(.success(cached))
+            return completion(.success((cached.sensors, cached.date)))
         }
 
         let url = URL(string: "https://www.purpleair.com/data.json?opt=1/mAQI/a10/cC0&fetch=true&fields=,")!
@@ -195,7 +199,11 @@ struct AQILoader {
                 SensorCache.cache(sensors)
                 completion(.success((sensors, Date())))
             case .failure(let error):
-                completion(.failure(error))
+                if let expired = SensorCache.evenIfExpired() {
+                    completion(.success((expired.sensors, expired.date)))
+                } else {
+                    completion(.failure(error))
+                }
             }
         }
     }
