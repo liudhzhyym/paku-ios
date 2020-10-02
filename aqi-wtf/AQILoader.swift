@@ -161,18 +161,14 @@ struct SensorCache {
         UserDefaults.shared.set(codable: cached, forKey: key)
     }
 
-    static func cached() -> Cache? {
+    static func cached(expiration: TimeInterval) -> Cache? {
         guard let cached = UserDefaults.shared.codable(Cache.self, forKey: key),
-              Date().timeIntervalSince(cached.date) < 5 * 60
+              Date().timeIntervalSince(cached.date) < expiration
         else {
             return nil
         }
 
         return cached
-    }
-
-    static func evenIfExpired() -> Cache? {
-        UserDefaults.shared.codable(Cache.self, forKey: key)
     }
 }
 
@@ -180,7 +176,7 @@ struct AQILoader {
     let cache = SensorCache()
 
     func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
-        if let cached = SensorCache.cached() {
+        if let cached = SensorCache.cached(expiration: 5 * 60) {
             return completion(.success((cached.sensors, cached.date)))
         }
 
@@ -199,7 +195,7 @@ struct AQILoader {
                 SensorCache.cache(sensors)
                 completion(.success((sensors, Date())))
             case .failure(let error):
-                if let expired = SensorCache.evenIfExpired() {
+                if let expired = SensorCache.cached(expiration: 60 * 60) {
                     completion(.success((expired.sensors, expired.date)))
                 } else {
                     completion(.failure(error))
