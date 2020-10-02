@@ -23,25 +23,30 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         loader.loadClosestAQI { result in
-            switch result {
-            case .success(let aqi):
-                let currentDate = Date()
-                let refreshDate = Calendar.current.date(byAdding: .minute, value: 10, to: currentDate)!
-                let entry = SimpleEntry(date: currentDate, aqi: aqi)
-                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                completion(timeline)
-
-            case .failure(let error):
-                print("Error: \(error)")
-
-            }
+            let currentDate = Date()
+            let refreshDate = Calendar.current.date(byAdding: .minute, value: 10, to: currentDate)!
+            let entry = SimpleEntry(date: currentDate, aqi: try? result.get())
+            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+            completion(timeline)
         }
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let aqi: AQI
+    let aqi: AQI?
+}
+
+struct WidgetView: View {
+    var entry: SimpleEntry
+
+    var body: some View {
+        if let aqi = entry.aqi {
+            AQIEntryView(aqi: aqi)
+        } else {
+            Text("We couldn't load anything 😕 try opening the app").padding()
+        }
+    }
 }
 
 @main
@@ -50,7 +55,7 @@ struct aqi_widget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            AQIEntryView(aqi: entry.aqi)
+            WidgetView(entry: entry)
         }
         .configurationDisplayName("AQI")
         .description("Displays the AQI from the closest Purple Air sensor.")
@@ -59,7 +64,10 @@ struct aqi_widget: Widget {
 
 struct AQIWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AQIEntryView(aqi: .placeholder)
+        WidgetView(entry: SimpleEntry(date: Date(), aqi: .placeholder))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+
+        WidgetView(entry: SimpleEntry(date: Date(), aqi: nil))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

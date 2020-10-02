@@ -21,7 +21,7 @@ struct AQIEntryView: View {
                         .foregroundColor(Color(aqi.class.textColor))
 
                     Text(aqi.date, style: .time)
-                        .font(Font.caption2)
+                        .font(Font.caption)
                         .fontWeight(.medium)
                         .foregroundColor(Color(aqi.class.textColor))
 
@@ -29,7 +29,7 @@ struct AQIEntryView: View {
                     Spacer()
 
                     Text(aqi.class.description)
-                        .font(.caption)
+                        .font(.body)
                         .fontWeight(.medium)
                         .foregroundColor(Color(aqi.class.textColor))
                 }
@@ -45,5 +45,11 @@ struct MessageView: View {
 
     var body: some View {
         Text(message).padding()
+    }
+}
+
+struct AQIEntryView_Previews: PreviewProvider {
+    static var previews: some View {
+        AQIEntryView(aqi: .init(value: 20, distance: 10, date: Date()))
     }
 }
