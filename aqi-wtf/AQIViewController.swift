@@ -23,7 +23,7 @@ class AQIViewController: UIViewController {
     }
 
     @objc private func refresh() {
-        loader.loadClosestAQI { result in
+        loader.closestAQIOrCached { result in
             switch result {
             case .success(let value):
                 self.display(view: EntryWrapperView(aqi: value))

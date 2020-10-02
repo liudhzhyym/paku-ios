@@ -53,7 +53,7 @@ struct Sensor: Codable {
     }
 }
 
-struct AQI {
+struct AQI: Codable {
     let value: Double
     let distance: Double
     let date: Date
@@ -148,23 +148,20 @@ enum AQILoaderError: Error {
     case unknownError
 }
 
-struct SensorCache {
-    struct Cache: Codable {
-        let date: Date
-        let sensors: [Sensor]
-    }
+struct CachedValue<T: Codable>: Codable {
+    let date: Date
+    let value: T
+}
 
-    private static let key = "sensors"
-
-    static func cache(_ sensors: [Sensor]) {
-        let cached = Cache(date: Date(), sensors: sensors)
+struct ExpiringCache {
+    static func cache<T: Codable>(_ value: T, forKey key: String) {
+        let cached = CachedValue(date: Date(), value: value)
         UserDefaults.shared.set(codable: cached, forKey: key)
     }
 
-    static func cached(expiration: TimeInterval) -> Cache? {
-        guard let cached = UserDefaults.shared.codable(Cache.self, forKey: key),
-              Date().timeIntervalSince(cached.date) < expiration
-        else {
+    static func value<T: Codable>(_ type: T.Type, forKey key: String, expiration: TimeInterval) -> CachedValue<T>? {
+        guard let cached = UserDefaults.shared.codable(CachedValue<T>.self, forKey: key),
+              Date().timeIntervalSince(cached.date) < expiration else {
             return nil
         }
 
@@ -173,14 +170,16 @@ struct SensorCache {
 }
 
 struct AQILoader {
-    let cache = SensorCache()
+    let aqiKey = "aqi"
+    let sensorsKey = "sensors"
 
-    func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
-        if let cached = SensorCache.cached(expiration: 10 * 60) {
-            return completion(.success((cached.sensors, cached.date)))
+    private func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
+        if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 10 * 60) {
+            return completion(.success((cached.value, cached.date)))
         }
 
         let url = URL(string: "https://www.purpleair.com/data.json?opt=1/mAQI/a10/cC0&fetch=true&fields=,")!
+
         URLSession.shared.load(SensorsResponse.self, from: url) { result in
             switch result {
             case .success(let response):
@@ -192,11 +191,11 @@ struct AQILoader {
                     Sensor(fields: fields, data: $0)
                 }
 
-                SensorCache.cache(sensors)
+                ExpiringCache.cache(sensors, forKey: sensorsKey)
                 completion(.success((sensors, Date())))
             case .failure(let error):
-                if let expired = SensorCache.cached(expiration: 60 * 60) {
-                    completion(.success((expired.sensors, expired.date)))
+                if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 60 * 60) {
+                    completion(.success((cached.value, cached.date)))
                 } else {
                     completion(.failure(error))
                 }
@@ -204,7 +203,7 @@ struct AQILoader {
         }
     }
 
-    func loadAQI(from sensor: Sensor, completion: @escaping (Result<Double, Error>) -> Void) {
+    private func loadAQI(from sensor: Sensor, completion: @escaping (Result<Double, Error>) -> Void) {
         let url = URL(string: "https://www.purpleair.com/json?show=\(sensor.id)")!
         URLSession.shared.load(SensorResponse.self, from: url) { result in
             switch result {
@@ -223,7 +222,7 @@ struct AQILoader {
         }
     }
 
-    func loadClosestAQI(completion: @escaping (Result<AQI, Error>) -> Void) {
+    private func loadClosestAQI(completion: @escaping (Result<AQI, Error>) -> Void) {
         loadSensors { result in
             switch result {
             case .success(let sensors):
@@ -234,7 +233,9 @@ struct AQILoader {
                         loadAQI(from: closest.sensor) { result in
                             switch result {
                             case .success(let aqi):
-                                completion(.success(AQI(value: aqi, distance: closest.distance, date: sensors.1)))
+                                let aqi = AQI(value: aqi, distance: closest.distance, date: sensors.1)
+                                ExpiringCache.cache(aqi, forKey: aqiKey)
+                                completion(.success(aqi))
                             case .failure(let error):
                                 completion(.failure(error))
                             }
@@ -245,6 +246,21 @@ struct AQILoader {
                 }
             case .failure(let error):
                 completion(.failure(error))
+            }
+        }
+    }
+
+    func closestAQIOrCached(completion: @escaping (Result<AQI, Error>) -> Void) {
+        loadClosestAQI { result in
+            switch result {
+            case .success(let aqi):
+                completion(.success(aqi))
+            case .failure(let error):
+                if let cached = ExpiringCache.value(AQI.self, forKey: aqiKey, expiration: 60 * 60) {
+                    completion(.success(cached.value))
+                } else {
+                    completion(.failure(error))
+                }
             }
         }
     }

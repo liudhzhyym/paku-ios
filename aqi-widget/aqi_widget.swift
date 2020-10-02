@@ -22,7 +22,7 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        loader.loadClosestAQI { result in
+        loader.closestAQIOrCached { result in
             let currentDate = Date()
             let refreshDate = Calendar.current.date(byAdding: .minute, value: 11, to: currentDate)!
             let entry = SimpleEntry(date: currentDate, aqi: try? result.get())
