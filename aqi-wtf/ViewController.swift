@@ -42,13 +42,7 @@ class ViewController: UIViewController {
             child.removeFromParent()
         }
 
-
-        let controller = UIHostingController(rootView: view)
-        addChild(controller)
-        self.view.addSubview(controller.view)
-        controller.view.frame = self.view.bounds
-        controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        controller.didMove(toParent: self)
+        add(view: view)
     }
 }
 
