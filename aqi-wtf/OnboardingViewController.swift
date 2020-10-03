@@ -10,7 +10,11 @@ import SwiftLocation
 
 class OnboardingViewController: UIViewController {
 
-    private let button = Button(title: "Let’s do it")
+    private let permissionWrapper = UIView()
+    private let locationButton = Button(title: "Let’s do it")
+    private let settingsButton = Button(title: "Open Settings")
+
+    private var token: UInt64?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,21 +34,18 @@ class OnboardingViewController: UIViewController {
         descriptionLabel.text = "Paku is a simple app (and widget!) that shows you the AQI from the nearest Purple Air sensor. We need your location to do that - is that alright?"
         descriptionLabel.numberOfLines = 0
 
-        let disclaimerLabel = UILabel(font: .systemFont(ofSize: 14), color: .secondaryLabel, alignment: .center)
-        disclaimerLabel.text = "By signing up you agree to our Terms of Service"
-        disclaimerLabel.numberOfLines = 0
+        let permissionLabel = UILabel(font: .systemFont(ofSize: 14), color: .secondaryLabel, alignment: .center)
+        permissionLabel.text = "Sorry, but we need your location to show you AQI near you! Open settings to grant us permission."
+        permissionLabel.numberOfLines = 0
 
-        let disclaimerWrapper = UIView()
-        disclaimerWrapper.addSubview(disclaimerLabel)
-        disclaimerLabel.pinEdges([.top, .bottom], to: disclaimerWrapper)
-        disclaimerLabel.pinCenter(to: disclaimerWrapper)
-
-        button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+        permissionWrapper.addSubview(permissionLabel)
+        permissionLabel.pinEdges([.top, .bottom], to: permissionWrapper)
+        permissionLabel.pinCenter(to: permissionWrapper)
 
         let topSpacer = UIView()
         let bottomSpacer = UIView()
 
-        let stackView = UIStackView(arrangedSubviews: [topSpacer, icon, titleLabel, descriptionLabel, bottomSpacer, button])
+        let stackView = UIStackView(arrangedSubviews: [topSpacer, icon, titleLabel, descriptionLabel, bottomSpacer, locationButton, settingsButton, permissionWrapper])
         stackView.alignment = .leading
         stackView.distribution = .fill
         stackView.axis = .vertical
@@ -53,16 +54,45 @@ class OnboardingViewController: UIViewController {
         view.addSubview(stackView)
 
         stackView.pinEdges(to: view.layoutMarginsGuide)
-        button.widthAnchor.pin(to: stackView.widthAnchor)
+        settingsButton.widthAnchor.pin(to: stackView.widthAnchor)
+        locationButton.widthAnchor.pin(to: stackView.widthAnchor)
         topSpacer.heightAnchor.pin(to: bottomSpacer.heightAnchor)
+
+        permissionWrapper.widthAnchor.pin(to: stackView.widthAnchor)
+        permissionLabel.widthAnchor.pin(lessThan: stackView.widthAnchor, constant: -60)
+
+        locationButton.addTarget(self, action: #selector(self.requestionLocation), for: .touchUpInside)
+        settingsButton.addTarget(self, action: #selector(self.openSettings), for: .touchUpInside)
+
+        updateState()
+
+        token = LocationManager.shared.onAuthorizationChange.add { [weak self] state in
+            self?.updateState()
+        }
     }
 
-    @objc private func signIn() {
+    deinit {
+        LocationManager.shared.onAuthorizationChange.remove(token!)
+    }
+
+    private func updateState() {
+        switch LocationManager.state {
+        case .denied, .disabled, .restricted:
+            permissionWrapper.isHidden = false
+            self.settingsButton.isHidden = false
+            self.locationButton.isHidden = true
+        default:
+            permissionWrapper.isHidden = true
+            self.settingsButton.isHidden = true
+            self.locationButton.isHidden = false
+        }
+    }
+
+    @objc private func requestionLocation() {
         LocationManager.shared.requireUserAuthorization(.whenInUse)
     }
 
-    private func set(isLoading: Bool) {
-        button.isLoading = isLoading
-        button.isEnabled = !isLoading
+    @objc private func openSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
 }
