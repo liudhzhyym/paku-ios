@@ -174,7 +174,7 @@ struct AQILoader {
     let sensorsKey = "sensors"
 
     private func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
-        if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 10 * 60) {
+        if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
             return completion(.success((cached.value, cached.date)))
         }
 
@@ -194,11 +194,7 @@ struct AQILoader {
                 ExpiringCache.cache(sensors, forKey: sensorsKey)
                 completion(.success((sensors, Date())))
             case .failure(let error):
-                if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 60 * 60) {
-                    completion(.success((cached.value, cached.date)))
-                } else {
-                    completion(.failure(error))
-                }
+                completion(.failure(error))
             }
         }
     }
