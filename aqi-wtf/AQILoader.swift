@@ -229,7 +229,7 @@ struct AQILoader {
                         loadAQI(from: closest.sensor) { result in
                             switch result {
                             case .success(let aqi):
-                                let aqi = AQI(value: aqi, distance: closest.distance, date: sensors.1)
+                                let aqi = AQI(value: aqi, distance: closest.distance, date: Date())
                                 ExpiringCache.cache(aqi, forKey: aqiKey)
                                 completion(.success(aqi))
                             case .failure(let error):
