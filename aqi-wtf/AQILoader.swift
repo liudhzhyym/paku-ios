@@ -54,7 +54,7 @@ struct Sensor: Codable {
 
 struct AQI: Codable {
     let value: Double
-    let distance: Double
+    let distance: CLLocationDistance
     let date: Date
 
     var `class`: AQIClass {
@@ -62,25 +62,24 @@ struct AQI: Codable {
     }
 }
 
-enum AQIClass {
-    case veryHazardous
-    case hazardous
-    case veryUnhealthy
-    case unhealthy
-    case unhealthyForSensitiveGroups
-    case moderate
-    case good
+enum AQIClass: Double, CaseIterable {
+    case good                           = 50
+    case moderate                       = 100
+    case unhealthyForSensitiveGroups    = 150
+    case unhealthy                      = 200
+    case veryUnhealthy                  = 300
+    case hazardous                      = 400
+    case veryHazardous                  = 500
 
     init?(aqi: Double) {
         switch aqi {
-        case 401...: self = .veryHazardous
-        case 301...: self = .hazardous
-        case 201...: self = .veryUnhealthy
-        case 151...: self = .unhealthy
-        case 101...: self = .unhealthyForSensitiveGroups
-        case 51...: self = .moderate
-        case 0...: self = .good
-        default: return nil
+        case ...50: self = .good
+        case ...100: self = .moderate
+        case ...150: self = .unhealthyForSensitiveGroups
+        case ...200: self = .unhealthy
+        case ...300: self = .veryUnhealthy
+        case ...400: self = .hazardous
+        default: self = .veryHazardous
         }
     }
 
@@ -102,7 +101,9 @@ enum AQIClass {
             return "Good"
         }
     }
+}
 
+extension AQIClass {
     var color: UIColor {
         switch self {
         case .veryHazardous:
@@ -129,6 +130,11 @@ enum AQIClass {
         default:
             return .black
         }
+    }
+
+    static func color(at aqi: Double) -> UIColor {
+        guard let `class` = AQIClass(aqi: aqi) else { return .clear }
+        return `class`.color
     }
 }
 
@@ -260,7 +266,7 @@ struct AQILoader {
         }
     }
 
-    private func closestSensor(in sensors: [Sensor], from location: CLLocation) -> (sensor: Sensor, distance: Double) {
+    private func closestSensor(in sensors: [Sensor], from location: CLLocation) -> (sensor: Sensor, distance: CLLocationDistance) {
         var closest: (sensor: Sensor?, distance: Double) = (nil, .greatestFiniteMagnitude)
         for sensor in sensors {
             let distance = sensor.location.distance(from: location)
