@@ -11,6 +11,9 @@
 		27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */; };
 		2724855E2526742C00866F1A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724855D2526742C00866F1A /* RootViewController.swift */; };
 		272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272485632526745F00866F1A /* UIViewController+Extensions.swift */; };
+		275712AC252D47E00050B473 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712AB252D47E00050B473 /* LocationManager.swift */; };
+		275712B1252D49100050B473 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712AB252D47E00050B473 /* LocationManager.swift */; };
+		275712B7252D4A240050B473 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712B6252D4A240050B473 /* ViewController.swift */; };
 		276E4B342526D5BB00FA4D26 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */; };
 		276E4B422526D5EA00FA4D26 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B412526D5EA00FA4D26 /* Button.swift */; };
 		276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */; };
@@ -30,7 +33,6 @@
 		C24ED0852525BEAF001B3952 /* aqi_wtfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0842525BEAF001B3952 /* aqi_wtfUITests.swift */; };
 		C24ED0962525BEB9001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED09B2525C171001B3952 /* AnyCodable */; };
-		C24ED0A52525D51C001B3952 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0A42525D51C001B3952 /* SwiftLocation */; };
 		C24ED0D52525DD1D001B3952 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24ED0AF2525DC5B001B3952 /* WidgetKit.framework */; };
 		C24ED0D62525DD1D001B3952 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24ED0B12525DC5B001B3952 /* SwiftUI.framework */; };
 		C24ED0D92525DD1D001B3952 /* aqi_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0D82525DD1D001B3952 /* aqi_widget.swift */; };
@@ -38,7 +40,6 @@
 		C24ED0E22525DD1F001B3952 /* aqi-widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
-		C24ED0FD2525DE90001B3952 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FC2525DE90001B3952 /* SwiftLocation */; };
 		C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 		C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,8 @@
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
 		2724855D2526742C00866F1A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		272485632526745F00866F1A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		275712AB252D47E00050B473 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		275712B6252D4A240050B473 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		276E4B412526D5EA00FA4D26 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -127,7 +130,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */,
-				C24ED0A52525D51C001B3952 /* SwiftLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +154,6 @@
 				C24ED0D62525DD1D001B3952 /* SwiftUI.framework in Frameworks */,
 				C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */,
 				C24ED0D52525DD1D001B3952 /* WidgetKit.framework in Frameworks */,
-				C24ED0FD2525DE90001B3952 /* SwiftLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +190,7 @@
 				C24ED0622525BEAD001B3952 /* AppDelegate.swift */,
 				C24ED0642525BEAD001B3952 /* SceneDelegate.swift */,
 				2724855D2526742C00866F1A /* RootViewController.swift */,
+				275712B6252D4A240050B473 /* ViewController.swift */,
 				276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */,
 				276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */,
 				276E4B632526D6FE00FA4D26 /* NSAttributedString+Extensions.swift */,
@@ -200,6 +202,7 @@
 				276E4B412526D5EA00FA4D26 /* Button.swift */,
 				27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */,
 				C24ED0952525BEB9001B3952 /* AQILoader.swift */,
+				275712AB252D47E00050B473 /* LocationManager.swift */,
 				C24ED1022525E570001B3952 /* AQIEntryView.swift */,
 				276E4B5A2526D6CC00FA4D26 /* NSLayoutAnchor+AutoLayout.swift */,
 				276E4B582526D6CC00FA4D26 /* NSLayoutConstraint+AutoLayout.swift */,
@@ -270,7 +273,6 @@
 			name = "aqi-wtf";
 			packageProductDependencies = (
 				C24ED09B2525C171001B3952 /* AnyCodable */,
-				C24ED0A42525D51C001B3952 /* SwiftLocation */,
 			);
 			productName = "aqi-wtf";
 			productReference = C24ED05F2525BEAD001B3952 /* aqi-wtf.app */;
@@ -327,7 +329,6 @@
 			name = "aqi-widgetExtension";
 			packageProductDependencies = (
 				C24ED0FA2525DE8E001B3952 /* AnyCodable */,
-				C24ED0FC2525DE90001B3952 /* SwiftLocation */,
 			);
 			productName = "aqi-widgetExtension";
 			productReference = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */;
@@ -369,7 +370,6 @@
 			mainGroup = C24ED0562525BEAD001B3952;
 			packageReferences = (
 				C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */,
-				C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 			);
 			productRefGroup = C24ED0602525BEAD001B3952 /* Products */;
 			projectDirPath = "";
@@ -434,11 +434,13 @@
 				272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */,
 				276E4B7A2526DBB500FA4D26 /* UIColor+Extensions.swift in Sources */,
 				2724855E2526742C00866F1A /* RootViewController.swift in Sources */,
+				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
 				C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */,
 				276E4B422526D5EA00FA4D26 /* Button.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
+				275712B7252D4A240050B473 /* ViewController.swift in Sources */,
 				27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */,
 				C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */,
 			);
@@ -464,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275712B1252D49100050B473 /* LocationManager.swift in Sources */,
 				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* aqi_widget.swift in Sources */,
 				C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */,
@@ -626,14 +629,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -649,14 +652,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-wtf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -755,7 +758,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "aqi-widget/aqi-widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -763,7 +766,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf.aqi-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -779,7 +782,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "aqi-widget/aqi-widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "aqi-widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -787,7 +790,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf.aqi-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -855,14 +858,6 @@
 				minimumVersion = 0.3.0;
 			};
 		};
-		C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/malcommac/SwiftLocation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -871,20 +866,10 @@
 			package = C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */;
 			productName = AnyCodable;
 		};
-		C24ED0A42525D51C001B3952 /* SwiftLocation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
-			productName = SwiftLocation;
-		};
 		C24ED0FA2525DE8E001B3952 /* AnyCodable */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */;
 			productName = AnyCodable;
-		};
-		C24ED0FC2525DE90001B3952 /* SwiftLocation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C24ED0A32525D51C001B3952 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
-			productName = SwiftLocation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

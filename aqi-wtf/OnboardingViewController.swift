@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import SwiftLocation
 
-class OnboardingViewController: UIViewController {
+class OnboardingViewController: ViewController {
 
     private let permissionWrapper = UIView()
     private let locationButton = Button(title: "Let’s do it")
@@ -61,23 +60,19 @@ class OnboardingViewController: UIViewController {
         permissionWrapper.widthAnchor.pin(to: stackView.widthAnchor)
         permissionLabel.widthAnchor.pin(lessThan: stackView.widthAnchor, constant: -60)
 
-        locationButton.addTarget(self, action: #selector(self.requestionLocation), for: .touchUpInside)
+        locationButton.addTarget(self, action: #selector(self.requestionLocationPermission), for: .touchUpInside)
         settingsButton.addTarget(self, action: #selector(self.openSettings), for: .touchUpInside)
 
         updateState()
 
-        token = LocationManager.shared.onAuthorizationChange.add { [weak self] state in
+        LocationManager.shared.$status.sink { [weak self] _ in
             self?.updateState()
-        }
-    }
-
-    deinit {
-        LocationManager.shared.onAuthorizationChange.remove(token!)
+        }.store(in: &sink)
     }
 
     private func updateState() {
-        switch LocationManager.state {
-        case .denied, .disabled, .restricted:
+        switch LocationManager.shared.status {
+        case .denied, .restricted:
             permissionWrapper.isHidden = false
             self.settingsButton.isHidden = false
             self.locationButton.isHidden = true
@@ -88,8 +83,8 @@ class OnboardingViewController: UIViewController {
         }
     }
 
-    @objc private func requestionLocation() {
-        LocationManager.shared.requireUserAuthorization(.whenInUse)
+    @objc private func requestionLocationPermission() {
+        LocationManager.shared.requestPermission()
     }
 
     @objc private func openSettings() {

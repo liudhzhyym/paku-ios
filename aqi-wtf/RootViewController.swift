@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import SwiftLocation
 
-class RootViewController: UIViewController {
+class RootViewController: ViewController {
 
     var viewController: UIViewController? {
         didSet {
@@ -20,13 +19,13 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        LocationManager.shared.onAuthorizationChange.add { state in
-            switch state {
-            case .available:
+        LocationManager.shared.$status.sink { status in
+            switch status {
+            case .authorizedWhenInUse, .authorizedAlways:
                 self.viewController = AQIViewController()
             default:
                 self.viewController = OnboardingViewController()
             }
-        }
+        }.store(in: &sink)
     }
 }

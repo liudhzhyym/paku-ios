@@ -9,15 +9,6 @@
           "revision": "79b05a5da89557a4fa50647cc92488a3d9c3f478",
           "version": "0.3.0"
         }
-      },
-      {
-        "package": "SwiftLocation",
-        "repositoryURL": "https://github.com/malcommac/SwiftLocation",
-        "state": {
-          "branch": null,
-          "revision": "0738a53d828ac3bede72b718af18a915ff1ed27d",
-          "version": "4.2.0"
-        }
       }
     ]
   },

@@ -8,7 +8,6 @@
 import AnyCodable
 import CoreLocation
 import Foundation
-import SwiftLocation
 import UIKit
 
 let encoder = JSONEncoder()
@@ -222,7 +221,7 @@ struct AQILoader {
         loadSensors { result in
             switch result {
             case .success(let sensors):
-                LocationManager.shared.locateFromGPS(.oneShot, accuracy: .block) { result in
+                LocationManager.shared.requestLocation { result in
                     switch result {
                     case .success(let location):
                         let closest = closestSensor(in: sensors, from: location)

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
