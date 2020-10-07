@@ -1,6 +1,6 @@
 //
-//  aqi_widget.swift
-//  aqi-widget
+//  Widgets.swift
+//  PakuWidget
 //
 //  Created by Kyle Bashour on 10/1/20.
 //

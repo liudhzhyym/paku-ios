@@ -46,15 +46,15 @@
 		C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* AQIViewController.swift */; };
 		C24ED06C2525BEAF001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED06B2525BEAF001B3952 /* Assets.xcassets */; };
 		C24ED06F2525BEAF001B3952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C24ED06D2525BEAF001B3952 /* LaunchScreen.storyboard */; };
-		C24ED07A2525BEAF001B3952 /* aqi_wtfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0792525BEAF001B3952 /* aqi_wtfTests.swift */; };
-		C24ED0852525BEAF001B3952 /* aqi_wtfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0842525BEAF001B3952 /* aqi_wtfUITests.swift */; };
+		C24ED07A2525BEAF001B3952 /* PakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0792525BEAF001B3952 /* PakuTests.swift */; };
+		C24ED0852525BEAF001B3952 /* PakuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0842525BEAF001B3952 /* PakuUITests.swift */; };
 		C24ED0962525BEB9001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED09B2525C171001B3952 /* AnyCodable */; };
 		C24ED0D52525DD1D001B3952 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24ED0AF2525DC5B001B3952 /* WidgetKit.framework */; };
 		C24ED0D62525DD1D001B3952 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24ED0B12525DC5B001B3952 /* SwiftUI.framework */; };
 		C24ED0D92525DD1D001B3952 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0D82525DD1D001B3952 /* Widgets.swift */; };
 		C24ED0DC2525DD1F001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED0DB2525DD1F001B3952 /* Assets.xcassets */; };
-		C24ED0E22525DD1F001B3952 /* aqi-widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C24ED0E22525DD1F001B3952 /* PakuWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* PakuWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
 		C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 		C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
@@ -66,14 +66,14 @@
 			containerPortal = C24ED0572525BEAD001B3952 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C24ED05E2525BEAD001B3952;
-			remoteInfo = "aqi-wtf";
+			remoteInfo = Paku;
 		};
 		C24ED0812525BEAF001B3952 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C24ED0572525BEAD001B3952 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C24ED05E2525BEAD001B3952;
-			remoteInfo = "aqi-wtf";
+			remoteInfo = Paku;
 		};
 		C24ED0E02525DD1F001B3952 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -91,7 +91,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C24ED0E22525DD1F001B3952 /* aqi-widgetExtension.appex in Embed App Extensions */,
+				C24ED0E22525DD1F001B3952 /* PakuWidget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,7 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2724852A2525ED0F00866F1A /* aqi-widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "aqi-widgetExtension.entitlements"; sourceTree = "<group>"; };
+		2724852A2525ED0F00866F1A /* PakuWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PakuWidget.entitlements; sourceTree = "<group>"; };
 		27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanDirectionGestureRecognizer.swift; sourceTree = "<group>"; };
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
 		2724855D2526742C00866F1A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -126,28 +126,28 @@
 		276E6C38252D5F7300A13D6D /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		276E6C3E252D83B200A13D6D /* AQIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIProvider.swift; sourceTree = "<group>"; };
 		276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIWidgetWrapper.swift; sourceTree = "<group>"; };
-		C24ED05F2525BEAD001B3952 /* aqi-wtf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "aqi-wtf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24ED05F2525BEAD001B3952 /* Paku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0622525BEAD001B3952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C24ED0642525BEAD001B3952 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C24ED0662525BEAD001B3952 /* AQIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIViewController.swift; sourceTree = "<group>"; };
 		C24ED06B2525BEAF001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24ED06E2525BEAF001B3952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C24ED0702525BEAF001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C24ED0752525BEAF001B3952 /* aqi-wtfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "aqi-wtfTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C24ED0792525BEAF001B3952 /* aqi_wtfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aqi_wtfTests.swift; sourceTree = "<group>"; };
+		C24ED0752525BEAF001B3952 /* PakuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PakuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24ED0792525BEAF001B3952 /* PakuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PakuTests.swift; sourceTree = "<group>"; };
 		C24ED07B2525BEAF001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C24ED0802525BEAF001B3952 /* aqi-wtfUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "aqi-wtfUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C24ED0842525BEAF001B3952 /* aqi_wtfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aqi_wtfUITests.swift; sourceTree = "<group>"; };
+		C24ED0802525BEAF001B3952 /* PakuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PakuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24ED0842525BEAF001B3952 /* PakuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PakuUITests.swift; sourceTree = "<group>"; };
 		C24ED0862525BEAF001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C24ED0952525BEB9001B3952 /* AQILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQILoader.swift; sourceTree = "<group>"; };
 		C24ED0AF2525DC5B001B3952 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C24ED0B12525DC5B001B3952 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "aqi-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24ED0D42525DD1D001B3952 /* PakuWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PakuWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0D82525DD1D001B3952 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		C24ED0DB2525DD1F001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24ED0DD2525DD1F001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C24ED1022525E570001B3952 /* AQIEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIEntryView.swift; sourceTree = "<group>"; };
-		C24ED1192525EC4D001B3952 /* aqi-wtf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "aqi-wtf.entitlements"; sourceTree = "<group>"; };
+		C24ED1192525EC4D001B3952 /* Paku.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Paku.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,10 +292,10 @@
 			isa = PBXGroup;
 			children = (
 				2740BEF0252D8BA600EDD771 /* Shared */,
-				C24ED0612525BEAD001B3952 /* aqi-wtf */,
-				C24ED0782525BEAF001B3952 /* aqi-wtfTests */,
-				C24ED0832525BEAF001B3952 /* aqi-wtfUITests */,
-				C24ED0D72525DD1D001B3952 /* aqi-widget */,
+				C24ED0612525BEAD001B3952 /* Paku */,
+				C24ED0782525BEAF001B3952 /* PakuTests */,
+				C24ED0832525BEAF001B3952 /* PakuUITests */,
+				C24ED0D72525DD1D001B3952 /* PakuWidget */,
 				C24ED0AE2525DC5B001B3952 /* Frameworks */,
 				C24ED0602525BEAD001B3952 /* Products */,
 			);
@@ -304,15 +304,15 @@
 		C24ED0602525BEAD001B3952 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C24ED05F2525BEAD001B3952 /* aqi-wtf.app */,
-				C24ED0752525BEAF001B3952 /* aqi-wtfTests.xctest */,
-				C24ED0802525BEAF001B3952 /* aqi-wtfUITests.xctest */,
-				C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */,
+				C24ED05F2525BEAD001B3952 /* Paku.app */,
+				C24ED0752525BEAF001B3952 /* PakuTests.xctest */,
+				C24ED0802525BEAF001B3952 /* PakuUITests.xctest */,
+				C24ED0D42525DD1D001B3952 /* PakuWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C24ED0612525BEAD001B3952 /* aqi-wtf */ = {
+		C24ED0612525BEAD001B3952 /* Paku */ = {
 			isa = PBXGroup;
 			children = (
 				2740BEC6252D8AF700EDD771 /* App */,
@@ -323,27 +323,27 @@
 				C24ED06B2525BEAF001B3952 /* Assets.xcassets */,
 				C24ED06D2525BEAF001B3952 /* LaunchScreen.storyboard */,
 				C24ED0702525BEAF001B3952 /* Info.plist */,
-				C24ED1192525EC4D001B3952 /* aqi-wtf.entitlements */,
+				C24ED1192525EC4D001B3952 /* Paku.entitlements */,
 			);
-			path = "aqi-wtf";
+			path = Paku;
 			sourceTree = "<group>";
 		};
-		C24ED0782525BEAF001B3952 /* aqi-wtfTests */ = {
+		C24ED0782525BEAF001B3952 /* PakuTests */ = {
 			isa = PBXGroup;
 			children = (
-				C24ED0792525BEAF001B3952 /* aqi_wtfTests.swift */,
+				C24ED0792525BEAF001B3952 /* PakuTests.swift */,
 				C24ED07B2525BEAF001B3952 /* Info.plist */,
 			);
-			path = "aqi-wtfTests";
+			path = PakuTests;
 			sourceTree = "<group>";
 		};
-		C24ED0832525BEAF001B3952 /* aqi-wtfUITests */ = {
+		C24ED0832525BEAF001B3952 /* PakuUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C24ED0842525BEAF001B3952 /* aqi_wtfUITests.swift */,
+				C24ED0842525BEAF001B3952 /* PakuUITests.swift */,
 				C24ED0862525BEAF001B3952 /* Info.plist */,
 			);
-			path = "aqi-wtfUITests";
+			path = PakuUITests;
 			sourceTree = "<group>";
 		};
 		C24ED0AE2525DC5B001B3952 /* Frameworks */ = {
@@ -355,10 +355,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C24ED0D72525DD1D001B3952 /* aqi-widget */ = {
+		C24ED0D72525DD1D001B3952 /* PakuWidget */ = {
 			isa = PBXGroup;
 			children = (
-				2724852A2525ED0F00866F1A /* aqi-widgetExtension.entitlements */,
+				2724852A2525ED0F00866F1A /* PakuWidget.entitlements */,
 				C24ED0D82525DD1D001B3952 /* Widgets.swift */,
 				276E6C3E252D83B200A13D6D /* AQIProvider.swift */,
 				276E6C20252D5AA300A13D6D /* AQIBarWidgetView.swift */,
@@ -366,15 +366,15 @@
 				C24ED0DB2525DD1F001B3952 /* Assets.xcassets */,
 				C24ED0DD2525DD1F001B3952 /* Info.plist */,
 			);
-			path = "aqi-widget";
+			path = PakuWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C24ED05E2525BEAD001B3952 /* aqi-wtf */ = {
+		C24ED05E2525BEAD001B3952 /* Paku */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C24ED0892525BEAF001B3952 /* Build configuration list for PBXNativeTarget "aqi-wtf" */;
+			buildConfigurationList = C24ED0892525BEAF001B3952 /* Build configuration list for PBXNativeTarget "Paku" */;
 			buildPhases = (
 				C24ED05B2525BEAD001B3952 /* Sources */,
 				C24ED05C2525BEAD001B3952 /* Frameworks */,
@@ -386,17 +386,17 @@
 			dependencies = (
 				C24ED0E12525DD1F001B3952 /* PBXTargetDependency */,
 			);
-			name = "aqi-wtf";
+			name = Paku;
 			packageProductDependencies = (
 				C24ED09B2525C171001B3952 /* AnyCodable */,
 			);
-			productName = "aqi-wtf";
-			productReference = C24ED05F2525BEAD001B3952 /* aqi-wtf.app */;
+			productName = Paku;
+			productReference = C24ED05F2525BEAD001B3952 /* Paku.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C24ED0742525BEAF001B3952 /* aqi-wtfTests */ = {
+		C24ED0742525BEAF001B3952 /* PakuTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C24ED08C2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "aqi-wtfTests" */;
+			buildConfigurationList = C24ED08C2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "PakuTests" */;
 			buildPhases = (
 				C24ED0712525BEAF001B3952 /* Sources */,
 				C24ED0722525BEAF001B3952 /* Frameworks */,
@@ -407,14 +407,14 @@
 			dependencies = (
 				C24ED0772525BEAF001B3952 /* PBXTargetDependency */,
 			);
-			name = "aqi-wtfTests";
-			productName = "aqi-wtfTests";
-			productReference = C24ED0752525BEAF001B3952 /* aqi-wtfTests.xctest */;
+			name = PakuTests;
+			productName = PakuTests;
+			productReference = C24ED0752525BEAF001B3952 /* PakuTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C24ED07F2525BEAF001B3952 /* aqi-wtfUITests */ = {
+		C24ED07F2525BEAF001B3952 /* PakuUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C24ED08F2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "aqi-wtfUITests" */;
+			buildConfigurationList = C24ED08F2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "PakuUITests" */;
 			buildPhases = (
 				C24ED07C2525BEAF001B3952 /* Sources */,
 				C24ED07D2525BEAF001B3952 /* Frameworks */,
@@ -425,14 +425,14 @@
 			dependencies = (
 				C24ED0822525BEAF001B3952 /* PBXTargetDependency */,
 			);
-			name = "aqi-wtfUITests";
-			productName = "aqi-wtfUITests";
-			productReference = C24ED0802525BEAF001B3952 /* aqi-wtfUITests.xctest */;
+			name = PakuUITests;
+			productName = PakuUITests;
+			productReference = C24ED0802525BEAF001B3952 /* PakuUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		C24ED0D32525DD1D001B3952 /* aqi-widgetExtension */ = {
+		C24ED0D32525DD1D001B3952 /* PakuWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C24ED0E32525DD1F001B3952 /* Build configuration list for PBXNativeTarget "aqi-widgetExtension" */;
+			buildConfigurationList = C24ED0E32525DD1F001B3952 /* Build configuration list for PBXNativeTarget "PakuWidget" */;
 			buildPhases = (
 				C24ED0D02525DD1D001B3952 /* Sources */,
 				C24ED0D12525DD1D001B3952 /* Frameworks */,
@@ -442,12 +442,12 @@
 			);
 			dependencies = (
 			);
-			name = "aqi-widgetExtension";
+			name = PakuWidget;
 			packageProductDependencies = (
 				C24ED0FA2525DE8E001B3952 /* AnyCodable */,
 			);
 			productName = "aqi-widgetExtension";
-			productReference = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */;
+			productReference = C24ED0D42525DD1D001B3952 /* PakuWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -475,7 +475,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C24ED05A2525BEAD001B3952 /* Build configuration list for PBXProject "aqi-wtf" */;
+			buildConfigurationList = C24ED05A2525BEAD001B3952 /* Build configuration list for PBXProject "Paku" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -491,10 +491,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C24ED05E2525BEAD001B3952 /* aqi-wtf */,
-				C24ED0742525BEAF001B3952 /* aqi-wtfTests */,
-				C24ED07F2525BEAF001B3952 /* aqi-wtfUITests */,
-				C24ED0D32525DD1D001B3952 /* aqi-widgetExtension */,
+				C24ED05E2525BEAD001B3952 /* Paku */,
+				C24ED0742525BEAF001B3952 /* PakuTests */,
+				C24ED07F2525BEAF001B3952 /* PakuUITests */,
+				C24ED0D32525DD1D001B3952 /* PakuWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -571,7 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C24ED07A2525BEAF001B3952 /* aqi_wtfTests.swift in Sources */,
+				C24ED07A2525BEAF001B3952 /* PakuTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C24ED0852525BEAF001B3952 /* aqi_wtfUITests.swift in Sources */,
+				C24ED0852525BEAF001B3952 /* PakuUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,17 +610,17 @@
 /* Begin PBXTargetDependency section */
 		C24ED0772525BEAF001B3952 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C24ED05E2525BEAD001B3952 /* aqi-wtf */;
+			target = C24ED05E2525BEAD001B3952 /* Paku */;
 			targetProxy = C24ED0762525BEAF001B3952 /* PBXContainerItemProxy */;
 		};
 		C24ED0822525BEAF001B3952 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C24ED05E2525BEAD001B3952 /* aqi-wtf */;
+			target = C24ED05E2525BEAD001B3952 /* Paku */;
 			targetProxy = C24ED0812525BEAF001B3952 /* PBXContainerItemProxy */;
 		};
 		C24ED0E12525DD1F001B3952 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C24ED0D32525DD1D001B3952 /* aqi-widgetExtension */;
+			target = C24ED0D32525DD1D001B3952 /* PakuWidget */;
 			targetProxy = C24ED0E02525DD1F001B3952 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -759,11 +759,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-wtf/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -782,11 +782,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "aqi-wtf/aqi-wtf.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-wtf/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -806,18 +806,18 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-wtfTests/Info.plist";
+				INFOPLIST_FILE = PakuTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtfTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylebashour.PakuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aqi-wtf.app/aqi-wtf";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paku.app/Paku";
 			};
 			name = Debug;
 		};
@@ -828,18 +828,18 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-wtfTests/Info.plist";
+				INFOPLIST_FILE = PakuTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtfTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylebashour.PakuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aqi-wtf.app/aqi-wtf";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paku.app/Paku";
 			};
 			name = Release;
 		};
@@ -849,17 +849,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-wtfUITests/Info.plist";
+				INFOPLIST_FILE = PakuUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtfUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylebashour.PakuUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "aqi-wtf";
+				TEST_TARGET_NAME = Paku;
 			};
 			name = Debug;
 		};
@@ -869,17 +869,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-wtfUITests/Info.plist";
+				INFOPLIST_FILE = PakuUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtfUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylebashour.PakuUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "aqi-wtf";
+				TEST_TARGET_NAME = Paku;
 			};
 			name = Release;
 		};
@@ -888,11 +888,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "aqi-widget/aqi-widgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-widget/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -912,11 +912,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "aqi-widget/aqi-widgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
-				INFOPLIST_FILE = "aqi-widget/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -934,7 +934,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C24ED05A2525BEAD001B3952 /* Build configuration list for PBXProject "aqi-wtf" */ = {
+		C24ED05A2525BEAD001B3952 /* Build configuration list for PBXProject "Paku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C24ED0872525BEAF001B3952 /* Debug */,
@@ -943,7 +943,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C24ED0892525BEAF001B3952 /* Build configuration list for PBXNativeTarget "aqi-wtf" */ = {
+		C24ED0892525BEAF001B3952 /* Build configuration list for PBXNativeTarget "Paku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C24ED08A2525BEAF001B3952 /* Debug */,
@@ -952,7 +952,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C24ED08C2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "aqi-wtfTests" */ = {
+		C24ED08C2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "PakuTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C24ED08D2525BEAF001B3952 /* Debug */,
@@ -961,7 +961,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C24ED08F2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "aqi-wtfUITests" */ = {
+		C24ED08F2525BEAF001B3952 /* Build configuration list for PBXNativeTarget "PakuUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C24ED0902525BEAF001B3952 /* Debug */,
@@ -970,7 +970,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C24ED0E32525DD1F001B3952 /* Build configuration list for PBXNativeTarget "aqi-widgetExtension" */ = {
+		C24ED0E32525DD1F001B3952 /* Build configuration list for PBXNativeTarget "PakuWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C24ED0E42525DD1F001B3952 /* Debug */,

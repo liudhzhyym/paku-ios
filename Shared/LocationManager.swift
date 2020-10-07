@@ -1,6 +1,6 @@
 //
 //  LocationManager.swift
-//  aqi-wtf
+//  Paku
 //
 //  Created by Kyle Bashour on 10/6/20.
 //

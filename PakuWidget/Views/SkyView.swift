@@ -1,6 +1,6 @@
 //
 //  SkyView.swift
-//  aqi-widgetExtension
+//  PakuWidget
 //
 //  Created by Kyle Bashour on 10/6/20.
 //

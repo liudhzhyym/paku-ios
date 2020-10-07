@@ -1,6 +1,6 @@
 //
 //  AQIIndicatorBar.swift
-//  aqi-wtf
+//  PakuWidget
 //
 //  Created by Kyle Bashour on 10/6/20.
 //

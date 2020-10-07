@@ -1,13 +1,13 @@
 //
 //  aqi_wtfUITests.swift
-//  aqi-wtfUITests
+//  PakuUITests
 //
 //  Created by Kyle Bashour on 10/1/20.
 //
 
 import XCTest
 
-class aqi_wtfUITests: XCTestCase {
+class PakuUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

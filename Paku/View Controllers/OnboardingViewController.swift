@@ -1,6 +1,6 @@
 //
 //  OnboardingViewController.swift
-//  aqi-wtf
+//  Paku
 //
 //  Created by Kyle Bashour on 10/1/20.
 //
