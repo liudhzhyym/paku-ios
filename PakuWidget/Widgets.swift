@@ -18,7 +18,7 @@ struct ColorWidget: Widget {
             }
         }
         .configurationDisplayName("Color")
-        .description("Displays the AQI from the closest Purple Air sensor.")
+        .description("Displays the EPA color and guidance.")
     }
 }
 
@@ -32,7 +32,7 @@ struct SkyWidget: Widget {
             }
         }
         .configurationDisplayName("Sky")
-        .description("Displays the AQI from the closest Purple Air sensor.")
+        .description("See the AQI on a scale, with a sky-like background.")
         .supportedFamilies([.systemSmall])
     }
 }
