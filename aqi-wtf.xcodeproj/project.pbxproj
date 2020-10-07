@@ -11,6 +11,18 @@
 		27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */; };
 		2724855E2526742C00866F1A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724855D2526742C00866F1A /* RootViewController.swift */; };
 		272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272485632526745F00866F1A /* UIViewController+Extensions.swift */; };
+		2740BEE5252D8B6900EDD771 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */; };
+		2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */; };
+		2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */; };
+		2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B792526DBB500FA4D26 /* UIColor+Extensions.swift */; };
+		2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */; };
+		2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
+		2740BF14252D8C7C00EDD771 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* Sensor.swift */; };
+		2740BF1E252D8C9B00EDD771 /* AQISnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */; };
+		2740BF24252D8CB900EDD771 /* AQIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQIClass.swift */; };
+		2740BF29252D8D0500EDD771 /* AQIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQIClass.swift */; };
+		2740BF2A252D8D0500EDD771 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* Sensor.swift */; };
+		2740BF2B252D8D0500EDD771 /* AQISnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */; };
 		275712AC252D47E00050B473 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712AB252D47E00050B473 /* LocationManager.swift */; };
 		275712B1252D49100050B473 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712AB252D47E00050B473 /* LocationManager.swift */; };
 		275712B7252D4A240050B473 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712B6252D4A240050B473 /* ViewController.swift */; };
@@ -43,7 +55,6 @@
 		C24ED0D92525DD1D001B3952 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0D82525DD1D001B3952 /* Widgets.swift */; };
 		C24ED0DC2525DD1F001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED0DB2525DD1F001B3952 /* Assets.xcassets */; };
 		C24ED0E22525DD1F001B3952 /* aqi-widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* aqi-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
 		C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 		C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
@@ -93,6 +104,11 @@
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
 		2724855D2526742C00866F1A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		272485632526745F00866F1A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
+		2740BF13252D8C7C00EDD771 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQISnapshot.swift; sourceTree = "<group>"; };
+		2740BF23252D8CB900EDD771 /* AQIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIClass.swift; sourceTree = "<group>"; };
 		275712AB252D47E00050B473 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		275712B6252D4A240050B473 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +186,98 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2740BEC1252D8AE200EDD771 /* Auto Layout */ = {
+			isa = PBXGroup;
+			children = (
+				276E4B5A2526D6CC00FA4D26 /* NSLayoutAnchor+AutoLayout.swift */,
+				276E4B582526D6CC00FA4D26 /* NSLayoutConstraint+AutoLayout.swift */,
+				276E4B572526D6CC00FA4D26 /* NSLayoutDimension+AutoLayout.swift */,
+				276E4B592526D6CC00FA4D26 /* UIView+AutoLayout.swift */,
+			);
+			path = "Auto Layout";
+			sourceTree = "<group>";
+		};
+		2740BEC6252D8AF700EDD771 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C24ED0622525BEAD001B3952 /* AppDelegate.swift */,
+				C24ED0642525BEAD001B3952 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2740BECB252D8B0000EDD771 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				275712B6252D4A240050B473 /* ViewController.swift */,
+				2724855D2526742C00866F1A /* RootViewController.swift */,
+				276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */,
+				C24ED0662525BEAD001B3952 /* AQIViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2740BED0252D8B1200EDD771 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */,
+				276E4B632526D6FE00FA4D26 /* NSAttributedString+Extensions.swift */,
+				272485632526745F00866F1A /* UIViewController+Extensions.swift */,
+				27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2740BED5252D8B1A00EDD771 /* SwiftUI Views */ = {
+			isa = PBXGroup;
+			children = (
+				C24ED1022525E570001B3952 /* AQIEntryView.swift */,
+			);
+			path = "SwiftUI Views";
+			sourceTree = "<group>";
+		};
+		2740BEDF252D8B3A00EDD771 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				276E4B512526D67800FA4D26 /* Control.swift */,
+				276E4B412526D5EA00FA4D26 /* Button.swift */,
+				27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		2740BEF0252D8BA600EDD771 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C24ED0952525BEB9001B3952 /* AQILoader.swift */,
+				275712AB252D47E00050B473 /* LocationManager.swift */,
+				2740BF0A252D8BF600EDD771 /* Models */,
+				2740BEF5252D8BB900EDD771 /* Extensions */,
+				2740BED5252D8B1A00EDD771 /* SwiftUI Views */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2740BEF5252D8BB900EDD771 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */,
+				276E4B792526DBB500FA4D26 /* UIColor+Extensions.swift */,
+				2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2740BF0A252D8BF600EDD771 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2740BF13252D8C7C00EDD771 /* Sensor.swift */,
+				2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */,
+				2740BF23252D8CB900EDD771 /* AQIClass.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		276E6C4E252D853700A13D6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +291,7 @@
 		C24ED0562525BEAD001B3952 = {
 			isa = PBXGroup;
 			children = (
+				2740BEF0252D8BA600EDD771 /* Shared */,
 				C24ED0612525BEAD001B3952 /* aqi-wtf */,
 				C24ED0782525BEAF001B3952 /* aqi-wtfTests */,
 				C24ED0832525BEAF001B3952 /* aqi-wtfUITests */,
@@ -206,31 +315,15 @@
 		C24ED0612525BEAD001B3952 /* aqi-wtf */ = {
 			isa = PBXGroup;
 			children = (
-				C24ED1192525EC4D001B3952 /* aqi-wtf.entitlements */,
-				C24ED0622525BEAD001B3952 /* AppDelegate.swift */,
-				C24ED0642525BEAD001B3952 /* SceneDelegate.swift */,
-				2724855D2526742C00866F1A /* RootViewController.swift */,
-				275712B6252D4A240050B473 /* ViewController.swift */,
-				276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */,
-				276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */,
-				276E4B632526D6FE00FA4D26 /* NSAttributedString+Extensions.swift */,
-				276E4B512526D67800FA4D26 /* Control.swift */,
-				276E4B792526DBB500FA4D26 /* UIColor+Extensions.swift */,
-				C24ED0662525BEAD001B3952 /* AQIViewController.swift */,
-				272485632526745F00866F1A /* UIViewController+Extensions.swift */,
-				27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */,
-				276E4B412526D5EA00FA4D26 /* Button.swift */,
-				27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */,
-				C24ED0952525BEB9001B3952 /* AQILoader.swift */,
-				275712AB252D47E00050B473 /* LocationManager.swift */,
-				C24ED1022525E570001B3952 /* AQIEntryView.swift */,
-				276E4B5A2526D6CC00FA4D26 /* NSLayoutAnchor+AutoLayout.swift */,
-				276E4B582526D6CC00FA4D26 /* NSLayoutConstraint+AutoLayout.swift */,
-				276E4B572526D6CC00FA4D26 /* NSLayoutDimension+AutoLayout.swift */,
-				276E4B592526D6CC00FA4D26 /* UIView+AutoLayout.swift */,
+				2740BEC6252D8AF700EDD771 /* App */,
+				2740BECB252D8B0000EDD771 /* View Controllers */,
+				2740BED0252D8B1200EDD771 /* Extensions */,
+				2740BEDF252D8B3A00EDD771 /* Controls */,
+				2740BEC1252D8AE200EDD771 /* Auto Layout */,
 				C24ED06B2525BEAF001B3952 /* Assets.xcassets */,
 				C24ED06D2525BEAF001B3952 /* LaunchScreen.storyboard */,
 				C24ED0702525BEAF001B3952 /* Info.plist */,
+				C24ED1192525EC4D001B3952 /* aqi-wtf.entitlements */,
 			);
 			path = "aqi-wtf";
 			sourceTree = "<group>";
@@ -446,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				276E4B642526D6FE00FA4D26 /* NSAttributedString+Extensions.swift in Sources */,
+				2740BF14252D8C7C00EDD771 /* Sensor.swift in Sources */,
 				276E4B5B2526D6CD00FA4D26 /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */,
 				276E4B522526D67800FA4D26 /* Control.swift in Sources */,
@@ -453,14 +547,18 @@
 				276E4B342526D5BB00FA4D26 /* OnboardingViewController.swift in Sources */,
 				27248552252673B100866F1A /* PanDirectionGestureRecognizer.swift in Sources */,
 				C24ED0962525BEB9001B3952 /* AQILoader.swift in Sources */,
+				2740BEE5252D8B6900EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				276E4B5C2526D6CD00FA4D26 /* NSLayoutConstraint+AutoLayout.swift in Sources */,
 				272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */,
 				276E4B7A2526DBB500FA4D26 /* UIColor+Extensions.swift in Sources */,
 				2724855E2526742C00866F1A /* RootViewController.swift in Sources */,
+				2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */,
 				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
 				C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */,
+				2740BF1E252D8C9B00EDD771 /* AQISnapshot.swift in Sources */,
 				276E4B422526D5EA00FA4D26 /* Button.swift in Sources */,
+				2740BF24252D8CB900EDD771 /* AQIClass.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
 				275712B7252D4A240050B473 /* ViewController.swift in Sources */,
@@ -490,14 +588,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				276E6C39252D5F7300A13D6D /* SkyView.swift in Sources */,
+				2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */,
+				2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */,
+				2740BF2B252D8D0500EDD771 /* AQISnapshot.swift in Sources */,
+				2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				275712B1252D49100050B473 /* LocationManager.swift in Sources */,
 				276E6C3F252D83B200A13D6D /* AQIProvider.swift in Sources */,
 				276E6C33252D5AC500A13D6D /* AQIIndicatorBar.swift in Sources */,
+				2740BF29252D8D0500EDD771 /* AQIClass.swift in Sources */,
 				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
+				2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* Widgets.swift in Sources */,
 				276E6C2A252D5AC000A13D6D /* AQIBarWidgetView.swift in Sources */,
 				276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */,
-				C24ED0EB2525DD34001B3952 /* AQILoader.swift in Sources */,
+				2740BF2A252D8D0500EDD771 /* Sensor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

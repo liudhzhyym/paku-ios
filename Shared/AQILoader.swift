@@ -10,173 +10,45 @@ import CoreLocation
 import Foundation
 import UIKit
 
-let encoder = JSONEncoder()
-let decoder = JSONDecoder()
-
-enum SensorInitializerError: Error {
-    case failedToParse
-    case irrelevant
-}
-
-struct Sensor: Codable {
-    let id: Int
-    let age: Int
-    let lat: Double
-    let lon: Double
-
-    var location: CLLocation { CLLocation(latitude: lat, longitude: lon) }
-
-    init?(fields: [String: Int], data: [AnyCodable]){
-        guard let idIndex = fields["ID"],
-              let ageIndex = fields["age"],
-              let latIndex = fields["Lat"],
-              let lonIndex = fields["Lon"],
-              let indoorIndex = fields["Type"],
-              let id = data[idIndex].value as? Int,
-              let age = data[ageIndex].value as? Int,
-              let lat = data[latIndex].value as? Double,
-              let lon = data[lonIndex].value as? Double,
-              let indoor = data[indoorIndex].value as? Int
-        else {
-            return nil
-        }
-
-        guard indoor == 0 && age < 5 else {
-            return nil
-        }
-
-        self.id = id
-        self.age = age
-        self.lat = lat
-        self.lon = lon
-    }
-}
-
-struct AQI: Codable {
-    let value: Double
-    let distance: CLLocationDistance
-    let date: Date
-
-    var `class`: AQIClass {
-        AQIClass(aqi: value)!
-    }
-}
-
-enum AQIClass: Double, CaseIterable {
-    case good                           = 50
-    case moderate                       = 100
-    case unhealthyForSensitiveGroups    = 150
-    case unhealthy                      = 200
-    case veryUnhealthy                  = 300
-    case hazardous                      = 400
-    case veryHazardous                  = 500
-
-    init?(aqi: Double) {
-        switch aqi {
-        case ...50: self = .good
-        case ...100: self = .moderate
-        case ...150: self = .unhealthyForSensitiveGroups
-        case ...200: self = .unhealthy
-        case ...300: self = .veryUnhealthy
-        case ...400: self = .hazardous
-        default: self = .veryHazardous
-        }
-    }
-
-    var description: String {
-        switch self {
-        case .veryHazardous:
-            return "Very hazardous"
-        case .hazardous:
-            return "Hazardous"
-        case .veryUnhealthy:
-            return "Very unhealthy"
-        case .unhealthy:
-            return "Unhealthy"
-        case .unhealthyForSensitiveGroups:
-            return "Unhealthy for sensitive groups"
-        case .moderate:
-            return "Moderate"
-        case .good:
-            return "Good"
-        }
-    }
-}
-
-extension AQIClass {
-    var color: UIColor {
-        switch self {
-        case .veryHazardous:
-            return UIColor(displayP3Red: 0.451, green: 0.078, blue: 0.145, alpha: 1)
-        case .hazardous:
-            return UIColor(displayP3Red: 0.549, green: 0.102, blue: 0.294, alpha: 1)
-        case .veryUnhealthy:
-            return UIColor(displayP3Red: 0.549, green: 0.102, blue: 0.294, alpha: 1)
-        case .unhealthy:
-            return UIColor(displayP3Red: 0.918, green: 0.2, blue: 0.141, alpha: 1)
-        case .unhealthyForSensitiveGroups:
-            return UIColor(displayP3Red: 0.937, green: 0.522, blue: 0.2, alpha: 1)
-        case .moderate:
-            return UIColor(displayP3Red: 1, green: 1, blue: 0.333, alpha: 1)
-        case .good:
-            return UIColor(displayP3Red: 0.408, green: 0.882, blue: 0.263, alpha: 1)
-        }
-    }
-
-    var textColor: UIColor {
-        switch self {
-        case .veryHazardous, .hazardous, .veryUnhealthy, .unhealthy:
-            return .white
-        default:
-            return .black
-        }
-    }
-
-    static func color(at aqi: Double) -> UIColor {
-        guard let `class` = AQIClass(aqi: aqi) else { return .clear }
-        return `class`.color
-    }
-}
-
-struct SensorsResponse: Codable {
-    let fields: [String]
-    let data: [[AnyCodable]]
-}
-
-struct SensorResponse: Codable {
-    let results: [[String: AnyCodable]]
-}
-
-enum AQILoaderError: Error {
-    case failedToDecode(Error)
-    case invalidAQI
-    case unknownError
-}
-
-struct CachedValue<T: Codable>: Codable {
-    let date: Date
-    let value: T
-}
-
-struct ExpiringCache {
-    static func cache<T: Codable>(_ value: T, forKey key: String) {
-        let cached = CachedValue(date: Date(), value: value)
-        UserDefaults.shared.set(codable: cached, forKey: key)
-    }
-
-    static func value<T: Codable>(_ type: T.Type, forKey key: String, expiration: TimeInterval) -> CachedValue<T>? {
-        guard let cached = UserDefaults.shared.codable(CachedValue<T>.self, forKey: key),
-              Date().timeIntervalSince(cached.date) < expiration else {
-            return nil
-        }
-
-        return cached
-    }
-}
-
 struct AQILoader {
-    let aqiKey = "aqi"
-    let sensorsKey = "sensors"
+    enum AQILoaderError: Error {
+        case failedToDecode(Error)
+        case invalidAQI
+        case unknownError
+    }
+
+    private struct SensorsResponse: Codable {
+        let fields: [String]
+        let data: [[AnyCodable]]
+    }
+
+    private struct SensorResponse: Codable {
+        let results: [[String: AnyCodable]]
+    }
+
+    private struct CachedValue<T: Codable>: Codable {
+        let date: Date
+        let value: T
+    }
+
+    private struct ExpiringCache {
+        static func cache<T: Codable>(_ value: T, forKey key: String) {
+            let cached = CachedValue(date: Date(), value: value)
+            UserDefaults.shared.set(codable: cached, forKey: key)
+        }
+
+        static func value<T: Codable>(_ type: T.Type, forKey key: String, expiration: TimeInterval) -> CachedValue<T>? {
+            guard let cached = UserDefaults.shared.codable(CachedValue<T>.self, forKey: key),
+                  Date().timeIntervalSince(cached.date) < expiration else {
+                return nil
+            }
+
+            return cached
+        }
+    }
+
+    private let aqiKey = "aqi"
+    private let sensorsKey = "sensors"
 
     private func loadSensors(completion: @escaping (Result<[Sensor], Error>) -> Void) {
         if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
@@ -193,7 +65,7 @@ struct AQILoader {
                 }
 
                 let sensors = response.data.compactMap {
-                    Sensor(fields: fields, data: $0)
+                    try? Sensor(fields: fields, data: $0)
                 }
 
                 ExpiringCache.cache(sensors, forKey: sensorsKey)
@@ -346,52 +218,5 @@ struct AQILoader {
         let b = BPh - BPl;
         let c = Cp - BPl;
         return round((a / b) * c + Il)
-    }
-}
-
-extension URLSession {
-    func load<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let response = try decoder.decode(T.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(.success(response))
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(.failure(AQILoaderError.failedToDecode(error)))
-                    }
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completion(.failure(AQILoaderError.unknownError))
-                }
-            }
-        }.resume()
-    }
-}
-
-extension UserDefaults {
-
-    private static let encoder = JSONEncoder()
-    private static let decoder = JSONDecoder()
-
-    static let shared = UserDefaults(suiteName: "group.com.kylebashour.aqi-wtf")!
-
-    func codable<T: Codable>(_ type: T.Type, forKey key: String) -> T? {
-        guard let data = data(forKey: key),
-              let decoded = try? Self.decoder.decode(T.self, from: data)
-        else {
-            return nil
-        }
-
-        return decoded
-    }
-
-    func set<T: Codable>(codable value: T, forKey key: String) {
-        set(try? Self.encoder.encode(value), forKey: key)
     }
 }
