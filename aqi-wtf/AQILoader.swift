@@ -173,9 +173,9 @@ struct AQILoader {
     let aqiKey = "aqi"
     let sensorsKey = "sensors"
 
-    private func loadSensors(completion: @escaping (Result<([Sensor], Date), Error>) -> Void) {
+    private func loadSensors(completion: @escaping (Result<[Sensor], Error>) -> Void) {
         if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
-            return completion(.success((cached.value, cached.date)))
+            return completion(.success(cached.value))
         }
 
         let url = URL(string: "https://www.purpleair.com/data.json?opt=1/mAQI/a10/cC0&fetch=true&fields=,")!
@@ -192,7 +192,7 @@ struct AQILoader {
                 }
 
                 ExpiringCache.cache(sensors, forKey: sensorsKey)
-                completion(.success((sensors, Date())))
+                completion(.success(sensors))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -225,7 +225,7 @@ struct AQILoader {
                 LocationManager.shared.locateFromGPS(.oneShot, accuracy: .block) { result in
                     switch result {
                     case .success(let location):
-                        let closest = closestSensor(in: sensors.0, from: location)
+                        let closest = closestSensor(in: sensors, from: location)
                         loadAQI(from: closest.sensor) { result in
                             switch result {
                             case .success(let aqi):
