@@ -43,6 +43,8 @@
 		276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */; };
 		277F1C69252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
+		277F1C70252D9492002AB540 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C6F252D9492002AB540 /* MessageView.swift */; };
+		277F1C71252D9492002AB540 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C6F252D9492002AB540 /* MessageView.swift */; };
 		C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0622525BEAD001B3952 /* AppDelegate.swift */; };
 		C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0642525BEAD001B3952 /* SceneDelegate.swift */; };
 		C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* AQIViewController.swift */; };
@@ -129,6 +131,7 @@
 		276E6C3E252D83B200A13D6D /* AQIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIProvider.swift; sourceTree = "<group>"; };
 		276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIWidgetWrapper.swift; sourceTree = "<group>"; };
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		277F1C6F252D9492002AB540 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		C24ED05F2525BEAD001B3952 /* Paku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0622525BEAD001B3952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C24ED0642525BEAD001B3952 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				C24ED1022525E570001B3952 /* AQIEntryView.swift */,
+				277F1C6F252D9492002AB540 /* MessageView.swift */,
 			);
 			path = "SwiftUI Views";
 			sourceTree = "<group>";
@@ -554,6 +558,7 @@
 				2740BEE5252D8B6900EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				276E4B5C2526D6CD00FA4D26 /* NSLayoutConstraint+AutoLayout.swift in Sources */,
 				272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */,
+				277F1C70252D9492002AB540 /* MessageView.swift in Sources */,
 				276E4B7A2526DBB500FA4D26 /* UIColor+Extensions.swift in Sources */,
 				2724855E2526742C00866F1A /* RootViewController.swift in Sources */,
 				277F1C69252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */,
@@ -597,6 +602,7 @@
 				2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */,
 				2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */,
 				2740BF2B252D8D0500EDD771 /* AQISnapshot.swift in Sources */,
+				277F1C71252D9492002AB540 /* MessageView.swift in Sources */,
 				2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				275712B1252D49100050B473 /* LocationManager.swift in Sources */,
 				276E6C3F252D83B200A13D6D /* AQIProvider.swift in Sources */,
