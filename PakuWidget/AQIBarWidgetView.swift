@@ -9,12 +9,6 @@ import SwiftUI
 import WidgetKit
 import MapKit
 
-private let formatter: MKDistanceFormatter = {
-    let formatter = MKDistanceFormatter()
-    formatter.unitStyle = .abbreviated
-    return formatter
-}()
-
 struct AQIBarWidgetView: View {
     var aqi: AQI
 
@@ -37,7 +31,7 @@ struct AQIBarWidgetView: View {
                     .font(.system(size: 13, weight: .medium))
 
                 HStack(spacing: 5) {
-                    Text(formatter.string(fromDistance: aqi.distance))
+                    Text(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance))
                         .font(.system(size: 13, weight: .medium))
                     Image(systemName: "location.fill").font(.system(size: 9))
                 }

@@ -5,7 +5,9 @@
 //  Created by Kyle Bashour on 10/1/20.
 //
 
+import WidgetKit
 import SwiftUI
+import MapKit
 
 struct AQIEntryView: View {
     var aqi: AQI
@@ -21,11 +23,10 @@ struct AQIEntryView: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color(aqi.class.textColor))
 
-                    Text(aqi.date, style: .time)
+                    (Text(aqi.date, style: .time) + Text("\n\(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance)) away"))
                         .font(Font.caption)
                         .fontWeight(.medium)
                         .foregroundColor(Color(aqi.class.textColor))
-
 
                     Spacer()
 
@@ -52,5 +53,6 @@ struct MessageView: View {
 struct AQIEntryView_Previews: PreviewProvider {
     static var previews: some View {
         AQIEntryView(aqi: .init(value: 20, distance: 10, date: Date()))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
