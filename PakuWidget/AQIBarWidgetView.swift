@@ -27,14 +27,15 @@ struct AQIBarWidgetView: View {
                     .scaledToFit()
 
 
-                Text(aqi.date, style: .time)
-                    .font(.system(size: 13, weight: .medium))
 
                 HStack(spacing: 5) {
                     Text(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance))
                         .font(.system(size: 13, weight: .medium))
                     Image(systemName: "location.fill").font(.system(size: 9))
                 }
+
+                (Text("at ") + Text(aqi.date, style: .time))
+                    .font(.system(size: 13, weight: .medium))
 
                 Spacer()
 
@@ -48,7 +49,7 @@ struct AQIBarWidgetView: View {
 
 struct AQIBarWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date()))
+        AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date().addingTimeInterval(-150)))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         AQIBarWidgetView(aqi: .init(value: 0, distance: 2000, date: Date()))
