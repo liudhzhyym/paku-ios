@@ -26,10 +26,8 @@ struct AQIBarWidgetView: View {
                     .minimumScaleFactor(0.5)
                     .scaledToFit()
 
-
-
                 HStack(spacing: 5) {
-                    Text(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance))
+                    (Text(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance)) + Text(" away"))
                         .font(.system(size: 13, weight: .medium))
                     Image(systemName: "location.fill").font(.system(size: 9))
                 }
