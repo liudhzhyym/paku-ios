@@ -72,44 +72,27 @@ private extension AQIClass {
     }
 
     static func color(at aqi: Double) -> UIColor {
-        let offsetAQI = aqi + AQIClass.good.rawValue / 2
-        let upper = AQIClass(aqi: offsetAQI)
+        let cases = AQIClass.barIndicatorCases
+        let maxAQI = cases.last!
+        let barFraction = min(aqi, maxAQI.rawValue) / maxAQI.rawValue
 
-        guard let index = AQIClass.barIndicatorCases.firstIndex(of: upper), index > 0 else {
-            return upper.color
-        }
+        let barPosition = CGFloat(barFraction * Double(cases.count - 1))
 
-        let lower = AQIClass.barIndicatorCases[index - 1]
-        let fraction = (offsetAQI - lower.rawValue) / (upper.rawValue - lower.rawValue)
+        let lowerIndex = Int(barPosition.rounded(.down))
+        let upperIndex = Int(barPosition.rounded(.up))
 
-        return lower.color.interpolateRGBColorTo(upper.color, fraction: CGFloat(fraction))!
+        let lowerColor = cases[lowerIndex].color
+        let upperColor = cases[upperIndex].color
+
+        let colorFraction = barPosition - CGFloat(lowerIndex)
+
+        return lowerColor.interpolateRGBColorTo(upperColor, fraction: colorFraction)!
     }
 }
 
 struct AQIIndicatorBar_Previews: PreviewProvider {
     static var previews: some View {
-        AQIIndicatorBar(aqi: 20).frame(width: 100)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-        AQIIndicatorBar(aqi: 50).frame(width: 100)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-        AQIIndicatorBar(aqi: 80).frame(width: 100)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-        AQIIndicatorBar(aqi: 102).frame(width: 100)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-        AQIIndicatorBar(aqi: 150).frame(width: 100)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-        AQIIndicatorBar(aqi: 250).frame(width: 100)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-        AQIIndicatorBar(aqi: 350).frame(width: 100)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-        AQIIndicatorBar(aqi: AQIClass.veryHazardous.rawValue).frame(width: 100)
+        AQIIndicatorBar(aqi: 60).frame(width: 140)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
