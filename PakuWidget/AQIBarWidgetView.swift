@@ -50,7 +50,7 @@ struct AQIBarWidget_Previews: PreviewProvider {
         AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date().addingTimeInterval(-150)))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
-        AQIBarWidgetView(aqi: .init(value: 0, distance: 2000, date: Date()))
+        AQIBarWidgetView(aqi: .init(value: 150, distance: 2000, date: Date()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         AQIBarWidgetView(aqi: .init(value: 600, distance: 10, date: Date()))
