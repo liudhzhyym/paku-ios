@@ -7,10 +7,14 @@
 
 import AnyCodable
 import CoreLocation
+import Combine
 import Foundation
 import UIKit
 
-struct AQILoader {
+class AQILoader: ObservableObject {
+
+    @Published var latestAQI: AQI?
+
     enum AQILoaderError: Error {
         case failedToDecode(Error)
         case invalidAQI
@@ -50,7 +54,7 @@ struct AQILoader {
     private let aqiKey = "aqi"
     private let sensorsKey = "sensors"
 
-    private func loadSensors(completion: @escaping (Result<[Sensor], Error>) -> Void) {
+    func loadSensors(completion: @escaping (Result<[Sensor], Error>) -> Void) {
         if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
             return completion(.success(cached.value))
         }
@@ -68,7 +72,7 @@ struct AQILoader {
                     try? Sensor(fields: fields, data: $0)
                 }
 
-                ExpiringCache.cache(sensors, forKey: sensorsKey)
+                ExpiringCache.cache(sensors, forKey: self.sensorsKey)
                 completion(.success(sensors))
             case .failure(let error):
                 completion(.failure(error))
@@ -76,15 +80,15 @@ struct AQILoader {
         }
     }
 
-    private func loadAQI(from sensor: Sensor, completion: @escaping (Result<Double, Error>) -> Void) {
+    func loadAQI(from sensor: Sensor, completion: @escaping (Result<Double, Error>) -> Void) {
         let url = URL(string: "https://www.purpleair.com/json?show=\(sensor.id)")!
         URLSession.shared.load(SensorResponse.self, from: url) { result in
             switch result {
             case .success(let response):
-                let pm2_5Values = response.results.compactMap(pm2_5)
+                let pm2_5Values = response.results.compactMap(self.pm2_5)
                 let pm2_5 = pm2_5Values.reduce(0, +) / Double(pm2_5Values.count)
 
-                if let aqi = aqanduAQIfrom(pm: pm2_5) {
+                if let aqi = self.aqanduAQIfrom(pm: pm2_5) {
                     completion(.success(aqi))
                 } else {
                     completion(.failure(AQILoaderError.invalidAQI))
@@ -95,19 +99,20 @@ struct AQILoader {
         }
     }
 
-    private func loadClosestAQI(completion: @escaping (Result<AQI, Error>) -> Void) {
+    func loadClosestAQI(completion: @escaping (Result<AQI, Error>) -> Void = { _ in }) {
         loadSensors { result in
             switch result {
             case .success(let sensors):
                 LocationManager.shared.requestLocation { result in
                     switch result {
                     case .success(let location):
-                        let closest = closestSensor(in: sensors, from: location)
-                        loadAQI(from: closest.sensor) { result in
+                        let closest = self.closestSensor(in: sensors, from: location)
+                        self.loadAQI(from: closest.sensor) { result in
                             switch result {
                             case .success(let aqi):
                                 let aqi = AQI(value: aqi, distance: closest.distance, date: Date())
-                                ExpiringCache.cache(aqi, forKey: aqiKey)
+                                ExpiringCache.cache(aqi, forKey: self.aqiKey)
+                                self.latestAQI = aqi
                                 completion(.success(aqi))
                             case .failure(let error):
                                 completion(.failure(error))
@@ -129,7 +134,7 @@ struct AQILoader {
             case .success(let aqi):
                 completion(.success(aqi))
             case .failure(let error):
-                if let cached = ExpiringCache.value(AQI.self, forKey: aqiKey, expiration: 60 * 60) {
+                if let cached = ExpiringCache.value(AQI.self, forKey: self.aqiKey, expiration: 60 * 60) {
                     completion(.success(cached.value))
                 } else {
                     completion(.failure(error))

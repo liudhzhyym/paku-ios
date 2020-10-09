@@ -9,16 +9,6 @@ import UIKit
 import SwiftUI
 
 extension UIViewController {
-
-    func add<T: View>(view: T) {
-        let controller = UIHostingController(rootView: view)
-        addChild(controller)
-        self.view.addSubview(controller.view)
-        controller.view.frame = self.view.bounds
-        controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        controller.didMove(toParent: self)
-    }
-
     func add(_ child: UIViewController, addSubview: ((UIView) -> Void)? = nil) {
         addChild(child)
 

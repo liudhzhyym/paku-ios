@@ -17,7 +17,7 @@ struct AQIWidgetWrapper<Wrapped: View>: View {
             build(aqi)
         } else {
             ZStack {
-                SkyView(aqi: .good)
+                SkyView(category: .good)
                 HStack {
                     VStack {
                         Spacer()

@@ -13,7 +13,9 @@ struct AQI: Codable {
     let distance: CLLocationDistance
     let date: Date
 
-    var `class`: AQIClass {
-        AQIClass(aqi: value)
+    var category: AQICategory {
+        AQICategory(aqi: value)
     }
+
+    static let placeholder = AQI(value: 42, distance: 100, date: Date())
 }

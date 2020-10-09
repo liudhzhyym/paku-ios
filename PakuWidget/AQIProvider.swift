@@ -34,7 +34,3 @@ struct AQIProvider: TimelineProvider {
         }
     }
 }
-
-private extension AQI {
-    static let placeholder = AQI(value: 42, distance: 100, date: Date())
-}

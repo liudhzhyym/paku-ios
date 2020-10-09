@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2716EA7C2531798500B8E2B0 /* AQIAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA7B2531798500B8E2B0 /* AQIAnnotationView.swift */; };
+		2716EA8225317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA8125317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift */; };
+		2716EA8825317BB300B8E2B0 /* MKMapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA8725317BB300B8E2B0 /* MKMapView+Extensions.swift */; };
+		2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA8D25317D3900B8E2B0 /* Reusable.swift */; };
+		2716EA9425317D6C00B8E2B0 /* MKAnnotation+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */; };
+		2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */; };
+		2716EAAC2531B08200B8E2B0 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */; };
+		2716EAB22531B33D00B8E2B0 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAB12531B33D00B8E2B0 /* MapButton.swift */; };
 		27248552252673B100866F1A /* PanDirectionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */; };
 		27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */; };
 		2724855E2526742C00866F1A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724855D2526742C00866F1A /* RootViewController.swift */; };
@@ -19,8 +27,8 @@
 		2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
 		2740BF14252D8C7C00EDD771 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* Sensor.swift */; };
 		2740BF1E252D8C9B00EDD771 /* AQISnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */; };
-		2740BF24252D8CB900EDD771 /* AQIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQIClass.swift */; };
-		2740BF29252D8D0500EDD771 /* AQIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQIClass.swift */; };
+		2740BF24252D8CB900EDD771 /* AQICategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQICategory.swift */; };
+		2740BF29252D8D0500EDD771 /* AQICategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQICategory.swift */; };
 		2740BF2A252D8D0500EDD771 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* Sensor.swift */; };
 		2740BF2B252D8D0500EDD771 /* AQISnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */; };
 		275712AC252D47E00050B473 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712AB252D47E00050B473 /* LocationManager.swift */; };
@@ -43,11 +51,11 @@
 		276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */; };
 		277F1C69252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
-		277F1C70252D9492002AB540 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C6F252D9492002AB540 /* MessageView.swift */; };
-		277F1C71252D9492002AB540 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C6F252D9492002AB540 /* MessageView.swift */; };
+		27E16B84253010F6006D28B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E16B83253010F6006D28B1 /* MapViewController.swift */; };
+		27F0DED5253178A0005BDE1D /* AQIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0DED4253178A0005BDE1D /* AQIAnnotation.swift */; };
 		C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0622525BEAD001B3952 /* AppDelegate.swift */; };
 		C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0642525BEAD001B3952 /* SceneDelegate.swift */; };
-		C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* AQIViewController.swift */; };
+		C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* HomeViewController.swift */; };
 		C24ED06C2525BEAF001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED06B2525BEAF001B3952 /* Assets.xcassets */; };
 		C24ED06F2525BEAF001B3952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C24ED06D2525BEAF001B3952 /* LaunchScreen.storyboard */; };
 		C24ED07A2525BEAF001B3952 /* PakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0792525BEAF001B3952 /* PakuTests.swift */; };
@@ -60,7 +68,6 @@
 		C24ED0DC2525DD1F001B3952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24ED0DB2525DD1F001B3952 /* Assets.xcassets */; };
 		C24ED0E22525DD1F001B3952 /* PakuWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* PakuWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
-		C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 		C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +110,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2716EA7B2531798500B8E2B0 /* AQIAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIAnnotationView.swift; sourceTree = "<group>"; };
+		2716EA8125317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
+		2716EA8725317BB300B8E2B0 /* MKMapView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extensions.swift"; sourceTree = "<group>"; };
+		2716EA8D25317D3900B8E2B0 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKAnnotation+Reusable.swift"; sourceTree = "<group>"; };
+		2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AQICategory+Color.swift"; sourceTree = "<group>"; };
+		2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		2716EAB12531B33D00B8E2B0 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		2724852A2525ED0F00866F1A /* PakuWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PakuWidget.entitlements; sourceTree = "<group>"; };
 		27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanDirectionGestureRecognizer.swift; sourceTree = "<group>"; };
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
@@ -112,7 +127,7 @@
 		2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
 		2740BF13252D8C7C00EDD771 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQISnapshot.swift; sourceTree = "<group>"; };
-		2740BF23252D8CB900EDD771 /* AQIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIClass.swift; sourceTree = "<group>"; };
+		2740BF23252D8CB900EDD771 /* AQICategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQICategory.swift; sourceTree = "<group>"; };
 		275712AB252D47E00050B473 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		275712B6252D4A240050B473 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -131,11 +146,12 @@
 		276E6C3E252D83B200A13D6D /* AQIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIProvider.swift; sourceTree = "<group>"; };
 		276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIWidgetWrapper.swift; sourceTree = "<group>"; };
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
-		277F1C6F252D9492002AB540 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		27E16B83253010F6006D28B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		27F0DED4253178A0005BDE1D /* AQIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIAnnotation.swift; sourceTree = "<group>"; };
 		C24ED05F2525BEAD001B3952 /* Paku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0622525BEAD001B3952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C24ED0642525BEAD001B3952 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C24ED0662525BEAD001B3952 /* AQIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIViewController.swift; sourceTree = "<group>"; };
+		C24ED0662525BEAD001B3952 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C24ED06B2525BEAF001B3952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24ED06E2525BEAF001B3952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C24ED0702525BEAF001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -218,7 +234,7 @@
 				275712B6252D4A240050B473 /* ViewController.swift */,
 				2724855D2526742C00866F1A /* RootViewController.swift */,
 				276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */,
-				C24ED0662525BEAD001B3952 /* AQIViewController.swift */,
+				C24ED0662525BEAD001B3952 /* HomeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -226,21 +242,18 @@
 		2740BED0252D8B1200EDD771 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2716EA8D25317D3900B8E2B0 /* Reusable.swift */,
+				2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */,
+				2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */,
+				2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */,
+				2716EA8125317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift */,
 				276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */,
+				2716EA8725317BB300B8E2B0 /* MKMapView+Extensions.swift */,
 				276E4B632526D6FE00FA4D26 /* NSAttributedString+Extensions.swift */,
 				272485632526745F00866F1A /* UIViewController+Extensions.swift */,
 				27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2740BED5252D8B1A00EDD771 /* SwiftUI Views */ = {
-			isa = PBXGroup;
-			children = (
-				C24ED1022525E570001B3952 /* AQIEntryView.swift */,
-				277F1C6F252D9492002AB540 /* MessageView.swift */,
-			);
-			path = "SwiftUI Views";
 			sourceTree = "<group>";
 		};
 		2740BEDF252D8B3A00EDD771 /* Controls */ = {
@@ -260,7 +273,6 @@
 				275712AB252D47E00050B473 /* LocationManager.swift */,
 				2740BF0A252D8BF600EDD771 /* Models */,
 				2740BEF5252D8BB900EDD771 /* Extensions */,
-				2740BED5252D8B1A00EDD771 /* SwiftUI Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -281,7 +293,7 @@
 			children = (
 				2740BF13252D8C7C00EDD771 /* Sensor.swift */,
 				2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */,
-				2740BF23252D8CB900EDD771 /* AQIClass.swift */,
+				2740BF23252D8CB900EDD771 /* AQICategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,11 +301,24 @@
 		276E6C4E252D853700A13D6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */,
-				276E6C38252D5F7300A13D6D /* SkyView.swift */,
+				C24ED1022525E570001B3952 /* AQIEntryView.swift */,
+				276E6C20252D5AA300A13D6D /* AQIBarWidgetView.swift */,
 				276E6C1A252D548C00A13D6D /* AQIIndicatorBar.swift */,
+				276E6C38252D5F7300A13D6D /* SkyView.swift */,
+				276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		27F0DED22531788E005BDE1D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				27E16B83253010F6006D28B1 /* MapViewController.swift */,
+				2716EAB12531B33D00B8E2B0 /* MapButton.swift */,
+				2716EA7B2531798500B8E2B0 /* AQIAnnotationView.swift */,
+				27F0DED4253178A0005BDE1D /* AQIAnnotation.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		C24ED0562525BEAD001B3952 = {
@@ -323,6 +348,7 @@
 		C24ED0612525BEAD001B3952 /* Paku */ = {
 			isa = PBXGroup;
 			children = (
+				27F0DED22531788E005BDE1D /* Map */,
 				2740BEC6252D8AF700EDD771 /* App */,
 				2740BECB252D8B0000EDD771 /* View Controllers */,
 				2740BED0252D8B1200EDD771 /* Extensions */,
@@ -369,7 +395,6 @@
 				2724852A2525ED0F00866F1A /* PakuWidget.entitlements */,
 				C24ED0D82525DD1D001B3952 /* Widgets.swift */,
 				276E6C3E252D83B200A13D6D /* AQIProvider.swift */,
-				276E6C20252D5AA300A13D6D /* AQIBarWidgetView.swift */,
 				276E6C4E252D853700A13D6D /* Views */,
 				C24ED0DB2525DD1F001B3952 /* Assets.xcassets */,
 				C24ED0DD2525DD1F001B3952 /* Info.plist */,
@@ -550,6 +575,7 @@
 				2740BF14252D8C7C00EDD771 /* Sensor.swift in Sources */,
 				276E4B5B2526D6CD00FA4D26 /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */,
+				2716EAB22531B33D00B8E2B0 /* MapButton.swift in Sources */,
 				276E4B522526D67800FA4D26 /* Control.swift in Sources */,
 				276E4B5E2526D6CD00FA4D26 /* NSLayoutAnchor+AutoLayout.swift in Sources */,
 				276E4B342526D5BB00FA4D26 /* OnboardingViewController.swift in Sources */,
@@ -558,19 +584,26 @@
 				2740BEE5252D8B6900EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				276E4B5C2526D6CD00FA4D26 /* NSLayoutConstraint+AutoLayout.swift in Sources */,
 				272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */,
-				277F1C70252D9492002AB540 /* MessageView.swift in Sources */,
 				276E4B7A2526DBB500FA4D26 /* UIColor+Extensions.swift in Sources */,
+				27E16B84253010F6006D28B1 /* MapViewController.swift in Sources */,
+				2716EA9425317D6C00B8E2B0 /* MKAnnotation+Reusable.swift in Sources */,
 				2724855E2526742C00866F1A /* RootViewController.swift in Sources */,
 				277F1C69252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */,
 				2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */,
 				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
-				C24ED1032525E570001B3952 /* AQIEntryView.swift in Sources */,
-				C24ED0672525BEAD001B3952 /* AQIViewController.swift in Sources */,
+				C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */,
 				2740BF1E252D8C9B00EDD771 /* AQISnapshot.swift in Sources */,
+				27F0DED5253178A0005BDE1D /* AQIAnnotation.swift in Sources */,
 				276E4B422526D5EA00FA4D26 /* Button.swift in Sources */,
-				2740BF24252D8CB900EDD771 /* AQIClass.swift in Sources */,
+				2740BF24252D8CB900EDD771 /* AQICategory.swift in Sources */,
+				2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
+				2716EA8825317BB300B8E2B0 /* MKMapView+Extensions.swift in Sources */,
+				2716EA8225317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift in Sources */,
+				2716EA7C2531798500B8E2B0 /* AQIAnnotationView.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
+				2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */,
+				2716EAAC2531B08200B8E2B0 /* Array+Extensions.swift in Sources */,
 				275712B7252D4A240050B473 /* ViewController.swift in Sources */,
 				27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */,
 				C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */,
@@ -602,12 +635,11 @@
 				2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */,
 				2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */,
 				2740BF2B252D8D0500EDD771 /* AQISnapshot.swift in Sources */,
-				277F1C71252D9492002AB540 /* MessageView.swift in Sources */,
 				2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				275712B1252D49100050B473 /* LocationManager.swift in Sources */,
 				276E6C3F252D83B200A13D6D /* AQIProvider.swift in Sources */,
 				276E6C33252D5AC500A13D6D /* AQIIndicatorBar.swift in Sources */,
-				2740BF29252D8D0500EDD771 /* AQIClass.swift in Sources */,
+				2740BF29252D8D0500EDD771 /* AQICategory.swift in Sources */,
 				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
 				2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* Widgets.swift in Sources */,

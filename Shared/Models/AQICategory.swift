@@ -1,5 +1,5 @@
 //
-//  AQIClass.swift
+//  AQICategory.swift
 //  Paku
 //
 //  Created by Kyle Bashour on 10/6/20.
@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-enum AQIClass: Double, CaseIterable {
-    case good                           = 50
-    case moderate                       = 100
-    case unhealthyForSensitiveGroups    = 150
-    case unhealthy                      = 200
-    case veryUnhealthy                  = 300
-    case hazardous                      = 400
-    case veryHazardous                  = 500
+enum AQICategory: Double, CaseIterable {
+    case good                           = 0
+    case moderate                       = 51
+    case unhealthyForSensitiveGroups    = 101
+    case unhealthy                      = 151
+    case veryUnhealthy                  = 201
+    case hazardous                      = 301
 
     init(aqi: Double) {
         switch aqi {
@@ -24,15 +23,12 @@ enum AQIClass: Double, CaseIterable {
         case ...150: self = .unhealthyForSensitiveGroups
         case ...200: self = .unhealthy
         case ...300: self = .veryUnhealthy
-        case ...400: self = .hazardous
-        default: self = .veryHazardous
+        default: self = .hazardous
         }
     }
 
     var description: String {
         switch self {
-        case .veryHazardous:
-            return "Very hazardous"
         case .hazardous:
             return "Hazardous"
         case .veryUnhealthy:

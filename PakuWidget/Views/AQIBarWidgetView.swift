@@ -17,7 +17,7 @@ struct AQIBarWidgetView: View {
     var body: some View {
         ZStack {
 
-            SkyView(aqi: aqi.class)
+            SkyView(category: aqi.category)
 
             VStack(alignment: .leading) {
                 Text("Air Quality")
@@ -50,7 +50,7 @@ struct AQIBarWidgetView: View {
 
 struct AQIBarWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date().addingTimeInterval(-150))).redacted(reason: .placeholder)
+        AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date().addingTimeInterval(-150)))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         AQIBarWidgetView(aqi: .init(value: 150, distance: 2000, date: Date()))

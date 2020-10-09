@@ -10,12 +10,12 @@ import WidgetKit
 
 struct SkyView: View {
 
-    var aqi: AQIClass
+    var category: AQICategory
 
     var body: some View {
         LinearGradient(
             gradient: Gradient(
-                colors: [aqi.topColor, aqi.bottomColor]
+                colors: [category.topColor, category.bottomColor]
             ),
             startPoint: .top,
             endPoint: .bottom
@@ -23,14 +23,14 @@ struct SkyView: View {
     }
 }
 
-private extension AQIClass {
+private extension AQICategory {
     var topColor: Color {
         switch self {
         case .good, .moderate:
             return Color(red: 0.282, green: 0.525, blue: 0.725)
         case .unhealthy, .unhealthyForSensitiveGroups:
             return Color(red: 0.255, green: 0.396, blue: 0.495)
-        case .veryUnhealthy, .hazardous, .veryHazardous:
+        case .veryUnhealthy, .hazardous:
             return Color(red: 0.479, green: 0.420, blue: 0.210)
         }
     }
@@ -42,13 +42,13 @@ private extension AQIClass {
 
 struct SkyView_Previews: PreviewProvider {
     static var previews: some View {
-        SkyView(aqi: .good)
+        SkyView(category: .good)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
-        SkyView(aqi: .unhealthy)
+        SkyView(category: .unhealthy)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
-        SkyView(aqi: .hazardous)
+        SkyView(category: .hazardous)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
     }

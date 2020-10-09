@@ -14,26 +14,26 @@ struct AQIEntryView: View {
 
     var body: some View {
         ZStack {
-            Color(aqi.class.color)
+            Color(aqi.category.color)
 
             HStack {
                 VStack(alignment: .leading) {
                     Text("\(Int(aqi.value))")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(aqi.class.textColor))
+                        .foregroundColor(Color(aqi.category.textColor))
 
                     (Text(aqi.date, style: .time) + Text("\n\(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance)) away"))
                         .font(Font.caption)
                         .fontWeight(.medium)
-                        .foregroundColor(Color(aqi.class.textColor))
+                        .foregroundColor(Color(aqi.category.textColor))
 
                     Spacer()
 
-                    Text(aqi.class.description)
+                    Text(aqi.category.description)
                         .font(.body)
                         .fontWeight(.medium)
-                        .foregroundColor(Color(aqi.class.textColor))
+                        .foregroundColor(Color(aqi.category.textColor))
                 }
 
                 Spacer()
@@ -42,11 +42,9 @@ struct AQIEntryView: View {
     }
 }
 
-private extension AQIClass {
+private extension AQICategory {
     var color: UIColor {
         switch self {
-        case .veryHazardous:
-            return UIColor(displayP3Red: 0.451, green: 0.078, blue: 0.145, alpha: 1)
         case .hazardous:
             return UIColor(displayP3Red: 0.549, green: 0.102, blue: 0.294, alpha: 1)
         case .veryUnhealthy:
@@ -64,7 +62,7 @@ private extension AQIClass {
 
     var textColor: UIColor {
         switch self {
-        case .veryHazardous, .hazardous, .veryUnhealthy, .unhealthy:
+        case .hazardous, .veryUnhealthy, .unhealthy:
             return .white
         default:
             return .black

@@ -22,7 +22,7 @@ class RootViewController: ViewController {
         LocationManager.shared.$status.sink { status in
             switch status {
             case .authorizedWhenInUse, .authorizedAlways:
-                self.viewController = AQIViewController()
+                self.viewController = HomeViewController()
             default:
                 self.viewController = OnboardingViewController()
             }
