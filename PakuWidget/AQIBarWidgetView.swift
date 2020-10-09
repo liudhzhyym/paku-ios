@@ -32,8 +32,8 @@ struct AQIBarWidgetView: View {
                     Image(systemName: "location.fill").font(.system(size: 9))
                 }
 
-                (Text("at ") + Text(aqi.date, style: .time))
-                    .font(.system(size: 13, weight: .medium))
+                (Text(aqi.date, style: .relative) + Text(" ago"))
+                    .font(Font.system(size: 13, weight: .medium).monospacedDigit())
 
                 Spacer()
 
