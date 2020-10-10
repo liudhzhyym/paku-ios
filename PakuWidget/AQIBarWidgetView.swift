@@ -12,6 +12,8 @@ import MapKit
 struct AQIBarWidgetView: View {
     var aqi: AQI
 
+    @Environment(\.redactionReasons) var redactionReasons
+
     var body: some View {
         ZStack {
 
@@ -24,12 +26,13 @@ struct AQIBarWidgetView: View {
                 Text("\(Int(aqi.value))")
                     .font(.system(size: 42, weight: .light, design: .rounded))
                     .minimumScaleFactor(0.5)
-                    .scaledToFit()
 
                 HStack(spacing: 5) {
                     (Text(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance)) + Text(" away"))
                         .font(.system(size: 13, weight: .medium))
-                    Image(systemName: "location.fill").font(.system(size: 9))
+                    if !redactionReasons.contains(.placeholder) {
+                        Image(systemName: "location.fill").font(.system(size: 9))
+                    }
                 }
 
                 (Text(aqi.date, style: .relative) + Text(" ago"))
@@ -47,7 +50,7 @@ struct AQIBarWidgetView: View {
 
 struct AQIBarWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date().addingTimeInterval(-150)))
+        AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date().addingTimeInterval(-150))).redacted(reason: .placeholder)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         AQIBarWidgetView(aqi: .init(value: 150, distance: 2000, date: Date()))
