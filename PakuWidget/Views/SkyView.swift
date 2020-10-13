@@ -32,7 +32,7 @@ private extension AQICategory {
     private var dayTopColor: Color {
         switch self {
         case .good:
-            return Color(UIColor(hex: "1b76aa"))
+            return Color(red: 66 / 255.0, green: 136 / 255.0, blue: 181 / 255.0)
         case .moderate:
             return Color(red: 0.282, green: 0.525, blue: 0.725)
         case .unhealthy, .unhealthyForSensitiveGroups:
@@ -45,7 +45,7 @@ private extension AQICategory {
     private var dayBottomColor: Color {
         switch self {
         case .good:
-            return Color(UIColor(hex: "5598bf"))
+            return Color(red: 119 / 255.0, green: 169 / 255.0, blue: 201 / 255.0)
         case .moderate:
             return Color(UIColor(hex: "7c8e9d"))
         case .unhealthy, .unhealthyForSensitiveGroups:
@@ -56,11 +56,21 @@ private extension AQICategory {
     }
 
     private var nightTopColor: Color {
-        Color(UIColor(hex: "01071b"))
+        switch self {
+        case .good, .moderate:
+            return Color(red: 1 / 255.0, green: 5 / 255.0, blue: 32 / 255.0)
+        default:
+            return Color(red: 54 / 255.0, green: 57 / 255.0, blue: 60 / 255.0)
+        }
     }
 
     private var nightBottomColor: Color {
-        Color(UIColor(hex: "262e43"))
+        switch self {
+        case .good, .moderate:
+            return Color(red: 50 / 255.0, green: 58 / 255.0, blue: 87 / 255.0)
+        default:
+            return Color(red: 26 / 255.0, green: 28 / 255.0, blue: 31 / 255.0)
+        }
     }
 
     func topColor(isDay: Bool) -> Color {
@@ -84,6 +94,10 @@ struct SkyView_Previews: PreviewProvider {
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         SkyView(category: .hazardous)
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+
+        SkyView(category: .good)
+            .environment(\.isDayTime, false)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         SkyView(category: .hazardous)

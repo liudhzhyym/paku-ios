@@ -48,7 +48,6 @@ class MapViewController: ViewController {
     }
 
     func refresh() {
-        return;
         item?.cancel()
         item = DispatchWorkItem {
 
