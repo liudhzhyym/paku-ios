@@ -36,9 +36,9 @@ private extension AQICategory {
         case .moderate:
             return Color(red: 0.282, green: 0.525, blue: 0.725)
         case .unhealthy, .unhealthyForSensitiveGroups:
-            return Color(red: 0.255, green: 0.396, blue: 0.495)
+            return Color(UIColor(hex: "7b8d9d"))
         case .veryUnhealthy, .hazardous:
-            return Color(red: 0.479, green: 0.420, blue: 0.210)
+            return Color(red: 0.379, green: 0.320, blue: 0.250)
         }
     }
 
@@ -46,8 +46,12 @@ private extension AQICategory {
         switch self {
         case .good:
             return Color(UIColor(hex: "5598bf"))
+        case .moderate:
+            return Color(UIColor(hex: "7c8e9d"))
+        case .unhealthy, .unhealthyForSensitiveGroups:
+            return Color(UIColor(hex: "4b5c6d"))
         default:
-            return Color(red: 0.459, green: 0.655, blue: 0.780)
+            return Color(UIColor(hex: "4b5c6d"))
         }
     }
 
