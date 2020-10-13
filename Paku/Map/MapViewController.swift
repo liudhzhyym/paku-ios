@@ -48,6 +48,7 @@ class MapViewController: ViewController {
     }
 
     func refresh() {
+        return;
         item?.cancel()
         item = DispatchWorkItem {
 
@@ -55,11 +56,11 @@ class MapViewController: ViewController {
                 .compactMap { $0 as? AQIAnnotation }
                 .map(\.sensorID))
 
-//            let irrelevant = self.mapView.annotations.filter {
-//                !self.mapView.visibleMapRect.contains(MKMapPoint($0.coordinate))
-//            }
-//
-//            self.mapView.removeAnnotations(irrelevant)
+            let irrelevant = self.mapView.annotations.filter {
+                !self.mapView.visibleMapRect.contains(MKMapPoint($0.coordinate))
+            }
+
+            self.mapView.removeAnnotations(irrelevant)
 
             AQILoader().loadSensors { result in
                 if let sensors = try? result.get() {

@@ -5,11 +5,18 @@
 //  Created by Kyle Bashour on 10/6/20.
 //
 
+import CoreLocation
+import Solar
 import WidgetKit
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
+    let coordinate: CLLocationCoordinate2D? = .placeholder
     let aqi: AQI?
+
+    var isDaytime: Bool {
+        coordinate.flatMap { Solar(coordinate: $0) }?.isDaytime ?? true
+    }
 }
 
 struct AQIProvider: TimelineProvider {
@@ -27,7 +34,7 @@ struct AQIProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         loader.closestAQIOrCached { result in
             let currentDate = Date()
-            let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
+            let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
             let entry = SimpleEntry(date: currentDate, aqi: try? result.get())
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)

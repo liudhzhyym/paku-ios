@@ -5,17 +5,22 @@
 //  Created by Kyle Bashour on 10/6/20.
 //
 
+import CoreLocation
 import SwiftUI
 import WidgetKit
 
 struct SkyView: View {
 
     var category: AQICategory
+    @Environment(\.isDayTime) var isDaytime
 
     var body: some View {
         LinearGradient(
             gradient: Gradient(
-                colors: [category.topColor, category.bottomColor]
+                colors: [
+                    category.topColor(isDay: isDaytime),
+                    category.bottomColor(isDay: isDaytime)
+                ]
             ),
             startPoint: .top,
             endPoint: .bottom
@@ -24,9 +29,11 @@ struct SkyView: View {
 }
 
 private extension AQICategory {
-    var topColor: Color {
+    private var dayTopColor: Color {
         switch self {
-        case .good, .moderate:
+        case .good:
+            return Color(UIColor(hex: "1b76aa"))
+        case .moderate:
             return Color(red: 0.282, green: 0.525, blue: 0.725)
         case .unhealthy, .unhealthyForSensitiveGroups:
             return Color(red: 0.255, green: 0.396, blue: 0.495)
@@ -35,8 +42,29 @@ private extension AQICategory {
         }
     }
 
-    var bottomColor: Color {
-        return Color(red: 0.459, green: 0.655, blue: 0.780)
+    private var dayBottomColor: Color {
+        switch self {
+        case .good:
+            return Color(UIColor(hex: "5598bf"))
+        default:
+            return Color(red: 0.459, green: 0.655, blue: 0.780)
+        }
+    }
+
+    private var nightTopColor: Color {
+        Color(UIColor(hex: "01071b"))
+    }
+
+    private var nightBottomColor: Color {
+        Color(UIColor(hex: "262e43"))
+    }
+
+    func topColor(isDay: Bool) -> Color {
+        isDay ? dayTopColor : nightTopColor
+    }
+
+    func bottomColor(isDay: Bool) -> Color {
+        isDay ? dayBottomColor : nightBottomColor
     }
 }
 
@@ -45,10 +73,17 @@ struct SkyView_Previews: PreviewProvider {
         SkyView(category: .good)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
+        SkyView(category: .moderate)
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+
         SkyView(category: .unhealthy)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         SkyView(category: .hazardous)
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+
+        SkyView(category: .hazardous)
+            .environment(\.isDayTime, false)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
     }
