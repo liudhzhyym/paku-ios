@@ -10,6 +10,8 @@ import MapKit
 
 class MapViewController: ViewController {
 
+    private let loader = AQILoader()
+
     private var didCenterOnInitialLocation = false
     private var item: DispatchWorkItem?
     private lazy var mapView = MKMapView()
@@ -21,17 +23,22 @@ class MapViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let button = UIButton(type: .system, primaryAction: .init { _ in
-            self.centerOnCurrentLocation(animated: true)
-        })
+        let locationButton = MapButton(symbolName: "location")
+        locationButton.addAction(UIAction { [weak self] _ in
+            self?.centerOnCurrentLocation(animated: true)
+        }, for: .touchUpInside)
 
-        let image = UIImage(systemName: "location.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
+        view.addSubview(locationButton)
+        locationButton.pinEdges([.right, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 40, horizontal: 0))
 
-        button.setImage(image, for: .normal)
-        button.tintColor = .white
+        let settingsButton = MapButton(symbolName: "line.horizontal.3")
+        settingsButton.addAction(UIAction { [weak self] _ in
+            self?.openSettings()
+        }, for: .touchUpInside)
 
-        view.addSubview(button)
-        button.pinEdges([.right, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 40, horizontal: 0))
+//        view.addSubview(settingsButton)
+//        settingsButton.pinEdges([.left, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 40, horizontal: 0))
+
 
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let safeAreaBlurView = UIVisualEffectView(effect: blurEffect)
@@ -50,33 +57,20 @@ class MapViewController: ViewController {
     func refresh() {
         item?.cancel()
         item = DispatchWorkItem {
-
-            let displayed = Set(self.mapView.annotations
-                .compactMap { $0 as? AQIAnnotation }
-                .map(\.sensorID))
-
-            let irrelevant = self.mapView.annotations.filter {
-                !self.mapView.visibleMapRect.contains(MKMapPoint($0.coordinate))
-            }
-
-            self.mapView.removeAnnotations(irrelevant)
-
-            AQILoader().loadSensors { result in
-                if let sensors = try? result.get() {
-                    let annotations = sensors
-                        .filter { !displayed.contains($0.id) }
-                        .filter { self.mapView.visibleMapRect.contains(MKMapPoint($0.location.coordinate)) }
-                        .map { AQIAnnotation(coordinate: $0.location.coordinate, sensorID: $0.id) }
-
-                    self.mapView.addAnnotations(annotations)
+            self.loader.loadClosestAQI { result in
+                guard let aqi = try? result.get() else {
+                    return
                 }
+
+                self.mapView.removeAnnotations(self.mapView.annotations)
+                self.mapView.addAnnotation(AQIAnnotation(aqiValue: aqi.value, coordinate: self.mapView.userLocation.coordinate, sensorID: 0))
             }
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: item!)
     }
 
-    func centerOnCurrentLocation(animated: Bool) {
+    private func centerOnCurrentLocation(animated: Bool) {
         let region = MKCoordinateRegion(
             center: mapView.userLocation.coordinate,
             latitudinalMeters: 5000,
@@ -84,6 +78,10 @@ class MapViewController: ViewController {
         )
 
         mapView.setRegion(region, animated: animated)
+    }
+
+    private func openSettings() {
+        present(UIViewController(), animated: true, completion: nil)
     }
 }
 

@@ -52,6 +52,7 @@
 		276E6C39252D5F7300A13D6D /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E6C38252D5F7300A13D6D /* SkyView.swift */; };
 		276E6C3F252D83B200A13D6D /* AQIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E6C3E252D83B200A13D6D /* AQIProvider.swift */; };
 		276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */; };
+		276F42C7253E9D5B004B86A1 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276F42C6253E9D5B004B86A1 /* CGFloat+Extensions.swift */; };
 		277F1C69252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D70A22535679E00146D37 /* Environment+Daytime.swift */; };
@@ -150,6 +151,7 @@
 		276E6C38252D5F7300A13D6D /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		276E6C3E252D83B200A13D6D /* AQIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIProvider.swift; sourceTree = "<group>"; };
 		276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIWidgetWrapper.swift; sourceTree = "<group>"; };
+		276F42C6253E9D5B004B86A1 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		278D70A22535679E00146D37 /* Environment+Daytime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Daytime.swift"; sourceTree = "<group>"; };
 		27E16B83253010F6006D28B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				2716EA8D25317D3900B8E2B0 /* Reusable.swift */,
 				2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */,
 				2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */,
+				276F42C6253E9D5B004B86A1 /* CGFloat+Extensions.swift */,
 				2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */,
 				2716EA8125317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift */,
 				276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */,
@@ -586,6 +589,7 @@
 			files = (
 				276E4B642526D6FE00FA4D26 /* NSAttributedString+Extensions.swift in Sources */,
 				2740BF14252D8C7C00EDD771 /* Sensor.swift in Sources */,
+				276F42C7253E9D5B004B86A1 /* CGFloat+Extensions.swift in Sources */,
 				276E4B5B2526D6CD00FA4D26 /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */,
 				2716EAB22531B33D00B8E2B0 /* MapButton.swift in Sources */,

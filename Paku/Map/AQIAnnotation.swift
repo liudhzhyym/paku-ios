@@ -16,10 +16,10 @@ class AQIAnnotation: NSObject, MKAnnotation {
 
     var aqiValue: Double
 
-    init(coordinate: CLLocationCoordinate2D, sensorID: Int) {
+    init(aqiValue: Double, coordinate: CLLocationCoordinate2D, sensorID: Int) {
+        self.aqiValue = aqiValue
         self.coordinate = coordinate
         self.sensorID = sensorID
-        self.aqiValue = Double(Int((2...32).randomElement()!))
         super.init()
     }
 }
