@@ -88,7 +88,8 @@ class AQILoader: ObservableObject {
                 let pm2_5Values = response.results.compactMap(self.pm2_5)
                 let pm2_5 = pm2_5Values.reduce(0, +) / Double(pm2_5Values.count)
 
-                if let aqi = self.aqanduAQIfrom(pm: pm2_5) {
+                if let humidity = response.results[0]["humidity"]?.doubleValue,
+                   let aqi = self.epaAQIFrom(pm: pm2_5, humidity: humidity) {
                     completion(.success(aqi))
                 } else {
                     completion(.failure(AQILoaderError.invalidAQI))
@@ -170,7 +171,7 @@ class AQILoader: ObservableObject {
                 "pm2_5_atm",
                 "pm10_0_atm",
             ] {
-                if let value = data[field]?.value as? String, value != "0.0" {
+                if let value = data[field]?.doubleValue, value != 0 {
                     return false
                 }
             }
@@ -182,15 +183,19 @@ class AQILoader: ObservableObject {
             return nil
         }
 
-        guard let value = data["PM2_5Value"]?.value as? String, let double = Double(value) else {
+        guard let value = data["pm2_5_cf_1"]?.doubleValue else {
             return nil
         }
 
-        return double
+        return value
     }
 
-    private func aqanduAQIfrom(pm: Double) -> Double? {
+    private func aqanduAQIFrom(pm: Double) -> Double? {
         aqiFrom(pm: 0.778 * pm + 2.65)
+    }
+
+    private func epaAQIFrom(pm: Double, humidity: Double) -> Double? {
+        aqiFrom(pm: (0.534 * pm) - (0.0844 * humidity) + 5.604);
     }
 
     private func aqiFrom(pm: Double) -> Double? {
@@ -223,5 +228,12 @@ class AQILoader: ObservableObject {
         let b = BPh - BPl;
         let c = Cp - BPl;
         return round((a / b) * c + Il)
+    }
+}
+
+private extension AnyCodable {
+    var doubleValue: Double? {
+        let string = value as? String
+        return string.flatMap(Double.init)
     }
 }
