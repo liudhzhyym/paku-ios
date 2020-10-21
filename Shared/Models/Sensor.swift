@@ -8,16 +8,16 @@
 import AnyCodable
 import Foundation
 
-struct Sensor: Equatable {
+struct Sensor: Codable, Equatable {
     enum InitializerError: Error {
         case noResults
         case failedToParse
     }
 
-    enum Location: Equatable {
+    enum Location: String, Codable, Equatable {
         case outside
         case inside
-        case unknown(String)
+        case unknown
 
         init(_ value: String) {
             if value == "outside" {
@@ -25,12 +25,12 @@ struct Sensor: Equatable {
             } else if value == "inside" {
                 self = .inside
             } else {
-                self = .unknown(value)
+                self = .unknown
             }
         }
     }
 
-    struct ParticleInfo: Equatable {
+    struct ParticleInfo: Codable, Equatable {
         var p_0_3_um: Double
         var p_0_5_um: Double
         var p_1_0_um: Double
@@ -79,7 +79,7 @@ struct Sensor: Equatable {
     let info: SensorInfo
 
     let location: Location
-    let age: Int
+    let age: Date
     let humidity: Double
 
     let particleInfo: [ParticleInfo]
@@ -99,7 +99,7 @@ struct Sensor: Equatable {
         }
 
         self.location = Location(location)
-        self.age = age
+        self.age = Calendar.current.date(byAdding: .minute, value: -age, to: Date())!
         self.humidity = humidity
         self.particleInfo = results.compactMap(ParticleInfo.init)
     }

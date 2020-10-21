@@ -36,8 +36,7 @@ struct AQIBarWidgetView: View {
                     }
                 }
 
-                // TODO: Date!!!
-                (Text(Date(), style: .relative) + Text(" ago"))
+                (Text(sensor.age, style: .relative) + Text(" ago"))
                     .font(Font.system(size: 13, weight: .medium).monospacedDigit())
 
                 Spacer()

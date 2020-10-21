@@ -49,8 +49,8 @@ class AQILoader: ObservableObject {
         }
     }
 
-    private let aqiKey = "aqi"
     private let sensorsKey = "sensors-v4"
+    private func sensorKey(_ info: SensorInfo) -> String { "sensor\(info.id)" }
 
     func loadSensors(completion: @escaping (Result<[SensorInfo], Error>) -> Void) {
         if let cached = ExpiringCache.value([SensorInfo].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
@@ -84,11 +84,17 @@ class AQILoader: ObservableObject {
 
     func loadSensor(from info: SensorInfo, completion: @escaping (Result<Sensor, Error>) -> Void) {
         let url = URL(string: "https://www.purpleair.com/json?show=\(info.id)")!
+
+        if let cached = ExpiringCache.value(Sensor.self, forKey: sensorKey(info), expiration: 60) {
+            completion(.success(cached.value))
+        }
+
         URLSession.shared.load(SensorResponse.self, from: url) { result in
             switch result {
             case .success(let response):
                 do {
                     let sensor = try Sensor(results: response.results, info: info)
+                    ExpiringCache.cache(sensor, forKey: self.sensorKey(info))
                     completion(.success(sensor))
                 } catch {
                     completion(.failure(error))

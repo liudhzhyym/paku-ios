@@ -26,8 +26,7 @@ struct AQIEntryView: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color(category.textColor))
 
-                    // TODO: Date!!!
-                    (Text(Date(), style: .time) + Text("\n\(MKDistanceFormatter.abbreviated.string(fromDistance: info.distance)) away"))
+                    (Text(sensor.age, style: .time) + Text("\n\(MKDistanceFormatter.abbreviated.string(fromDistance: info.distance)) away"))
                         .font(Font.caption)
                         .fontWeight(.medium)
                         .foregroundColor(Color(category.textColor))
