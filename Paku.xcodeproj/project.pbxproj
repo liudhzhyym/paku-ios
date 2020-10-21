@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2716EA7C2531798500B8E2B0 /* AQIAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA7B2531798500B8E2B0 /* AQIAnnotationView.swift */; };
+		2716EA7C2531798500B8E2B0 /* SensorAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA7B2531798500B8E2B0 /* SensorAnnotationView.swift */; };
 		2716EA8225317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA8125317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift */; };
 		2716EA8825317BB300B8E2B0 /* MKMapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA8725317BB300B8E2B0 /* MKMapView+Extensions.swift */; };
 		2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA8D25317D3900B8E2B0 /* Reusable.swift */; };
@@ -61,7 +61,7 @@
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D70A22535679E00146D37 /* Environment+Daytime.swift */; };
 		27E16B84253010F6006D28B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E16B83253010F6006D28B1 /* MapViewController.swift */; };
-		27F0DED5253178A0005BDE1D /* AQIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0DED4253178A0005BDE1D /* AQIAnnotation.swift */; };
+		27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */; };
 		C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0622525BEAD001B3952 /* AppDelegate.swift */; };
 		C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0642525BEAD001B3952 /* SceneDelegate.swift */; };
 		C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* HomeViewController.swift */; };
@@ -119,7 +119,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2716EA7B2531798500B8E2B0 /* AQIAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIAnnotationView.swift; sourceTree = "<group>"; };
+		2716EA7B2531798500B8E2B0 /* SensorAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorAnnotationView.swift; sourceTree = "<group>"; };
 		2716EA8125317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
 		2716EA8725317BB300B8E2B0 /* MKMapView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extensions.swift"; sourceTree = "<group>"; };
 		2716EA8D25317D3900B8E2B0 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		278D70A22535679E00146D37 /* Environment+Daytime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Daytime.swift"; sourceTree = "<group>"; };
 		27E16B83253010F6006D28B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		27F0DED4253178A0005BDE1D /* AQIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIAnnotation.swift; sourceTree = "<group>"; };
+		27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorAnnotation.swift; sourceTree = "<group>"; };
 		C24ED05F2525BEAD001B3952 /* Paku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0622525BEAD001B3952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C24ED0642525BEAD001B3952 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -334,8 +334,8 @@
 			children = (
 				27E16B83253010F6006D28B1 /* MapViewController.swift */,
 				2716EAB12531B33D00B8E2B0 /* MapButton.swift */,
-				2716EA7B2531798500B8E2B0 /* AQIAnnotationView.swift */,
-				27F0DED4253178A0005BDE1D /* AQIAnnotation.swift */,
+				2716EA7B2531798500B8E2B0 /* SensorAnnotationView.swift */,
+				27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -618,7 +618,7 @@
 				2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */,
 				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */,
-				27F0DED5253178A0005BDE1D /* AQIAnnotation.swift in Sources */,
+				27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */,
 				276E4B422526D5EA00FA4D26 /* Button.swift in Sources */,
 				2740BF24252D8CB900EDD771 /* AQICategory.swift in Sources */,
 				2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */,
@@ -626,7 +626,7 @@
 				2716EA8825317BB300B8E2B0 /* MKMapView+Extensions.swift in Sources */,
 				275BBAF0253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */,
 				2716EA8225317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift in Sources */,
-				2716EA7C2531798500B8E2B0 /* AQIAnnotationView.swift in Sources */,
+				2716EA7C2531798500B8E2B0 /* SensorAnnotationView.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
 				2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */,
 				275BBAE9253FA57E007923BA /* Sensor.swift in Sources */,

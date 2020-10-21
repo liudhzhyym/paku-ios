@@ -41,7 +41,7 @@ class MapButton: Control {
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 8
         backgroundView.layer.cornerCurve = .continuous
-        backgroundView.layer.borderWidth = 1
+        backgroundView.layer.borderWidth = .pixel
 
         addSubview(content)
         content.pinEdges(to: self)

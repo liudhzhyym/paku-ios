@@ -47,26 +47,31 @@ class MapViewController: ViewController {
         safeAreaBlurView.pinEdges([.top, .right, .left], to: view)
         safeAreaBlurView.bottomAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor)
 
-        mapView.register(SingleAQIAnnotationView.self)
-        mapView.register(ClusteredAQIAnnotationView.self)
+        mapView.register(SingleSensorAnnotationView.self)
+        mapView.register(ClusteredSensorAnnotationView.self)
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = .mutedStandard
     }
 
     func refresh() {
+        if let annotation = mapView.annotations.first(where: { $0 is SensorAnnotation }) as? SensorAnnotation,
+           Date().timeIntervalSince(annotation.sensor.age) < 60 {
+            return
+        }
+
         item?.cancel()
         item = DispatchWorkItem {
             guard let location = self.mapView.userLocation.location else { return }
             self.loader.loadSensor(near: location) { result in
                 guard let sensor = try? result.get() else { return }
                 self.mapView.removeAnnotations(self.mapView.annotations)
-                self.mapView.addAnnotation(AQIAnnotation(aqiValue: sensor.aqiValue(), coordinate: sensor.info.location.coordinate, sensorID: sensor.info.id))
+                self.mapView.addAnnotation(SensorAnnotation(sensor: sensor))
 
             }
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: item!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: item!)
     }
 
     private func centerOnCurrentLocation(animated: Bool) {
@@ -89,6 +94,7 @@ extension MapViewController: MKMapViewDelegate {
         if didCenterOnInitialLocation { return }
         didCenterOnInitialLocation = true
         centerOnCurrentLocation(animated: false)
+        refresh()
     }
 
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
@@ -101,12 +107,12 @@ extension MapViewController: MKMapViewDelegate {
         }
 
         if annotation is MKClusterAnnotation {
-            let view = mapView.dequeue(for: annotation) as ClusteredAQIAnnotationView
+            let view = mapView.dequeue(for: annotation) as ClusteredSensorAnnotationView
             return view
         }
 
-        if annotation is AQIAnnotation {
-            let view = mapView.dequeue(for: annotation) as SingleAQIAnnotationView
+        if annotation is SensorAnnotation {
+            let view = mapView.dequeue(for: annotation) as SingleSensorAnnotationView
             return view
         }
 

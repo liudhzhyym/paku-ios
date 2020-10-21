@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class AQIAnnotationView: MKAnnotationView {
+class SensorAnnotationView: MKAnnotationView {
 
     private static var imageCache: [Int: UIImage] = [:]
 
@@ -82,8 +82,8 @@ class AQIAnnotationView: MKAnnotationView {
     }
 }
 
-class SingleAQIAnnotationView: AQIAnnotationView {
-    static let clusteringIdentifier = "single_aqi_cluster_id"
+class SingleSensorAnnotationView: SensorAnnotationView {
+    static let clusteringIdentifier = "single_sensor_cluster_id"
 
     override var annotation: MKAnnotation? {
         didSet {
@@ -98,19 +98,19 @@ class SingleAQIAnnotationView: AQIAnnotationView {
 
     override func prepareForDisplay() {
         super.prepareForDisplay()
-        if let annotation = annotation as? AQIAnnotation {
-            display(aqi: annotation.aqiValue)
+        if let annotation = annotation as? SensorAnnotation {
+            display(aqi: annotation.sensor.aqiValue())
         }
     }
 }
 
-class ClusteredAQIAnnotationView: AQIAnnotationView {
+class ClusteredSensorAnnotationView: SensorAnnotationView {
     override func prepareForDisplay() {
         super.prepareForDisplay()
         if let annotation = annotation as? MKClusterAnnotation {
             let median = annotation.memberAnnotations
-                .compactMap { $0 as? AQIAnnotation }
-                .map(\.aqiValue)
+                .compactMap { $0 as? SensorAnnotation }
+                .map { $0.sensor.aqiValue() }
                 .sorted(by: <)
                 .median()
 
