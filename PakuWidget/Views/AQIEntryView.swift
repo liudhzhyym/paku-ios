@@ -10,30 +10,34 @@ import SwiftUI
 import MapKit
 
 struct AQIEntryView: View {
-    var aqi: AQI
+    var info: SimpleEntry.Info
 
     var body: some View {
         ZStack {
-            Color(aqi.category.color)
+            let category = info.sensor.aqiCategory()
+            let sensor = info.sensor
+
+            Color(category.color)
 
             HStack {
                 VStack(alignment: .leading) {
-                    Text("\(Int(aqi.value))")
+                    Text("\(Int(sensor.aqiValue()))")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(aqi.category.textColor))
+                        .foregroundColor(Color(category.textColor))
 
-                    (Text(aqi.date, style: .time) + Text("\n\(MKDistanceFormatter.abbreviated.string(fromDistance: aqi.distance)) away"))
+                    // TODO: Date!!!
+                    (Text(Date(), style: .time) + Text("\n\(MKDistanceFormatter.abbreviated.string(fromDistance: info.distance)) away"))
                         .font(Font.caption)
                         .fontWeight(.medium)
-                        .foregroundColor(Color(aqi.category.textColor))
+                        .foregroundColor(Color(category.textColor))
 
                     Spacer()
 
-                    Text(aqi.category.description)
+                    Text(category.description)
                         .font(.body)
                         .fontWeight(.medium)
-                        .foregroundColor(Color(aqi.category.textColor))
+                        .foregroundColor(Color(category.textColor))
                 }
 
                 Spacer()
@@ -70,9 +74,9 @@ private extension AQICategory {
     }
 }
 
-struct AQIEntryView_Previews: PreviewProvider {
-    static var previews: some View {
-        AQIEntryView(aqi: .init(value: 20, distance: 10, date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}
+//struct AQIEntryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AQIEntryView(aqi: .init(value: 20, distance: 10, date: Date()))
+//            .previewContext(WidgetPreviewContext(family: .systemSmall))
+//    }
+//}

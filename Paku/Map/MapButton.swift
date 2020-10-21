@@ -13,7 +13,7 @@ class MapButton: Control {
     private let content: UIView
 
     convenience init(symbolName: String) {
-        let symbol = UIImage(systemName: symbolName)!
+        let symbol = UIImage(systemName: symbolName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))!
         let imageView = UIImageView(image: symbol)
 
         imageView.tintColor = .systemBlue

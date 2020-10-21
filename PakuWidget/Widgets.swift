@@ -13,8 +13,8 @@ struct ColorWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: AQIProvider()) { entry in
-            AQIWidgetWrapper(entry: entry) { aqi in
-                AQIEntryView(aqi: aqi)
+            AQIWidgetWrapper(entry: entry) { info in
+                AQIEntryView(info: info)
             }
         }
         .configurationDisplayName("Color")
@@ -27,8 +27,8 @@ struct SkyWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: AQIProvider()) { entry in
-            AQIWidgetWrapper(entry: entry) { aqi in
-                AQIBarWidgetView(aqi: aqi)
+            AQIWidgetWrapper(entry: entry) { info in
+                AQIBarWidgetView(info: info)
             }
         }
         .configurationDisplayName("Sky")

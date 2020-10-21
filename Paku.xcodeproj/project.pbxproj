@@ -18,6 +18,8 @@
 		2716EAE6253563A200B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAE5253563A200B8E2B0 /* Solar */; };
 		2716EAEC253563A800B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAEB253563A800B8E2B0 /* Solar */; };
 		2716EAF22535642400B8E2B0 /* Coordinate+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAF12535642400B8E2B0 /* Coordinate+Placeholder.swift */; };
+		271CC62C253FB76C001EDCE1 /* AQIConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CC62B253FB76C001EDCE1 /* AQIConversion.swift */; };
+		271CC62D253FB76C001EDCE1 /* AQIConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CC62B253FB76C001EDCE1 /* AQIConversion.swift */; };
 		27248552252673B100866F1A /* PanDirectionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */; };
 		27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */; };
 		2724855E2526742C00866F1A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724855D2526742C00866F1A /* RootViewController.swift */; };
@@ -28,15 +30,17 @@
 		2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B792526DBB500FA4D26 /* UIColor+Extensions.swift */; };
 		2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */; };
 		2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0952525BEB9001B3952 /* AQILoader.swift */; };
-		2740BF14252D8C7C00EDD771 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* Sensor.swift */; };
-		2740BF1E252D8C9B00EDD771 /* AQISnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */; };
+		2740BF14252D8C7C00EDD771 /* SensorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* SensorInfo.swift */; };
 		2740BF24252D8CB900EDD771 /* AQICategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQICategory.swift */; };
 		2740BF29252D8D0500EDD771 /* AQICategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF23252D8CB900EDD771 /* AQICategory.swift */; };
-		2740BF2A252D8D0500EDD771 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* Sensor.swift */; };
-		2740BF2B252D8D0500EDD771 /* AQISnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */; };
+		2740BF2A252D8D0500EDD771 /* SensorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BF13252D8C7C00EDD771 /* SensorInfo.swift */; };
 		275712AC252D47E00050B473 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712AB252D47E00050B473 /* LocationManager.swift */; };
 		275712B1252D49100050B473 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712AB252D47E00050B473 /* LocationManager.swift */; };
 		275712B7252D4A240050B473 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275712B6252D4A240050B473 /* ViewController.swift */; };
+		275BBAE9253FA57E007923BA /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BBAE8253FA57E007923BA /* Sensor.swift */; };
+		275BBAEA253FA57E007923BA /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BBAE8253FA57E007923BA /* Sensor.swift */; };
+		275BBAF0253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BBAEF253FACC0007923BA /* AnyCodable+Extensions.swift */; };
+		275BBAF1253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BBAEF253FACC0007923BA /* AnyCodable+Extensions.swift */; };
 		276E4B342526D5BB00FA4D26 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */; };
 		276E4B422526D5EA00FA4D26 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B412526D5EA00FA4D26 /* Button.swift */; };
 		276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */; };
@@ -124,6 +128,7 @@
 		2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		2716EAB12531B33D00B8E2B0 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		2716EAF12535642400B8E2B0 /* Coordinate+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinate+Placeholder.swift"; sourceTree = "<group>"; };
+		271CC62B253FB76C001EDCE1 /* AQIConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIConversion.swift; sourceTree = "<group>"; };
 		2724852A2525ED0F00866F1A /* PakuWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PakuWidget.entitlements; sourceTree = "<group>"; };
 		27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanDirectionGestureRecognizer.swift; sourceTree = "<group>"; };
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
@@ -131,11 +136,12 @@
 		272485632526745F00866F1A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
-		2740BF13252D8C7C00EDD771 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
-		2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQISnapshot.swift; sourceTree = "<group>"; };
+		2740BF13252D8C7C00EDD771 /* SensorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorInfo.swift; sourceTree = "<group>"; };
 		2740BF23252D8CB900EDD771 /* AQICategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQICategory.swift; sourceTree = "<group>"; };
 		275712AB252D47E00050B473 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		275712B6252D4A240050B473 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		275BBAE8253FA57E007923BA /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		275BBAEF253FACC0007923BA /* AnyCodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCodable+Extensions.swift"; sourceTree = "<group>"; };
 		276E4B332526D5BB00FA4D26 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		276E4B412526D5EA00FA4D26 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -295,6 +301,7 @@
 				277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */,
 				276E4B792526DBB500FA4D26 /* UIColor+Extensions.swift */,
 				2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */,
+				275BBAEF253FACC0007923BA /* AnyCodable+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,8 +309,9 @@
 		2740BF0A252D8BF600EDD771 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2740BF13252D8C7C00EDD771 /* Sensor.swift */,
-				2740BF1D252D8C9B00EDD771 /* AQISnapshot.swift */,
+				2740BF13252D8C7C00EDD771 /* SensorInfo.swift */,
+				275BBAE8253FA57E007923BA /* Sensor.swift */,
+				271CC62B253FB76C001EDCE1 /* AQIConversion.swift */,
 				2740BF23252D8CB900EDD771 /* AQICategory.swift */,
 			);
 			path = Models;
@@ -588,12 +596,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				276E4B642526D6FE00FA4D26 /* NSAttributedString+Extensions.swift in Sources */,
-				2740BF14252D8C7C00EDD771 /* Sensor.swift in Sources */,
+				2740BF14252D8C7C00EDD771 /* SensorInfo.swift in Sources */,
 				276F42C7253E9D5B004B86A1 /* CGFloat+Extensions.swift in Sources */,
 				276E4B5B2526D6CD00FA4D26 /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */,
 				2716EAB22531B33D00B8E2B0 /* MapButton.swift in Sources */,
 				276E4B522526D67800FA4D26 /* Control.swift in Sources */,
+				271CC62C253FB76C001EDCE1 /* AQIConversion.swift in Sources */,
 				276E4B5E2526D6CD00FA4D26 /* NSLayoutAnchor+AutoLayout.swift in Sources */,
 				276E4B342526D5BB00FA4D26 /* OnboardingViewController.swift in Sources */,
 				27248552252673B100866F1A /* PanDirectionGestureRecognizer.swift in Sources */,
@@ -609,17 +618,18 @@
 				2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */,
 				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */,
-				2740BF1E252D8C9B00EDD771 /* AQISnapshot.swift in Sources */,
 				27F0DED5253178A0005BDE1D /* AQIAnnotation.swift in Sources */,
 				276E4B422526D5EA00FA4D26 /* Button.swift in Sources */,
 				2740BF24252D8CB900EDD771 /* AQICategory.swift in Sources */,
 				2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
 				2716EA8825317BB300B8E2B0 /* MKMapView+Extensions.swift in Sources */,
+				275BBAF0253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */,
 				2716EA8225317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift in Sources */,
 				2716EA7C2531798500B8E2B0 /* AQIAnnotationView.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
 				2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */,
+				275BBAE9253FA57E007923BA /* Sensor.swift in Sources */,
 				2716EAAC2531B08200B8E2B0 /* Array+Extensions.swift in Sources */,
 				275712B7252D4A240050B473 /* ViewController.swift in Sources */,
 				27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */,
@@ -651,20 +661,22 @@
 				277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */,
 				2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */,
 				2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */,
-				2740BF2B252D8D0500EDD771 /* AQISnapshot.swift in Sources */,
 				2716EAF22535642400B8E2B0 /* Coordinate+Placeholder.swift in Sources */,
 				2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				275712B1252D49100050B473 /* LocationManager.swift in Sources */,
 				276E6C3F252D83B200A13D6D /* AQIProvider.swift in Sources */,
+				271CC62D253FB76C001EDCE1 /* AQIConversion.swift in Sources */,
 				276E6C33252D5AC500A13D6D /* AQIIndicatorBar.swift in Sources */,
 				2740BF29252D8D0500EDD771 /* AQICategory.swift in Sources */,
+				275BBAF1253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */,
 				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
 				2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */,
 				278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */,
+				275BBAEA253FA57E007923BA /* Sensor.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* Widgets.swift in Sources */,
 				276E6C2A252D5AC000A13D6D /* AQIBarWidgetView.swift in Sources */,
 				276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */,
-				2740BF2A252D8D0500EDD771 /* Sensor.swift in Sources */,
+				2740BF2A252D8D0500EDD771 /* SensorInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

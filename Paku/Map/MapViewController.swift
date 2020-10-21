@@ -29,7 +29,7 @@ class MapViewController: ViewController {
         }, for: .touchUpInside)
 
         view.addSubview(locationButton)
-        locationButton.pinEdges([.right, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 40, horizontal: 0))
+        locationButton.pinEdges([.right, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 50, horizontal: 0))
 
         let settingsButton = MapButton(symbolName: "line.horizontal.3")
         settingsButton.addAction(UIAction { [weak self] _ in
@@ -57,17 +57,16 @@ class MapViewController: ViewController {
     func refresh() {
         item?.cancel()
         item = DispatchWorkItem {
-            self.loader.loadClosestAQI { result in
-                guard let aqi = try? result.get() else {
-                    return
-                }
-
+            guard let location = self.mapView.userLocation.location else { return }
+            self.loader.loadSensor(near: location) { result in
+                guard let sensor = try? result.get() else { return }
                 self.mapView.removeAnnotations(self.mapView.annotations)
-                self.mapView.addAnnotation(AQIAnnotation(aqiValue: aqi.value, coordinate: self.mapView.userLocation.coordinate, sensorID: 0))
+                self.mapView.addAnnotation(AQIAnnotation(aqiValue: sensor.aqiValue(), coordinate: sensor.info.location.coordinate, sensorID: sensor.info.id))
+
             }
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: item!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: item!)
     }
 
     private func centerOnCurrentLocation(animated: Bool) {

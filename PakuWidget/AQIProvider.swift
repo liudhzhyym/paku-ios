@@ -10,12 +10,16 @@ import Solar
 import WidgetKit
 
 struct SimpleEntry: TimelineEntry {
+    struct Info {
+        var sensor: Sensor
+        var distance: CLLocationDistance
+    }
+
     let date: Date
-    let coordinate: CLLocationCoordinate2D? = .placeholder
-    let aqi: AQI?
+    let info: Info?
 
     var isDaytime: Bool {
-        coordinate.flatMap { Solar(coordinate: $0) }?.isDaytime ?? true
+        true
     }
 }
 
@@ -23,7 +27,7 @@ struct AQIProvider: TimelineProvider {
     let loader = AQILoader()
 
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), aqi: .placeholder)
+        SimpleEntry(date: Date(), info: nil)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
@@ -32,12 +36,28 @@ struct AQIProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        loader.closestAQIOrCached { result in
-            let currentDate = Date()
-            let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
-            let entry = SimpleEntry(date: currentDate, aqi: try? result.get())
-            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-            completion(timeline)
+        LocationManager.shared.requestLocation { result in
+            if let location = try? result.get() {
+                loader.loadSensor(near: location) { result in
+                    let currentDate = Date()
+                    let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
+
+                    let info: SimpleEntry.Info? = {
+                        if let sensor = try? result.get() {
+                            return SimpleEntry.Info(
+                                sensor: sensor,
+                                distance: sensor.info.location.distance(from: location)
+                            )
+                        } else {
+                            return nil
+                        }
+                    }()
+
+                    let entry = SimpleEntry(date: currentDate, info: info)
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                }
+            }
         }
     }
 }
