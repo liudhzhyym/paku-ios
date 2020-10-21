@@ -16,6 +16,8 @@ struct SensorInfo: Equatable, Codable {
 
     let id: Int
     let label: String
+    let isOutdoor: Bool
+    let age: Int
     let lat: Double
     let lon: Double
 
@@ -28,16 +30,22 @@ struct SensorInfo: Equatable, Codable {
               let labelIndex = fields["Label"],
               let latIndex = fields["Lat"],
               let lonIndex = fields["Lon"],
+              let typeIndex = fields["Type"],
+              let ageIndex = fields["age"],
               let id = data[idIndex].intValue,
               let lat = data[latIndex].doubleValue,
               let lon = data[lonIndex].doubleValue,
-              let label = data[labelIndex].string
+              let label = data[labelIndex].string,
+              let type = data[typeIndex].intValue,
+              let age = data[ageIndex].intValue
         else {
             throw InitializerError.failedToParse
         }
 
         self.id = id
         self.label = label
+        self.isOutdoor = type == 0
+        self.age = age
         self.lat = lat
         self.lon = lon
     }
