@@ -10,7 +10,12 @@ import MapKit
 
 class SensorAnnotationView: MKAnnotationView {
 
-    private static var imageCache: [Int: UIImage] = [:]
+    private struct ImageKey: Hashable {
+        let value: Int
+        let interfaceStyle: Int
+    }
+
+    private static var imageCache: [ImageKey: UIImage] = [:]
 
     private class View: UIView {
         private lazy var borderView = UIView()
@@ -63,10 +68,12 @@ class SensorAnnotationView: MKAnnotationView {
 
     func display(aqi: Double) {
         let aqi = Int(aqi)
+        let key = ImageKey(value: aqi, interfaceStyle: traitCollection.userInterfaceStyle.rawValue)
 
-        if let image = Self.imageCache[aqi] {
+        if let image = Self.imageCache[key] {
             self.image = image
         } else {
+            UIApplication.shared.windows[0].addSubview(Self.snapshotView)
             Self.snapshotView.display(aqi: aqi)
             Self.snapshotView.setNeedsLayout()
             Self.snapshotView.layoutIfNeeded()
@@ -76,8 +83,16 @@ class SensorAnnotationView: MKAnnotationView {
                 Self.snapshotView.layer.render(in: rendererContext.cgContext)
             }
 
-            Self.imageCache[aqi] = image
+            Self.snapshotView.removeFromSuperview()
+            Self.imageCache[key] = image
             self.image = image
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            prepareForDisplay()
         }
     }
 }

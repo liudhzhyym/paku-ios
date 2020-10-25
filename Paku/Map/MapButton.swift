@@ -34,7 +34,7 @@ class MapButton: Control {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .init(width: 0, height: 1)
         layer.shadowOpacity = 0.2
-        layer.shadowRadius = 15
+        layer.shadowRadius = 5
 
         addSubview(backgroundView)
         backgroundView.pinEdges(to: self)

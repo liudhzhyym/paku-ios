@@ -5,7 +5,7 @@ class Button: Control {
     private let activityIndicator = UIActivityIndicatorView(style: .medium)
     private let content: UIView
 
-    convenience init(title: String, background: UIColor = .customPurple, textColor: UIColor = .systemBackground) {
+    convenience init(title: String, background: UIColor = .systemBlue, textColor: UIColor = .systemBackground) {
         let label = UILabel(font: .systemFont(ofSize: 20, weight: .semibold), color: textColor, alignment: .center)
         label.text = title
         self.init(content: label)
