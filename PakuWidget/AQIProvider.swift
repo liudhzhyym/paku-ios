@@ -27,7 +27,7 @@ struct AQIProvider: TimelineProvider {
     let loader = AQILoader()
 
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), info: nil)
+        SimpleEntry(date: Date(), info: .init(sensor: .placeholder, distance: 42))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {

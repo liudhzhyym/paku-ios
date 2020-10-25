@@ -14,22 +14,6 @@ struct Sensor: Codable, Equatable {
         case failedToParse
     }
 
-    enum Location: String, Codable, Equatable {
-        case outside
-        case inside
-        case unknown
-
-        init(_ value: String) {
-            if value == "outside" {
-                self = .outside
-            } else if value == "inside" {
-                self = .inside
-            } else {
-                self = .unknown
-            }
-        }
-    }
-
     struct ParticleInfo: Codable, Equatable {
         var p_0_3_um: Double
         var p_0_5_um: Double
@@ -77,8 +61,6 @@ struct Sensor: Codable, Equatable {
     }
 
     let info: SensorInfo
-
-    let location: Location
     let age: Date
     let humidity: Double
 
@@ -91,14 +73,12 @@ struct Sensor: Codable, Equatable {
 
         self.info = info
 
-        guard let location = parent["DEVICE_LOCATIONTYPE"]?.string,
-              let age = parent["AGE"]?.intValue,
+        guard let age = parent["AGE"]?.intValue,
               let humidity = parent["humidity"]?.doubleValue
         else {
             throw InitializerError.failedToParse
         }
 
-        self.location = Location(location)
         self.age = Calendar.current.date(byAdding: .minute, value: -age, to: Date())!
         self.humidity = humidity
         self.particleInfo = results.compactMap(ParticleInfo.init)

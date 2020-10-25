@@ -17,13 +17,13 @@
 		2716EAB22531B33D00B8E2B0 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAB12531B33D00B8E2B0 /* MapButton.swift */; };
 		2716EAE6253563A200B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAE5253563A200B8E2B0 /* Solar */; };
 		2716EAEC253563A800B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAEB253563A800B8E2B0 /* Solar */; };
-		2716EAF22535642400B8E2B0 /* Coordinate+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAF12535642400B8E2B0 /* Coordinate+Placeholder.swift */; };
 		271CC62C253FB76C001EDCE1 /* AQIConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CC62B253FB76C001EDCE1 /* AQIConversion.swift */; };
 		271CC62D253FB76C001EDCE1 /* AQIConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CC62B253FB76C001EDCE1 /* AQIConversion.swift */; };
 		27248552252673B100866F1A /* PanDirectionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */; };
 		27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */; };
 		2724855E2526742C00866F1A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724855D2526742C00866F1A /* RootViewController.swift */; };
 		272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272485632526745F00866F1A /* UIViewController+Extensions.swift */; };
+		2738C383254566AA007BC1A4 /* Sensor+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */; };
 		273E59EC25453FF7008F18AF /* ScreenCorners in Frameworks */ = {isa = PBXBuildFile; productRef = 273E59EB25453FF7008F18AF /* ScreenCorners */; };
 		2740BEE5252D8B6900EDD771 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */; };
 		2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */; };
@@ -129,13 +129,13 @@
 		2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AQICategory+Color.swift"; sourceTree = "<group>"; };
 		2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		2716EAB12531B33D00B8E2B0 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
-		2716EAF12535642400B8E2B0 /* Coordinate+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinate+Placeholder.swift"; sourceTree = "<group>"; };
 		271CC62B253FB76C001EDCE1 /* AQIConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIConversion.swift; sourceTree = "<group>"; };
 		2724852A2525ED0F00866F1A /* PakuWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PakuWidget.entitlements; sourceTree = "<group>"; };
 		27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanDirectionGestureRecognizer.swift; sourceTree = "<group>"; };
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
 		2724855D2526742C00866F1A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		272485632526745F00866F1A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensor+Placeholder.swift"; sourceTree = "<group>"; };
 		2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
 		2740BF13252D8C7C00EDD771 /* SensorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorInfo.swift; sourceTree = "<group>"; };
@@ -418,8 +418,8 @@
 			children = (
 				2724852A2525ED0F00866F1A /* PakuWidget.entitlements */,
 				C24ED0D82525DD1D001B3952 /* Widgets.swift */,
+				2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */,
 				276E6C3E252D83B200A13D6D /* AQIProvider.swift */,
-				2716EAF12535642400B8E2B0 /* Coordinate+Placeholder.swift */,
 				278D70A22535679E00146D37 /* Environment+Daytime.swift */,
 				276E6C4E252D853700A13D6D /* Views */,
 				C24ED0DB2525DD1F001B3952 /* Assets.xcassets */,
@@ -669,7 +669,6 @@
 				277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */,
 				2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */,
 				2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */,
-				2716EAF22535642400B8E2B0 /* Coordinate+Placeholder.swift in Sources */,
 				2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				275712B1252D49100050B473 /* LocationManager.swift in Sources */,
 				276E6C3F252D83B200A13D6D /* AQIProvider.swift in Sources */,
@@ -685,6 +684,7 @@
 				276E6C2A252D5AC000A13D6D /* AQIBarWidgetView.swift in Sources */,
 				276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */,
 				2740BF2A252D8D0500EDD771 /* SensorInfo.swift in Sources */,
+				2738C383254566AA007BC1A4 /* Sensor+Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,7 +844,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -867,7 +867,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -973,7 +973,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -997,7 +997,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

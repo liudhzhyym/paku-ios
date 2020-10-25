@@ -49,16 +49,9 @@ struct AQIBarWidgetView: View {
     }
 }
 
-//struct AQIBarWidget_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AQIBarWidgetView(aqi: .init(value: 50, distance: 200, date: Date().addingTimeInterval(-150)))
-//            .previewContext(WidgetPreviewContext(family: .systemSmall))
-//
-//        AQIBarWidgetView(aqi: .init(value: 150, distance: 2000, date: Date()))
-//            .previewContext(WidgetPreviewContext(family: .systemSmall))
-//
-//        AQIBarWidgetView(aqi: .init(value: 600, distance: 10, date: Date()))
-//            .previewContext(WidgetPreviewContext(family: .systemSmall))
-//
-//    }
-//}
+struct AQIBarWidget_Previews: PreviewProvider {
+    static var previews: some View {
+        AQIBarWidgetView(info: .init(sensor: .placeholder, distance: 33))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}
