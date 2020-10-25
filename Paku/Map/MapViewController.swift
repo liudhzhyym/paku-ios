@@ -10,7 +10,11 @@ import MapKit
 
 class MapViewController: ViewController {
 
+    private var queuedAnnotations: [MKAnnotation] = []
+    private var needsAnnotationUpdate = false
     private let loader = SensorLoader()
+
+    private var updateTimer: Timer?
 
     private var didCenterOnInitialLocation = false
     private var item: DispatchWorkItem?
@@ -29,6 +33,10 @@ class MapViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            self?.updateAnnotationsIfNeeded()
+        }
 
         additionalSafeAreaInsets.bottom = 10
 
@@ -100,7 +108,7 @@ class MapViewController: ViewController {
                 }
             } else {
                 let annotation = SensorAnnotation(sensor: sensor)
-                self.mapView.addAnnotation(annotation)
+                self.queuedAnnotations.append(annotation)
             }
         }
 
@@ -158,6 +166,15 @@ class MapViewController: ViewController {
             UIViewPropertyAnimator {
                 self.view.layoutIfNeeded()
             }.startAnimation()
+        }
+    }
+
+    private func updateAnnotationsIfNeeded() {
+        if queuedAnnotations.count > 0 {
+            let annotations = queuedAnnotations
+            queuedAnnotations.removeAll(keepingCapacity: true)
+            print("--- Adding \(annotations.count) annotations")
+            mapView.addAnnotations(annotations)
         }
     }
 }
