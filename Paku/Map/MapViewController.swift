@@ -10,7 +10,7 @@ import MapKit
 
 class MapViewController: ViewController {
 
-    private let loader = AQILoader()
+    private let loader = SensorLoader()
 
     private var didCenterOnInitialLocation = false
     private var item: DispatchWorkItem?
@@ -50,8 +50,8 @@ class MapViewController: ViewController {
             self?.openSettings()
         }, for: .touchUpInside)
 
-//        view.addSubview(settingsButton)
-//        settingsButton.pinEdges([.left, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 40, horizontal: 0))
+        //        view.addSubview(settingsButton)
+        //        settingsButton.pinEdges([.left, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 40, horizontal: 0))
 
 
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
@@ -85,27 +85,26 @@ class MapViewController: ViewController {
                             insets: .init(all: 10))
 
         hideSensorDetails(animated: false)
-
-        refresh()
     }
 
     func refresh() {
-        if let annotation = mapView.annotations.first(where: { $0 is SensorAnnotation }) as? SensorAnnotation,
-           Date().timeIntervalSince(annotation.sensor.age) < 60 {
-            return
-        }
+        loader.loadAnnotations(in: mapView.visibleMapRect) { [weak self] sensor in
+            guard let self = self else { return }
 
-        item?.cancel()
-        item = DispatchWorkItem {
-            guard let location = self.mapView.userLocation.location else { return }
-            self.loader.loadSensor(near: location) { result in
-                guard let sensor = try? result.get() else { return }
-                self.mapView.removeAnnotations(self.mapView.annotations)
-                self.mapView.addAnnotation(SensorAnnotation(sensor: sensor))
+            if let existing = self.mapView.annotations
+                .compactMap({ $0 as? SensorAnnotation })
+                .first(where: { $0.sensor.info.id == sensor.info.id }) {
+                if sensor != existing.sensor {
+                    existing.sensor = sensor
+                    self.mapView.view(for: existing)?.annotation = existing
+                }
+            } else {
+                let annotation = SensorAnnotation(sensor: sensor)
+                self.mapView.addAnnotation(annotation)
             }
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: item!)
+        removeAnnotationsOutsideRect()
     }
 
     private func centerOnCurrentLocation(animated: Bool) {
@@ -116,6 +115,17 @@ class MapViewController: ViewController {
         )
 
         mapView.setRegion(region, animated: animated)
+    }
+
+    private func removeAnnotationsOutsideRect() {
+        let annotations = mapView.annotations
+            .compactMap({ $0 as? SensorAnnotation })
+            .filter {
+                let point = MKMapPoint($0.sensor.info.location.coordinate)
+                return !self.mapView.visibleMapRect.contains(point)
+            }
+
+        mapView.removeAnnotations(annotations)
     }
 
     private func openSettings() {
@@ -157,11 +167,11 @@ extension MapViewController: MKMapViewDelegate {
         if didCenterOnInitialLocation { return }
         didCenterOnInitialLocation = true
         centerOnCurrentLocation(animated: false)
-//        refresh()
+        refresh()
     }
 
-    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-//        refresh()
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        refresh()
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

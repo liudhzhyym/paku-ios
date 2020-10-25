@@ -64,6 +64,7 @@
 		278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D70A22535679E00146D37 /* Environment+Daytime.swift */; };
 		27E16B84253010F6006D28B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E16B83253010F6006D28B1 /* MapViewController.swift */; };
 		27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */; };
+		27F271F52545F2FB005C32B3 /* SensorLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F271F42545F2FB005C32B3 /* SensorLoader.swift */; };
 		C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0622525BEAD001B3952 /* AppDelegate.swift */; };
 		C24ED0652525BEAD001B3952 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0642525BEAD001B3952 /* SceneDelegate.swift */; };
 		C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED0662525BEAD001B3952 /* HomeViewController.swift */; };
@@ -165,6 +166,7 @@
 		278D70A22535679E00146D37 /* Environment+Daytime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Daytime.swift"; sourceTree = "<group>"; };
 		27E16B83253010F6006D28B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorAnnotation.swift; sourceTree = "<group>"; };
+		27F271F42545F2FB005C32B3 /* SensorLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLoader.swift; sourceTree = "<group>"; };
 		C24ED05F2525BEAD001B3952 /* Paku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24ED0622525BEAD001B3952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C24ED0642525BEAD001B3952 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			children = (
 				27E16B83253010F6006D28B1 /* MapViewController.swift */,
 				2781B0CC2545429F0058AA33 /* SensorDetailView.swift */,
+				27F271F42545F2FB005C32B3 /* SensorLoader.swift */,
 				2716EAB12531B33D00B8E2B0 /* MapButton.swift */,
 				2716EA7B2531798500B8E2B0 /* SensorAnnotationView.swift */,
 				27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */,
@@ -627,6 +630,7 @@
 				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */,
 				27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */,
+				27F271F52545F2FB005C32B3 /* SensorLoader.swift in Sources */,
 				276E4B422526D5EA00FA4D26 /* Button.swift in Sources */,
 				2740BF24252D8CB900EDD771 /* AQICategory.swift in Sources */,
 				2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */,
