@@ -20,15 +20,14 @@ class MapViewController: ViewController {
     private var item: DispatchWorkItem?
     private lazy var mapView = MKMapView()
 
-    private lazy var detailViewController = SensorDetailViewController()
-    private var detailView: UIView { detailViewController.view }
+    private lazy var detailContainer = MapDetailContainer()
 
-    private lazy var visibleDetailViewConstraints = [
-        detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    private lazy var visibleDetailConstraints = [
+        detailContainer.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ]
 
-    private lazy var hiddenDetailViewConstraints = [
-        detailView.topAnchor.constraint(equalTo: view.bottomAnchor)
+    private lazy var hiddenDetailConstraints = [
+        detailContainer.view.topAnchor.constraint(equalTo: view.bottomAnchor)
     ]
 
     override func viewDidLoad() {
@@ -75,24 +74,25 @@ class MapViewController: ViewController {
         mapView.showsUserLocation = true
         mapView.mapType = .mutedStandard
 
-        detailViewController.onClose = { [weak self] in
+        detailContainer.onClose = { [weak self] in
             guard let self = self else { return }
             for annotation in self.mapView.selectedAnnotations {
                 self.mapView.deselectAnnotation(annotation, animated: true)
             }
         }
 
-        add(detailViewController)
+        add(detailContainer)
         setOverrideTraitCollection(
             UITraitCollection(userInterfaceLevel: .elevated),
-            forChild: detailViewController)
+            forChild: detailContainer
+        )
 
-        view.addSubview(detailView)
-        detailView.pinEdges([.left, .right],
-                            to: view.safeAreaLayoutGuide,
-                            insets: .init(all: 10))
+        view.addSubview(detailContainer.view)
+        detailContainer.view.pinEdges([.left, .right],
+                                      to: view.safeAreaLayoutGuide,
+                                      insets: .init(all: 10))
 
-        hideSensorDetails(animated: false)
+        setDetailHidden(true, animated: false)
     }
 
     func refresh() {
@@ -118,8 +118,8 @@ class MapViewController: ViewController {
     private func centerOnCurrentLocation(animated: Bool) {
         let region = MKCoordinateRegion(
             center: mapView.userLocation.coordinate,
-            latitudinalMeters: 4000,
-            longitudinalMeters: 4000
+            latitudinalMeters: 2000,
+            longitudinalMeters: 2000
         )
 
         mapView.setRegion(region, animated: animated)
@@ -141,26 +141,27 @@ class MapViewController: ViewController {
     }
 
     func display(sensor: Sensor, animated: Bool) {
-        detailViewController.sensor = sensor
-
-        UIView.performWithoutAnimation {
-            detailView.setNeedsLayout()
-            detailView.layoutIfNeeded()
-        }
-
-        NSLayoutConstraint.deactivate(hiddenDetailViewConstraints)
-        NSLayoutConstraint.activate(visibleDetailViewConstraints)
-
-        if animated {
-            UIViewPropertyAnimator {
-                self.view.layoutIfNeeded()
-            }.startAnimation()
-        }
+        let view = SensorDetailView(sensor: sensor)
+        detailContainer.display(detail: view, animated: true)
+        setDetailHidden(false, animated: true)
     }
 
-    func hideSensorDetails(animated: Bool) {
-        NSLayoutConstraint.deactivate(visibleDetailViewConstraints)
-        NSLayoutConstraint.activate(hiddenDetailViewConstraints)
+    func display(annotations: [SensorAnnotation], animated: Bool) {
+        let view = SensorListView(annotations: annotations, maximumHeight: self.view.frame.height / 2) {
+            self.mapView.selectAnnotation($0, animated: true)
+        }
+        detailContainer.display(detail: view, animated: true)
+        setDetailHidden(false, animated: true)
+    }
+
+    func setDetailHidden(_ isHidden: Bool, animated: Bool) {
+        if isHidden {
+            NSLayoutConstraint.deactivate(visibleDetailConstraints)
+            NSLayoutConstraint.activate(hiddenDetailConstraints)
+        } else {
+            NSLayoutConstraint.deactivate(hiddenDetailConstraints)
+            NSLayoutConstraint.activate(visibleDetailConstraints)
+        }
 
         if animated {
             UIViewPropertyAnimator {
@@ -227,10 +228,13 @@ extension MapViewController: MKMapViewDelegate {
         }.startAnimation()
 
         if view.isSelected, let annotation = view.annotation as? SensorAnnotation {
-            self.mapView.setCenter(annotation.sensor.info.location.coordinate, animated: true)
-            self.display(sensor: annotation.sensor, animated: true)
+            mapView.setCenter(annotation.sensor.info.location.coordinate, animated: true)
+            display(sensor: annotation.sensor, animated: true)
+        } else if view.isSelected, let annotation = view.annotation as? MKClusterAnnotation {
+            let annotations = annotation.memberAnnotations.compactMap { $0 as? SensorAnnotation }
+            display(annotations: annotations, animated: true)
         } else {
-            self.hideSensorDetails(animated: true)
+            setDetailHidden(true, animated: true)
         }
     }
 }

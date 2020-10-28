@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "ScreenCorners",
-        "repositoryURL": "https://github.com/kylebshr/ScreenCorners",
-        "state": {
-          "branch": null,
-          "revision": "e4a0b65fb1b61ede90f45061d964a6456a856053",
-          "version": "1.0.0"
-        }
-      },
-      {
         "package": "Solar",
         "repositoryURL": "https://github.com/kylebshr/Solar",
         "state": {

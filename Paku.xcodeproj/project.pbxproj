@@ -23,8 +23,9 @@
 		27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */; };
 		2724855E2526742C00866F1A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724855D2526742C00866F1A /* RootViewController.swift */; };
 		272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272485632526745F00866F1A /* UIViewController+Extensions.swift */; };
+		272C982F254673E000E6D5B5 /* MapDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */; };
+		272C98352547C53800E6D5B5 /* SensorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C98342547C53800E6D5B5 /* SensorListView.swift */; };
 		2738C383254566AA007BC1A4 /* Sensor+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */; };
-		273E59EC25453FF7008F18AF /* ScreenCorners in Frameworks */ = {isa = PBXBuildFile; productRef = 273E59EB25453FF7008F18AF /* ScreenCorners */; };
 		2740BEE5252D8B6900EDD771 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */; };
 		2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */; };
 		2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */; };
@@ -136,6 +137,8 @@
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
 		2724855D2526742C00866F1A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		272485632526745F00866F1A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailContainer.swift; sourceTree = "<group>"; };
+		272C98342547C53800E6D5B5 /* SensorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorListView.swift; sourceTree = "<group>"; };
 		2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensor+Placeholder.swift"; sourceTree = "<group>"; };
 		2740BEE4252D8B6900EDD771 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		2740BEEA252D8B8500EDD771 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
@@ -196,7 +199,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				273E59EC25453FF7008F18AF /* ScreenCorners in Frameworks */,
 				2716EAE6253563A200B8E2B0 /* Solar in Frameworks */,
 				C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */,
 			);
@@ -339,7 +341,9 @@
 			isa = PBXGroup;
 			children = (
 				27E16B83253010F6006D28B1 /* MapViewController.swift */,
+				272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */,
 				2781B0CC2545429F0058AA33 /* SensorDetailView.swift */,
+				272C98342547C53800E6D5B5 /* SensorListView.swift */,
 				27F271F42545F2FB005C32B3 /* SensorLoader.swift */,
 				2716EAB12531B33D00B8E2B0 /* MapButton.swift */,
 				2716EA7B2531798500B8E2B0 /* SensorAnnotationView.swift */,
@@ -452,7 +456,6 @@
 			packageProductDependencies = (
 				C24ED09B2525C171001B3952 /* AnyCodable */,
 				2716EAE5253563A200B8E2B0 /* Solar */,
-				273E59EB25453FF7008F18AF /* ScreenCorners */,
 			);
 			productName = Paku;
 			productReference = C24ED05F2525BEAD001B3952 /* Paku.app */;
@@ -552,7 +555,6 @@
 			packageReferences = (
 				C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */,
 				2716EAE4253563A200B8E2B0 /* XCRemoteSwiftPackageReference "Solar" */,
-				273E59EA25453FF7008F18AF /* XCRemoteSwiftPackageReference "ScreenCorners" */,
 			);
 			productRefGroup = C24ED0602525BEAD001B3952 /* Products */;
 			projectDirPath = "";
@@ -636,10 +638,12 @@
 				2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */,
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
 				2716EA8825317BB300B8E2B0 /* MKMapView+Extensions.swift in Sources */,
+				272C98352547C53800E6D5B5 /* SensorListView.swift in Sources */,
 				275BBAF0253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */,
 				2716EA8225317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift in Sources */,
 				2716EA7C2531798500B8E2B0 /* SensorAnnotationView.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
+				272C982F254673E000E6D5B5 /* MapDetailContainer.swift in Sources */,
 				2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */,
 				275BBAE9253FA57E007923BA /* Sensor.swift in Sources */,
 				2716EAAC2531B08200B8E2B0 /* Array+Extensions.swift in Sources */,
@@ -848,7 +852,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -871,7 +875,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -977,7 +981,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1001,7 +1005,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1077,14 +1081,6 @@
 				kind = branch;
 			};
 		};
-		273E59EA25453FF7008F18AF /* XCRemoteSwiftPackageReference "ScreenCorners" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kylebshr/ScreenCorners";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Flight-School/AnyCodable";
@@ -1105,11 +1101,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2716EAE4253563A200B8E2B0 /* XCRemoteSwiftPackageReference "Solar" */;
 			productName = Solar;
-		};
-		273E59EB25453FF7008F18AF /* ScreenCorners */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 273E59EA25453FF7008F18AF /* XCRemoteSwiftPackageReference "ScreenCorners" */;
-			productName = ScreenCorners;
 		};
 		C24ED09B2525C171001B3952 /* AnyCodable */ = {
 			isa = XCSwiftPackageProductDependency;
