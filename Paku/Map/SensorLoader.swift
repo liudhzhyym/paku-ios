@@ -25,7 +25,7 @@ class SensorLoader {
                     return area.contains(point)
                 }
                 .shuffled()
-                .prefix(100)
+                .prefix(200)
 
             print("-- Loading \(sensors.count) sensors out of \(self.sensors.count)")
 

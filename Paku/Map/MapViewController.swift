@@ -8,6 +8,9 @@
 import UIKit
 import MapKit
 
+private let maximumAnnotations = 1000
+private let queuedAnnotationDelay: TimeInterval = 0.2
+
 class MapViewController: ViewController {
 
     private var queuedAnnotations: [MKAnnotation] = []
@@ -33,7 +36,9 @@ class MapViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+        updateTimer = Timer.scheduledTimer(
+            withTimeInterval: queuedAnnotationDelay,
+            repeats: true) { [weak self] _ in
             self?.updateAnnotationsIfNeeded()
         }
 
@@ -111,8 +116,6 @@ class MapViewController: ViewController {
                 self.queuedAnnotations.append(annotation)
             }
         }
-
-        removeAnnotationsOutsideRect()
     }
 
     private func centerOnCurrentLocation(animated: Bool) {
@@ -125,15 +128,34 @@ class MapViewController: ViewController {
         mapView.setRegion(region, animated: animated)
     }
 
-    private func removeAnnotationsOutsideRect() {
-        let annotations = mapView.annotations
-            .compactMap({ $0 as? SensorAnnotation })
-            .filter {
-                let point = MKMapPoint($0.sensor.info.location.coordinate)
-                return !self.mapView.visibleMapRect.contains(point)
-            }
+    private func trimAnnotations() {
+        let visibleAnnotations = Set(
+            mapView.annotations
+                .compactMap({ $0 as? SensorAnnotation })
+                .filter {
+                    let point = MKMapPoint($0.sensor.info.location.coordinate)
+                    return self.mapView.visibleMapRect.contains(point)
+                }
+        )
 
-        mapView.removeAnnotations(annotations)
+        let invisibleAnnotations = Set(mapView.annotations.compactMap {
+            $0 as? SensorAnnotation
+        }).subtracting(visibleAnnotations)
+
+        var annotationsToRemove: [SensorAnnotation] = []
+
+        if visibleAnnotations.count > maximumAnnotations {
+            annotationsToRemove.append(contentsOf: visibleAnnotations.shuffled()
+                                        .dropFirst(maximumAnnotations))
+            annotationsToRemove.append(contentsOf: invisibleAnnotations)
+        } else {
+            let allowedInvisibleAnnotations = maximumAnnotations - visibleAnnotations.count
+            annotationsToRemove.append(contentsOf: invisibleAnnotations.shuffled()
+                                        .dropFirst(allowedInvisibleAnnotations))
+        }
+
+        mapView.removeAnnotations(annotationsToRemove)
+        print("--- removed \(annotationsToRemove.count)")
     }
 
     private func openSettings() {
@@ -176,6 +198,7 @@ class MapViewController: ViewController {
             queuedAnnotations.removeAll(keepingCapacity: true)
             print("--- Adding \(annotations.count) annotations")
             mapView.addAnnotations(annotations)
+            trimAnnotations()
         }
     }
 }
