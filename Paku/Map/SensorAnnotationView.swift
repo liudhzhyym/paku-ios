@@ -19,8 +19,8 @@ class SensorAnnotationView: MKAnnotationView {
 
     private class View: UIView {
         private lazy var borderView = UIView()
-        private lazy var innerBorderView = UIView()
-        private lazy var label = UILabel(font: .systemFont(ofSize: 13, weight: .semibold), alignment: .center)
+//        private lazy var innerBorderView = UIView()
+        private lazy var label = UILabel(font: .systemFont(ofSize: 13, weight: .bold), alignment: .center)
 
         override init(frame: CGRect) {
             super.init(frame: frame)
@@ -31,13 +31,13 @@ class SensorAnnotationView: MKAnnotationView {
 //            borderView.layer.shadowOpacity = 0.25
 //            borderView.layer.shadowRadius = 5
             borderView.layer.borderWidth = 3
-            borderView.backgroundColor = .systemBackground
+            borderView.layer.borderColor = UIColor.black.cgColor
             borderView.pinEdges(to: self)
 
-            addSubview(innerBorderView)
-            innerBorderView.layer.borderColor = UIColor.black.cgColor
-            innerBorderView.layer.borderWidth = 2
-            innerBorderView.pinEdges(to: borderView, insets: .init(all: -1))
+//            addSubview(innerBorderView)
+//            innerBorderView.layer.borderColor = UIColor.black.cgColor
+//            innerBorderView.layer.borderWidth = 2
+//            innerBorderView.pinEdges(to: borderView, insets: .init(all: -1))
 
             addSubview(label)
             label.pinCenter(to: borderView)
@@ -49,14 +49,20 @@ class SensorAnnotationView: MKAnnotationView {
 
         func display(aqi: Int, isOutdoor: Bool) {
             label.text = "\(aqi)"
-            innerBorderView.isHidden = isOutdoor
-            borderView.layer.borderColor = AQICategory.epaColor(for: Double(aqi)).cgColor
+            borderView.isHidden = isOutdoor
+
+            let color = AQICategory.epaColor(for: Double(aqi))
+            backgroundColor = color
+            label.textColor = color.isLight ? UIColor.black : UIColor.white
         }
 
         override func layoutSubviews() {
             super.layoutSubviews()
 
-            innerBorderView.layer.cornerRadius = innerBorderView.frame.height / 2
+//            innerBorderView.layer.cornerRadius = innerBorderView.frame.height / 2
+
+            layer.cornerRadius = frame.height / 2
+
             borderView.frame = bounds
             borderView.layer.cornerRadius = frame.height / 2
         }

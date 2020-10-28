@@ -10,6 +10,16 @@ import UIKit
 extension UIColor {
     static let customPurple = UIColor(hex: "9D05C3")
 
+    var brightness: CGFloat {
+        var brightness: CGFloat = 0
+        getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+        return brightness
+    }
+
+    var isLight: Bool {
+        return brightness >= 0.6
+    }
+
     // From https://stackoverflow.com/questions/22868182/uicolor-transition-based-on-progress-value
     public convenience init(hex: String) {
         let r, g, b: CGFloat
