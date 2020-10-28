@@ -125,6 +125,7 @@ class MapViewController: ViewController {
             longitudinalMeters: 2000
         )
 
+        mapView.deselectAnnotation(mapView.selectedAnnotations.first, animated: animated)
         mapView.setRegion(region, animated: animated)
     }
 
@@ -248,6 +249,7 @@ extension MapViewController: MKMapViewDelegate {
     private func highlight(view: SensorAnnotationView) {
         UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.6) {
             view.transform = view.isSelected ? .init(scaleX: 1.3, y: 1.3) : .identity
+            view.layer.shadowColor = view.isSelected ? UIColor.black.cgColor : UIColor.clear.cgColor
         }.startAnimation()
 
         if view.isSelected, let annotation = view.annotation as? SensorAnnotation {

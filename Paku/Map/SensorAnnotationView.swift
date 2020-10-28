@@ -19,25 +19,15 @@ class SensorAnnotationView: MKAnnotationView {
 
     private class View: UIView {
         private lazy var borderView = UIView()
-//        private lazy var innerBorderView = UIView()
         private lazy var label = UILabel(font: .systemFont(ofSize: 13, weight: .bold), alignment: .center)
 
         override init(frame: CGRect) {
             super.init(frame: frame)
 
             addSubview(borderView)
-//            borderView.layer.shadowColor = UIColor.black.cgColor
-//            borderView.layer.shadowOffset = .init(width: 0, height: 1)
-//            borderView.layer.shadowOpacity = 0.25
-//            borderView.layer.shadowRadius = 5
             borderView.layer.borderWidth = 3
             borderView.layer.borderColor = UIColor.black.cgColor
             borderView.pinEdges(to: self)
-
-//            addSubview(innerBorderView)
-//            innerBorderView.layer.borderColor = UIColor.black.cgColor
-//            innerBorderView.layer.borderWidth = 2
-//            innerBorderView.pinEdges(to: borderView, insets: .init(all: -1))
 
             addSubview(label)
             label.pinCenter(to: borderView)
@@ -59,8 +49,6 @@ class SensorAnnotationView: MKAnnotationView {
         override func layoutSubviews() {
             super.layoutSubviews()
 
-//            innerBorderView.layer.cornerRadius = innerBorderView.frame.height / 2
-
             layer.cornerRadius = frame.height / 2
 
             borderView.frame = bounds
@@ -72,6 +60,13 @@ class SensorAnnotationView: MKAnnotationView {
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+
+        layer.shadowOffset = .init(width: 0, height: 1)
+        layer.shadowOpacity = 0.25
+        layer.shadowRadius = 5
+        layer.shadowPath = CGPath(ellipseIn: Self.snapshotView.frame, transform: nil)
+        layer.shadowColor = UIColor.clear.cgColor
+
         collisionMode = .circle
     }
 
@@ -92,7 +87,7 @@ class SensorAnnotationView: MKAnnotationView {
             Self.snapshotView.setNeedsLayout()
             Self.snapshotView.layoutIfNeeded()
 
-            let renderer = UIGraphicsImageRenderer(bounds: Self.snapshotView.bounds.insetBy(dx: -2, dy: -2))
+            let renderer = UIGraphicsImageRenderer(bounds: Self.snapshotView.bounds)
             let image = renderer.image { rendererContext in
                 Self.snapshotView.layer.render(in: rendererContext.cgContext)
             }
