@@ -37,7 +37,7 @@ class SensorAnnotationView: MKAnnotationView {
             addSubview(innerBorderView)
             innerBorderView.layer.borderColor = UIColor.black.cgColor
             innerBorderView.layer.borderWidth = 2
-            innerBorderView.pinEdges(to: borderView, insets: .init(all: 3))
+            innerBorderView.pinEdges(to: borderView, insets: .init(all: -1))
 
             addSubview(label)
             label.pinCenter(to: borderView)
@@ -86,7 +86,7 @@ class SensorAnnotationView: MKAnnotationView {
             Self.snapshotView.setNeedsLayout()
             Self.snapshotView.layoutIfNeeded()
 
-            let renderer = UIGraphicsImageRenderer(bounds: Self.snapshotView.bounds.insetBy(dx: -10, dy: -10))
+            let renderer = UIGraphicsImageRenderer(bounds: Self.snapshotView.bounds.insetBy(dx: -2, dy: -2))
             let image = renderer.image { rendererContext in
                 Self.snapshotView.layer.render(in: rendererContext.cgContext)
             }

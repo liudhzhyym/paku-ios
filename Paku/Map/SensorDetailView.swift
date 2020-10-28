@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ScreenCorners
 
 class SensorDetailView: UIView {
 
