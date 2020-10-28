@@ -18,7 +18,7 @@ class SensorDetailView: UIView {
         super.init(frame: .zero)
 
         titleLabel.text = sensor.info.label
-        descriptionLabel.text = "Current air quality is satisfactory, and air pollution poses little or no risk."
+        descriptionLabel.text = "\(sensor.info.isOutdoor ? "Outdoor" : "Indoor")"
 
         descriptionLabel.numberOfLines = 0
 

@@ -19,21 +19,27 @@ class SensorAnnotationView: MKAnnotationView {
 
     private class View: UIView {
         private lazy var borderView = UIView()
+        private lazy var innerBorderView = UIView()
         private lazy var label = UILabel(font: .systemFont(ofSize: 13, weight: .semibold), alignment: .center)
 
         override init(frame: CGRect) {
             super.init(frame: frame)
 
             addSubview(borderView)
-            borderView.layer.shadowColor = UIColor.black.cgColor
-            borderView.layer.shadowOffset = .init(width: 0, height: 1)
-            borderView.layer.shadowOpacity = 0.25
-            borderView.layer.shadowRadius = 5
+//            borderView.layer.shadowColor = UIColor.black.cgColor
+//            borderView.layer.shadowOffset = .init(width: 0, height: 1)
+//            borderView.layer.shadowOpacity = 0.25
+//            borderView.layer.shadowRadius = 5
             borderView.layer.borderWidth = 3
             borderView.backgroundColor = .systemBackground
             borderView.pinEdges(to: self)
 
-            borderView.addSubview(label)
+            addSubview(innerBorderView)
+            innerBorderView.layer.borderColor = UIColor.black.cgColor
+            innerBorderView.layer.borderWidth = 2
+            innerBorderView.pinEdges(to: borderView, insets: .init(all: 3))
+
+            addSubview(label)
             label.pinCenter(to: borderView)
         }
 
@@ -41,14 +47,16 @@ class SensorAnnotationView: MKAnnotationView {
             fatalError("init(coder:) has not been implemented")
         }
 
-        func display(aqi: Int) {
+        func display(aqi: Int, isOutdoor: Bool) {
             label.text = "\(aqi)"
+            innerBorderView.isHidden = isOutdoor
             borderView.layer.borderColor = AQICategory.epaColor(for: Double(aqi)).cgColor
         }
 
         override func layoutSubviews() {
             super.layoutSubviews()
 
+            innerBorderView.layer.cornerRadius = innerBorderView.frame.height / 2
             borderView.frame = bounds
             borderView.layer.cornerRadius = frame.height / 2
         }
@@ -66,7 +74,7 @@ class SensorAnnotationView: MKAnnotationView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func display(aqi: Double) {
+    func display(aqi: Double, isOutdoor: Bool) {
         let aqi = Int(aqi)
         let key = ImageKey(value: aqi, interfaceStyle: traitCollection.userInterfaceStyle.rawValue)
 
@@ -74,7 +82,7 @@ class SensorAnnotationView: MKAnnotationView {
             self.image = image
         } else {
             UIApplication.shared.windows[0].addSubview(Self.snapshotView)
-            Self.snapshotView.display(aqi: aqi)
+            Self.snapshotView.display(aqi: aqi, isOutdoor: isOutdoor)
             Self.snapshotView.setNeedsLayout()
             Self.snapshotView.layoutIfNeeded()
 
@@ -98,7 +106,7 @@ class SensorAnnotationView: MKAnnotationView {
 }
 
 class SingleSensorAnnotationView: SensorAnnotationView {
-    static let clusteringIdentifier = "single_sensor_cluster_id"
+    static let clusteringIdentifier: String? = nil // "single_sensor_cluster_id"
 
     override var annotation: MKAnnotation? {
         didSet {
@@ -114,7 +122,8 @@ class SingleSensorAnnotationView: SensorAnnotationView {
     override func prepareForDisplay() {
         super.prepareForDisplay()
         if let annotation = annotation as? SensorAnnotation {
-            display(aqi: annotation.sensor.aqiValue())
+            display(aqi: annotation.sensor.aqiValue(),
+                    isOutdoor: annotation.sensor.info.isOutdoor)
         }
     }
 }
@@ -129,7 +138,7 @@ class ClusteredSensorAnnotationView: SensorAnnotationView {
                 .sorted(by: <)
                 .median()
 
-            display(aqi: median)
+            display(aqi: median, isOutdoor: false)
         }
     }
 }

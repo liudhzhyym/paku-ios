@@ -52,7 +52,7 @@ class SensorLoader {
             loader.loadSensors { result in
                 switch result {
                 case .success(let infos):
-                    self.sensors = infos.filter(\.isOutdoor).map(SensorWrapper.init)
+                    self.sensors = infos.map(SensorWrapper.init)
                 case .failure(let error):
                     print("Failed to load sensor info: \(error)")
                 }

@@ -49,7 +49,7 @@ class AQILoader: ObservableObject {
         }
     }
 
-    private let sensorsKey = "sensors-v4"
+    private let sensorsKey = "sensors-v5"
     private func sensorKey(_ info: SensorInfo) -> String { "sensor\(info.id)" }
 
     func loadSensors(completion: @escaping (Result<[SensorInfo], Error>) -> Void) {
@@ -69,7 +69,7 @@ class AQILoader: ObservableObject {
                 let sensors = response.data.compactMap {
                     try? SensorInfo(fields: fields, data: $0)
                 }.filter {
-                    $0.isOutdoor && $0.age < 5
+                    $0.age < 5
                 }
 
                 if sensors.isEmpty {
@@ -88,7 +88,7 @@ class AQILoader: ObservableObject {
         let url = URL(string: "https://www.purpleair.com/json?show=\(info.id)")!
 
         if let cached = ExpiringCache.value(Sensor.self, forKey: sensorKey(info), expiration: 60) {
-            completion(.success(cached.value))
+            return completion(.success(cached.value))
         }
 
         URLSession.shared.load(SensorResponse.self, from: url) { result in
@@ -132,7 +132,7 @@ class AQILoader: ObservableObject {
         var closest: (sensor: SensorInfo?, distance: Double) = (nil, .greatestFiniteMagnitude)
         for sensor in sensors {
             let distance = sensor.location.distance(from: location)
-            if distance < closest.distance {
+            if distance < closest.distance && sensor.isOutdoor {
                 closest = (sensor, distance)
             }
         }
