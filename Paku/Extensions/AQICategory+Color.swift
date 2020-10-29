@@ -48,6 +48,6 @@ extension AQICategory {
         let valueInRange = aqi - lower.rawValue
         let fraction = valueInRange / range
 
-        return lower.epaColor.interpolateRGBColorTo(upper.epaColor, fraction: CGFloat(fraction))!
+        return lower.epaColor.interpolateHSVColorTo(upper.epaColor, fraction: CGFloat(fraction))
     }
 }

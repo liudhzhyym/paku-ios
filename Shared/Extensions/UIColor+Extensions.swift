@@ -57,4 +57,19 @@ extension UIColor {
 
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
+
+    // From https://stackoverflow.com/questions/22868182/uicolor-transition-based-on-progress-value
+    func interpolateHSVColorTo(_ end: UIColor, fraction: CGFloat) -> UIColor {
+         var f = max(0, fraction)
+         f = min(1, fraction)
+         var h1: CGFloat = 0, s1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 0
+         self.getHue(&h1, saturation: &s1, brightness: &b1, alpha: &a1)
+         var h2: CGFloat = 0, s2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 0
+         end.getHue(&h2, saturation: &s2, brightness: &b2, alpha: &a2)
+         let h = h1 + (h2 - h1) * f
+         let s = s1 + (s2 - s1) * f
+         let b = b1 + (b2 - b1) * f
+         let a = a1 + (a2 - a1) * f
+         return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
+     }
 }
