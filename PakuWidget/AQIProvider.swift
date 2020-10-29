@@ -36,29 +36,36 @@ struct AQIProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        LocationManager.shared.requestLocation { result in
-            if let location = try? result.get() {
-                loader.loadSensor(near: location) { result in
-                    DispatchQueue.main.async {
-                        let currentDate = Date()
-                        let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
+        let currentDate = Date()
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
 
-                        let info: SimpleEntry.Info? = {
-                            if let sensor = try? result.get() {
-                                return SimpleEntry.Info(
-                                    sensor: sensor,
-                                    distance: sensor.info.location.distance(from: location)
-                                )
-                            } else {
-                                return nil
-                            }
-                        }()
+        func completeWithFailure() {
+            let entry = SimpleEntry(date: currentDate, info: nil)
+            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+            completion(timeline)
+        }
+
+        LocationManager.shared.requestLocation { result in
+            do {
+                let location = try result.get()
+                loader.loadSensor(near: location) { result in
+                    do {
+                        let sensor = try result.get()
+                        let info = SimpleEntry.Info(
+                            sensor: sensor,
+                            distance: sensor.info.location.distance(from: location)
+                        )
 
                         let entry = SimpleEntry(date: currentDate, info: info)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
+
+                    } catch {
+                        completeWithFailure()
                     }
                 }
+            } catch {
+                completeWithFailure()
             }
         }
     }
