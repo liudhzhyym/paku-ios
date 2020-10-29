@@ -68,6 +68,7 @@ class SensorAnnotationView: MKAnnotationView {
         layer.shadowColor = UIColor.clear.cgColor
 
         collisionMode = .circle
+        zPriority = .min
     }
 
     @available(*, unavailable)
