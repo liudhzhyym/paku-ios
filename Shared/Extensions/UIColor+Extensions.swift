@@ -14,12 +14,23 @@ extension UIColor {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
+
         getRed(&red, green: &green, blue: &blue, alpha: nil)
-        return (0.2126 * red) + (0.7152 * green) + (0.0722 * blue)
+
+        let colors = [red, green, blue]
+            .map { c -> CGFloat in
+                if c <= 0.03928 {
+                    return c / 12.92
+                } else {
+                    return pow((c + 0.055) / 1.055, 2.4)
+                }
+            }
+
+        return (0.2126 * colors[0]) + (0.7152 * colors[1]) + (0.0722 * colors[2])
     }
 
     var isLight: Bool {
-        return luminance >= 0.6
+        return luminance > 0.179
     }
 
 

@@ -106,11 +106,11 @@ struct Sensor: Codable, Equatable {
     // AQI Properties
 
     private var aqanduAQI: Double {
-        aqiFrom(pm: 0.778 * average_pm2_5_cf_1 + 2.65)
+        aqiFrom(pm: 0.778 * average_pm2_5_cf_1 + 2.65).aqiClamped()
     }
 
     private var epaAQI: Double {
-        aqiFrom(pm: (0.534 * average_pm2_5_cf_1) - (0.0844 * humidity) + 5.604);
+        aqiFrom(pm: (0.534 * average_pm2_5_cf_1) - (0.0844 * humidity) + 5.604).aqiClamped()
     }
 
     private var average_pm2_5_cf_1: Double {
@@ -133,7 +133,7 @@ struct Sensor: Codable, Equatable {
         } else if pm >= 0 {
             return calcAQI(Cp: pm, Ih: 50, Il: 0, BPh: 12, BPl: 0)
         } else {
-            return pm
+            return pm.aqiClamped()
         }
     }
 
@@ -142,6 +142,12 @@ struct Sensor: Codable, Equatable {
         let a = Ih - Il;
         let b = BPh - BPl;
         let c = Cp - BPl;
-        return round((a / b) * c + Il)
+        return round((a / b) * c + Il).aqiClamped()
+    }
+}
+
+private extension Double {
+    func aqiClamped() -> Double {
+        return max(min(self, 500), 0)
     }
 }
