@@ -63,6 +63,8 @@
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		2781B0CD2545429F0058AA33 /* SensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781B0CC2545429F0058AA33 /* SensorDetailView.swift */; };
 		278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D70A22535679E00146D37 /* Environment+Daytime.swift */; };
+		27C4D913254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
+		27C4D914254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
 		27E16B84253010F6006D28B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E16B83253010F6006D28B1 /* MapViewController.swift */; };
 		27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */; };
 		27F271F52545F2FB005C32B3 /* SensorLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F271F42545F2FB005C32B3 /* SensorLoader.swift */; };
@@ -167,6 +169,7 @@
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		2781B0CC2545429F0058AA33 /* SensorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDetailView.swift; sourceTree = "<group>"; };
 		278D70A22535679E00146D37 /* Environment+Daytime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Daytime.swift"; sourceTree = "<group>"; };
+		27C4D912254B86A8001E61A6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		27E16B83253010F6006D28B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorAnnotation.swift; sourceTree = "<group>"; };
 		27F271F42545F2FB005C32B3 /* SensorLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLoader.swift; sourceTree = "<group>"; };
@@ -294,6 +297,7 @@
 		2740BEF0252D8BA600EDD771 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				27C4D912254B86A8001E61A6 /* Logger.swift */,
 				C24ED0952525BEB9001B3952 /* AQILoader.swift */,
 				275712AB252D47E00050B473 /* LocationManager.swift */,
 				2740BF0A252D8BF600EDD771 /* Models */,
@@ -630,6 +634,7 @@
 				277F1C69252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */,
 				2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */,
 				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
+				27C4D913254B86A8001E61A6 /* Logger.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */,
 				27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */,
 				27F271F52545F2FB005C32B3 /* SensorLoader.swift in Sources */,
@@ -677,6 +682,7 @@
 				277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */,
 				2740BF00252D8BC500EDD771 /* URLSession+Extensions.swift in Sources */,
 				2740BEFB252D8BC300EDD771 /* UIColor+Extensions.swift in Sources */,
+				27C4D914254B86A8001E61A6 /* Logger.swift in Sources */,
 				2740BEF6252D8BBF00EDD771 /* UserDefaults+Extensions.swift in Sources */,
 				275712B1252D49100050B473 /* LocationManager.swift in Sources */,
 				276E6C3F252D83B200A13D6D /* AQIProvider.swift in Sources */,
@@ -852,7 +858,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -875,7 +881,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -981,7 +987,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1005,7 +1011,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

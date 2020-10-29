@@ -61,10 +61,12 @@ struct AQIProvider: TimelineProvider {
                         completion(timeline)
 
                     } catch {
+                        logger.error("Widget failed to load sensor")
                         completeWithFailure()
                     }
                 }
             } catch {
+                logger.error("Widget failed to update location")
                 completeWithFailure()
             }
         }

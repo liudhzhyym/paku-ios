@@ -163,7 +163,7 @@ class MapViewController: ViewController {
             DispatchQueue.main.async {
                 self.mapView.removeAnnotations(annotationsToRemove)
                 self.annotations = self.annotations.subtracting(annotationsToRemove)
-                print("--- removed \(annotationsToRemove.count)")
+                logger.debug("Trimming: removed \(annotationsToRemove.count) annotations")
             }
         }
     }
@@ -208,7 +208,7 @@ class MapViewController: ViewController {
         if queuedAnnotations.count > 0 {
             let annotations = queuedAnnotations
             queuedAnnotations.removeAll(keepingCapacity: true)
-            print("--- Adding \(annotations.count) annotations")
+            logger.debug("Adding: \(annotations.count) queued annotations")
             mapView.addAnnotations(annotations)
             trimAnnotations()
         }

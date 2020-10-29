@@ -32,7 +32,7 @@ class SensorLoader {
                     .shuffled()
                     .prefix(300)
 
-                print("-- Loading \(sensors.count) sensors out of \(self.sensors.count)")
+                logger.debug("Loading: \(sensors.count) sensors out of \(self.sensors.count)")
 
                 let operations: [Operation] = sensors.map {
                     let operation = SensorOperation(wrapper: $0, loader: self.loader)
@@ -60,7 +60,7 @@ class SensorLoader {
                 case .success(let infos):
                     self.sensors = infos.filter(\.isOutdoor).map(SensorWrapper.init)
                 case .failure(let error):
-                    print("Failed to load sensor info: \(error)")
+                    logger.debug("Failed to load sensors for SensorLoader: \(error.localizedDescription)")
                 }
 
                 completion()
@@ -123,19 +123,19 @@ private class SensorOperation: Operation {
 
     override func start() {
         guard !isCancelled else {
-            print("-- Operation cancelled")
+            logger.debug("SensorOperation cancelled")
             isFinished = true
             return
         }
 
         if let sensor = wrapper.sensor, !sensor.shouldRefresh {
-            print("-- Already loaded")
+            logger.debug("SensorOperation already loaded")
             isFinished = true
             return
         }
 
         if wrapper.didFail {
-            print("-- Already failed")
+            logger.debug("SensorOperation previously failed")
             isFinished = true
             return
         }
@@ -146,15 +146,22 @@ private class SensorOperation: Operation {
             switch result {
             case .success(let sensor):
                 self.wrapper.sensor = sensor
-                print("-- Loaded sensor")
+                logger.debug("SensorOperation loaded sensor")
             case .failure(let error):
                 self.wrapper.didFail = true
-                print("-- Failed to load")
-                print("Failed to load sensor \(self.wrapper.info.id): \(error)")
+                logger.debug("SensorOperation failed to load sensor \(self.wrapper.info.id): \(error.localizedDescription)")
             }
 
             self.isExecuting = false
             self.isFinished = true
         }
+    }
+}
+
+private extension Sensor {
+    var shouldRefresh: Bool {
+        let shouldRefresh = Date().timeIntervalSince(age) > 2 * 60
+        logger.debug("SensorOperation sensor age: \(Date().timeIntervalSince(age)) should refresh: \(shouldRefresh)")
+        return shouldRefresh
     }
 }

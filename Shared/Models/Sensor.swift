@@ -66,10 +66,6 @@ struct Sensor: Codable, Equatable {
 
     let particleInfo: [ParticleInfo]
 
-    var shouldRefresh: Bool {
-        Date().timeIntervalSince(age) > 5 * 60
-    }
-
     init(results: [[String: AnyCodable]], info: SensorInfo) throws {
         guard let parent = results.first(where: { $0["ParentID"] == nil }) else {
             throw InitializerError.noResults
