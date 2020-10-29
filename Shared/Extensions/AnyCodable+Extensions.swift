@@ -10,7 +10,8 @@ import Foundation
 
 extension AnyCodable {
     var doubleValue: Double? {
-        value as? Double ?? string.flatMap(Double.init)
+        let double = value as? Double ?? string.flatMap(Double.init)
+        return double?.isNaN ?? true ? nil : double
     }
 
     var intValue: Int? {
