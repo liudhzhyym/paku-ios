@@ -103,6 +103,12 @@ class MapViewController: ViewController {
     }
 
     func refresh() {
+        item?.cancel()
+        item = DispatchWorkItem(block: actuallyRefresh)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: item!)
+    }
+
+    func actuallyRefresh() {
         queuedAnnotations.removeAll()
 
         loader.loadAnnotations(in: mapView.visibleMapRect) { [weak self] sensor in
