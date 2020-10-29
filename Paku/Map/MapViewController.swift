@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import SafariServices
 
 private let maximumAnnotations = 1000
 private let queuedAnnotationDelay: TimeInterval = 0.1
@@ -172,7 +173,9 @@ class MapViewController: ViewController {
     }
 
     func display(sensor: Sensor, animated: Bool) {
-        let view = SensorDetailView(sensor: sensor)
+        let view = SensorDetailView(sensor: sensor) {
+            self.openWebsite(for: $0)
+        }
         detailContainer.display(detail: view, animated: true)
         setDetailHidden(false, animated: true)
     }
@@ -209,6 +212,12 @@ class MapViewController: ViewController {
             mapView.addAnnotations(annotations)
             trimAnnotations()
         }
+    }
+
+    private func openWebsite(for sensor: Sensor) {
+        let url = URL(string: "https://www.purpleair.com/map?opt=1/i/mAQI/a0/cC5&select=\(sensor.info.id)")!
+        let viewController = SFSafariViewController(url: url)
+        show(viewController, sender: self)
     }
 }
 

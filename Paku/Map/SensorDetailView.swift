@@ -11,10 +11,14 @@ class SensorDetailView: UIView {
 
     private let titleLabel = UILabel(font: .systemFont(ofSize: 24, weight: .medium))
     private let descriptionLabel = UILabel(font: .systemFont(ofSize: 17, weight: .regular), color: .secondaryLabel)
-    private let button = Button(title: "Favorite")
+    private let button = Button(title: "Open in PurpleAir.com", background: .tertiaryLabel, textColor: .label)
 
-    init(sensor: Sensor) {
+    init(sensor: Sensor, open: @escaping (Sensor) -> Void) {
         super.init(frame: .zero)
+
+        button.addAction(.init { _ in
+            open(sensor)
+        }, for: .touchUpInside)
 
         titleLabel.text = sensor.info.label
         descriptionLabel.text = "\(sensor.info.isOutdoor ? "Outdoor" : "Indoor")"
