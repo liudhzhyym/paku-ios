@@ -11,39 +11,45 @@ import MapKit
 class SensorLoader {
 
     private let loader = AQILoader()
-    private let queue = OperationQueue()
+    private let queue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.qualityOfService = .userInitiated
+        return queue
+    }()
 
     private var sensors: [SensorWrapper] = []
 
     func loadAnnotations(in area: MKMapRect, didLoadSensor: @escaping (Sensor) -> Void) {
-        queue.cancelAllOperations()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.queue.cancelAllOperations()
 
-        loadSensorsIfNeeded {
-            let sensors = self.sensors
-                .filter {
-                    let point = MKMapPoint($0.info.location.coordinate)
-                    return area.contains(point)
-                }
-                .shuffled()
-                .prefix(200)
+            self.loadSensorsIfNeeded {
+                let sensors = self.sensors
+                    .filter {
+                        let point = MKMapPoint($0.info.location.coordinate)
+                        return area.contains(point)
+                    }
+                    .shuffled()
+                    .prefix(300)
 
-            print("-- Loading \(sensors.count) sensors out of \(self.sensors.count)")
+                print("-- Loading \(sensors.count) sensors out of \(self.sensors.count)")
 
-            let operations: [Operation] = sensors.map {
-                let operation = SensorOperation(wrapper: $0, loader: self.loader)
+                let operations: [Operation] = sensors.map {
+                    let operation = SensorOperation(wrapper: $0, loader: self.loader)
 
-                operation.completionBlock = { [weak operation] in
-                    if let sensor = operation?.wrapper.sensor {
-                        DispatchQueue.main.async {
-                            didLoadSensor(sensor)
+                    operation.completionBlock = { [weak operation] in
+                        if let sensor = operation?.wrapper.sensor {
+                            DispatchQueue.main.async {
+                                didLoadSensor(sensor)
+                            }
                         }
                     }
+
+                    return operation
                 }
 
-                return operation
+                self.queue.addOperations(operations, waitUntilFinished: false)
             }
-
-            self.queue.addOperations(operations, waitUntilFinished: false)
         }
     }
 

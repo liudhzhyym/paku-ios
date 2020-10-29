@@ -104,6 +104,28 @@ class SensorAnnotationView: MKAnnotationView {
             prepareForDisplay()
         }
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        layer.removeAllAnimations()
+    }
+
+    override func prepareForDisplay() {
+        super.prepareForDisplay()
+
+        let fadeIn = CABasicAnimation(keyPath: "opacity")
+        fadeIn.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        fadeIn.duration = 0.1
+        fadeIn.fromValue = 0
+        fadeIn.toValue = 1
+        layer.add(fadeIn, forKey: "fade")
+
+        let scale = CASpringAnimation(keyPath: "transform.scale")
+        scale.duration = 0.2
+        scale.fromValue = 0.8
+        scale.toValue = 1
+        layer.add(scale, forKey: "scale")
+    }
 }
 
 class SingleSensorAnnotationView: SensorAnnotationView {

@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 private let maximumAnnotations = 1000
-private let queuedAnnotationDelay: TimeInterval = 0.2
+private let queuedAnnotationDelay: TimeInterval = 0.1
 
 class MapViewController: ViewController {
 
@@ -32,6 +32,8 @@ class MapViewController: ViewController {
     private lazy var hiddenDetailConstraints = [
         detailContainer.view.topAnchor.constraint(equalTo: view.bottomAnchor)
     ]
+
+    private var annotations: Set<SensorAnnotation> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,11 +103,12 @@ class MapViewController: ViewController {
     }
 
     func refresh() {
+        queuedAnnotations.removeAll()
+
         loader.loadAnnotations(in: mapView.visibleMapRect) { [weak self] sensor in
             guard let self = self else { return }
 
-            if let existing = self.mapView.annotations
-                .compactMap({ $0 as? SensorAnnotation })
+            if let existing = self.annotations
                 .first(where: { $0.sensor.info.id == sensor.info.id }) {
                 if sensor != existing.sensor {
                     existing.sensor = sensor
@@ -113,6 +116,7 @@ class MapViewController: ViewController {
                 }
             } else {
                 let annotation = SensorAnnotation(sensor: sensor)
+                self.annotations.insert(annotation)
                 self.queuedAnnotations.append(annotation)
             }
         }
@@ -130,33 +134,31 @@ class MapViewController: ViewController {
     }
 
     private func trimAnnotations() {
-        let visibleAnnotations = Set(
-            mapView.annotations
-                .compactMap({ $0 as? SensorAnnotation })
-                .filter {
-                    let point = MKMapPoint($0.sensor.info.location.coordinate)
-                    return self.mapView.visibleMapRect.contains(point)
-                }
-        )
-
-        let invisibleAnnotations = Set(mapView.annotations.compactMap {
-            $0 as? SensorAnnotation
-        }).subtracting(visibleAnnotations)
-
-        var annotationsToRemove: [SensorAnnotation] = []
-
-        if visibleAnnotations.count > maximumAnnotations {
-            annotationsToRemove.append(contentsOf: visibleAnnotations.shuffled()
-                                        .dropFirst(maximumAnnotations))
-            annotationsToRemove.append(contentsOf: invisibleAnnotations)
-        } else {
-            let allowedInvisibleAnnotations = maximumAnnotations - visibleAnnotations.count
-            annotationsToRemove.append(contentsOf: invisibleAnnotations.shuffled()
-                                        .dropFirst(allowedInvisibleAnnotations))
+        let visibleAnnotations = annotations.filter {
+            let point = MKMapPoint($0.sensor.info.location.coordinate)
+            return self.mapView.visibleMapRect.contains(point)
         }
 
-        mapView.removeAnnotations(annotationsToRemove)
-        print("--- removed \(annotationsToRemove.count)")
+        DispatchQueue.global(qos: .userInitiated).async {
+            let invisibleSet = self.annotations.subtracting(visibleAnnotations)
+            var annotationsToRemove: [SensorAnnotation] = []
+
+            if visibleAnnotations.count > maximumAnnotations {
+                annotationsToRemove.append(contentsOf: visibleAnnotations.shuffled()
+                                            .dropFirst(maximumAnnotations))
+                annotationsToRemove.append(contentsOf: invisibleSet)
+            } else {
+                let allowedInvisibleAnnotations = maximumAnnotations - visibleAnnotations.count
+                annotationsToRemove.append(contentsOf: invisibleSet.shuffled()
+                                            .dropFirst(allowedInvisibleAnnotations))
+            }
+
+            DispatchQueue.main.async {
+                self.mapView.removeAnnotations(annotationsToRemove)
+                self.annotations = self.annotations.subtracting(annotationsToRemove)
+                print("--- removed \(annotationsToRemove.count)")
+            }
+        }
     }
 
     private func openSettings() {

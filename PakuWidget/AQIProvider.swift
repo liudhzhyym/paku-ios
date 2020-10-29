@@ -39,23 +39,25 @@ struct AQIProvider: TimelineProvider {
         LocationManager.shared.requestLocation { result in
             if let location = try? result.get() {
                 loader.loadSensor(near: location) { result in
-                    let currentDate = Date()
-                    let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
+                    DispatchQueue.main.async {
+                        let currentDate = Date()
+                        let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
 
-                    let info: SimpleEntry.Info? = {
-                        if let sensor = try? result.get() {
-                            return SimpleEntry.Info(
-                                sensor: sensor,
-                                distance: sensor.info.location.distance(from: location)
-                            )
-                        } else {
-                            return nil
-                        }
-                    }()
+                        let info: SimpleEntry.Info? = {
+                            if let sensor = try? result.get() {
+                                return SimpleEntry.Info(
+                                    sensor: sensor,
+                                    distance: sensor.info.location.distance(from: location)
+                                )
+                            } else {
+                                return nil
+                            }
+                        }()
 
-                    let entry = SimpleEntry(date: currentDate, info: info)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
+                        let entry = SimpleEntry(date: currentDate, info: info)
+                        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                        completion(timeline)
+                    }
                 }
             }
         }

@@ -23,18 +23,12 @@ extension URLSession {
             } else if let data = data {
                 do {
                     let response = try Self.decoder.decode(T.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(.success(response))
-                    }
+                    completion(.success(response))
                 } catch {
-                    DispatchQueue.main.async {
-                        completion(.failure(URLSessionLoadingError.failedToDecode(error)))
-                    }
+                    completion(.failure(URLSessionLoadingError.failedToDecode(error)))
                 }
             } else {
-                DispatchQueue.main.async {
-                    completion(.failure(URLSessionLoadingError.unknown))
-                }
+                completion(.failure(URLSessionLoadingError.unknown))
             }
         }.resume()
     }
