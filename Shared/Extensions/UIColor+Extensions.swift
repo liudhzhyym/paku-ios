@@ -10,15 +10,18 @@ import UIKit
 extension UIColor {
     static let customPurple = UIColor(hex: "9D05C3")
 
-    var brightness: CGFloat {
-        var brightness: CGFloat = 0
-        getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
-        return brightness
+    var luminance: CGFloat {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: nil)
+        return (0.2126 * red) + (0.7152 * green) + (0.0722 * blue)
     }
 
     var isLight: Bool {
-        return brightness >= 0.6
+        return luminance >= 0.6
     }
+
 
     // From https://stackoverflow.com/questions/22868182/uicolor-transition-based-on-progress-value
     public convenience init(hex: String) {
