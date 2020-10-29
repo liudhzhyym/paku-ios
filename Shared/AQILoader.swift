@@ -79,7 +79,11 @@ class AQILoader: ObservableObject {
                     completion(.success(sensors))
                 }
             case .failure(let error):
-                completion(.failure(error))
+                if let cached = ExpiringCache.value([SensorInfo].self, forKey: self.sensorsKey, expiration: 5 * 24 * 60 * 60) {
+                    return completion(.success(cached.value))
+                } else {
+                    return completion(.failure(error))
+                }
             }
         }
     }
