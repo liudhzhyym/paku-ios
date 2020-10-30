@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum AQIConversion: Int, Codable {
-    case none
-    case AQAndU
-    case EPA
+enum AQIConversion: Int, Codable, CaseIterable {
+    case none = 0
+    case AQAndU = 1
+    case EPA = 2
 }

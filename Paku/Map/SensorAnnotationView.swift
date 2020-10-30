@@ -26,7 +26,7 @@ class SensorAnnotationView: MKAnnotationView {
 
             addSubview(borderView)
             borderView.layer.borderWidth = 3
-            borderView.layer.borderColor = UIColor.black.cgColor
+            borderView.layer.borderColor = UIColor.darkGray.cgColor
             borderView.pinEdges(to: self)
 
             addSubview(label)

@@ -26,6 +26,8 @@ class MapViewController: ViewController {
     private lazy var mapView = MKMapView()
 
     private lazy var detailContainer = MapDetailContainer()
+
+    private let conversionButton = UIButton(type: .system)
     private let locationTypeButton = UIButton(type: .system)
 
     private lazy var visibleDetailConstraints = [
@@ -65,11 +67,14 @@ class MapViewController: ViewController {
             }
         })
 
-        let mapButtons = MapButtonContainer(buttons: [locationTypeButton, locationButton])
+        conversionButton.showsMenuAsPrimaryAction = true
+        conversionButton.setImage(UIImage(symbol: "equal.circle", size: 16, weight: .medium), for: .normal)
+
+        let mapButtons = MapButtonContainer(buttons: [conversionButton, locationTypeButton, locationButton])
 
         view.addSubview(mapButtons)
         mapButtons.trailingAnchor.pin(to: view.layoutMarginsGuide.trailingAnchor)
-        mapButtons.bottomAnchor.pin(to: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+        mapButtons.bottomAnchor.pin(to: view.safeAreaLayoutGuide.bottomAnchor, constant: -40, priority: .defaultLow)
 
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let safeAreaBlurView = UIVisualEffectView(effect: blurEffect)
@@ -132,6 +137,13 @@ class MapViewController: ViewController {
 
             let image = UIImage(symbol: UserDefaults.shared.settings.location.symbolName, size: 16, weight: .medium)
             self.locationTypeButton.setImage(image, for: .normal)
+
+            self.conversionButton.menu = UIMenu(title: "Normalization", options: [.displayInline], children: AQIConversion.allCases.map { conversion in
+                let current = UserDefaults.shared.settings.conversion
+                return UIAction(title: conversion.name, state: current == conversion ? .on : .off) { _ in
+                    UserDefaults.shared.settings.conversion = conversion
+                }
+            })
         }
     }
 
@@ -338,6 +350,16 @@ private extension LocationType {
         case .outdoors: return "Outside"
         case .indoors: return "Inside"
         case .both: return "All"
+        }
+    }
+}
+
+private extension AQIConversion {
+    var name: String {
+        switch self {
+        case .none: return "None"
+        case .AQAndU: return "AQAndU"
+        case .EPA: return "EPA Wood Smoke"
         }
     }
 }
