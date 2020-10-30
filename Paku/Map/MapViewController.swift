@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import SafariServices
+import WidgetKit
 
 private let maximumAnnotations = 1000
 private let queuedAnnotationDelay: TimeInterval = 0.1
@@ -61,11 +62,6 @@ class MapViewController: ViewController {
         }, for: .touchUpInside)
 
         locationTypeButton.showsMenuAsPrimaryAction = true
-        locationTypeButton.menu = UIMenu(title: "Filter Sensors", options: [.displayInline], children: LocationType.allCases.map { location in
-            UIAction(title: location.name, image: UIImage(systemName: location.symbolName)) { _ in
-                UserDefaults.shared.settings.location = location
-            }
-        })
 
         conversionButton.showsMenuAsPrimaryAction = true
         conversionButton.setImage(UIImage(symbol: "equal.circle", size: 16, weight: .medium), for: .normal)
@@ -128,6 +124,9 @@ class MapViewController: ViewController {
     @objc private func updateSettings() {
         guard UserDefaults.shared.settings != settings else { return }
 
+        // TODO: Move somewhere else
+        WidgetCenter.shared.reloadAllTimelines()
+
         settings = UserDefaults.shared.settings
 
         DispatchQueue.main.async {
@@ -142,6 +141,15 @@ class MapViewController: ViewController {
                 let current = UserDefaults.shared.settings.conversion
                 return UIAction(title: conversion.name, state: current == conversion ? .on : .off) { _ in
                     UserDefaults.shared.settings.conversion = conversion
+                }
+            })
+
+            self.locationTypeButton.menu = UIMenu(title: "Filter Sensors", options: [.displayInline], children: LocationType.allCases.map { location in
+                let current = UserDefaults.shared.settings.location
+                return UIAction(title: location.name,
+                         image: UIImage(systemName: location.symbolName),
+                         state: current == location ? .on : .off) { _ in
+                    UserDefaults.shared.settings.location = location
                 }
             })
         }
