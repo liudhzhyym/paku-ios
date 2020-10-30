@@ -55,6 +55,12 @@ class MapViewController: ViewController {
         view.addSubview(mapView)
         mapView.pinEdges(to: view)
 
+        let settingsButton = UIButton(type: .system)
+        settingsButton.setImage(UIImage(symbol: "gear", size: 16, weight: .medium), for: .normal)
+        settingsButton.addAction(UIAction { [weak self] _ in
+            self?.openSettings()
+        }, for: .touchUpInside)
+
         let locationButton = UIButton(type: .system)
         locationButton.setImage(UIImage(symbol: "location", size: 16, weight: .medium), for: .normal)
         locationButton.addAction(UIAction { [weak self] _ in
@@ -66,17 +72,20 @@ class MapViewController: ViewController {
         conversionButton.showsMenuAsPrimaryAction = true
         conversionButton.setImage(UIImage(symbol: "equal.circle", size: 16, weight: .medium), for: .normal)
 
-        let settingButtons = MapButtonContainer(buttons: [conversionButton, locationTypeButton])
+        let settingsContainer = MapButtonContainer(buttons: [settingsButton])
+        view.addSubview(settingsContainer)
+        settingsContainer.trailingAnchor.pin(to: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
+        settingsContainer.topAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor, constant: 8)
 
-        view.addSubview(settingButtons)
-        settingButtons.trailingAnchor.pin(to: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
-        settingButtons.topAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor, constant: 20)
+        let quickSettings = MapButtonContainer(buttons: [conversionButton, locationTypeButton])
+        view.addSubview(quickSettings)
+        quickSettings.trailingAnchor.pin(to: settingsContainer.trailingAnchor)
+        quickSettings.topAnchor.pin(to: settingsContainer.bottomAnchor, constant: 5)
 
         let locationContainer = MapButtonContainer(buttons: [locationButton])
         view.addSubview(locationContainer)
-        locationContainer.trailingAnchor.pin(to: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
-        locationContainer.topAnchor.pin(to: settingButtons.bottomAnchor, constant: 5)
-
+        locationContainer.trailingAnchor.pin(to: settingsContainer.trailingAnchor)
+        locationContainer.topAnchor.pin(to: quickSettings.bottomAnchor, constant: 5)
 
         let compassButton = MKCompassButton(mapView: mapView)
         view.addSubview(compassButton)
@@ -93,6 +102,7 @@ class MapViewController: ViewController {
 
         mapView.register(SingleSensorAnnotationView.self)
         mapView.register(ClusteredSensorAnnotationView.self)
+        mapView.register(MKUserLocationView.self)
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = .mutedStandard
@@ -234,7 +244,11 @@ class MapViewController: ViewController {
     }
 
     private func openSettings() {
-        present(UIViewController(), animated: true, completion: nil)
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemBackground
+        viewController.navigationItem.title = "Settings"
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
     }
 
     func display(sensor: Sensor, animated: Bool) {
@@ -305,7 +319,9 @@ extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
-            return nil
+            let view = mapView.dequeue(for: annotation) as MKUserLocationView
+            view.zPriority = .max
+            return view
         }
 
         if annotation is MKClusterAnnotation {

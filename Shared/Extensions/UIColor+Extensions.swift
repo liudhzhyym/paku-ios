@@ -8,7 +8,19 @@
 import UIKit
 
 extension UIColor {
-    static let customPurple = UIColor(hex: "9D05C3")
+    static let mapButton = UIColor { traits in
+        switch traits.userInterfaceStyle {
+        case .dark: return .white
+        default: return .systemBlue
+        }
+    }
+
+    static let mapSeparator = UIColor { traits in
+        switch traits.userInterfaceStyle {
+        case .dark: return UIColor.white.withAlphaComponent(0.4)
+        default: return .opaqueSeparator
+        }
+    }
 
     var luminance: CGFloat {
         var red: CGFloat = 0

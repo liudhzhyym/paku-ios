@@ -20,15 +20,16 @@ class MapButtonContainer: UIView {
 
         super.init(frame: .zero)
 
-        let cornerRadius: CGFloat = 10
+        let cornerRadius: CGFloat = 9
 
-        layer.masksToBounds = true
         layer.cornerRadius = cornerRadius
         layer.cornerCurve = .continuous
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .init(width: 0, height: 1)
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.15
+        layer.shadowRadius = 6
+
+        tintColor = .mapButton
 
         addSubview(backgroundView)
         backgroundView.pinEdges(to: self)
@@ -44,7 +45,7 @@ class MapButtonContainer: UIView {
 
         for view in buttons.dropLast() {
             let separator = UIView()
-            separator.backgroundColor = .separator
+            separator.backgroundColor = .mapSeparator
             backgroundView.contentView.addSubview(separator)
             separator.widthAnchor.pin(to: widthAnchor)
             separator.bottomAnchor.pin(to: view.bottomAnchor)
@@ -57,7 +58,7 @@ class MapButtonContainer: UIView {
     }
 
     override var intrinsicContentSize: CGSize {
-        CGSize(width: 48, height: 48 * stackView.arrangedSubviews.count)
+        CGSize(width: 45, height: 45 * stackView.arrangedSubviews.count)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
