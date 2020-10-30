@@ -46,10 +46,10 @@ class MapDetailContainer: UIViewController {
     func display(detail: UIView, animated: Bool) {
         detail.alpha = 0
         view.insertSubview(detail, at: 0)
-        detail.pinEdges([.left, .right, .top], to: view.layoutMarginsGuide)
+        detail.pinEdges([.left, .right, .top], to: view, insets: .init(all: 20))
 
         if detailBottomConstraint == nil {
-            detailBottomConstraint = detail.bottomAnchor.pin(to: view.safeAreaLayoutGuide.bottomAnchor)
+            detailBottomConstraint = detail.bottomAnchor.pin(to: view.bottomAnchor, constant: -20)
         }
 
         UIView.performWithoutAnimation {
@@ -58,7 +58,7 @@ class MapDetailContainer: UIViewController {
         }
 
         detailBottomConstraint?.deactivate()
-        detailBottomConstraint = detail.bottomAnchor.pin(to: view.safeAreaLayoutGuide.bottomAnchor)
+        detailBottomConstraint = detail.bottomAnchor.pin(to: view.bottomAnchor, constant: -20)
 
         let animations = {
             detail.alpha = 1
