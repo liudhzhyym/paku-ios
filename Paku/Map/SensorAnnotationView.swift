@@ -69,6 +69,7 @@ class SensorAnnotationView: MKAnnotationView {
 
         collisionMode = .circle
         zPriority = .min
+        displayPriority = .defaultHigh
     }
 
     @available(*, unavailable)

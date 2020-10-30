@@ -70,7 +70,12 @@ class MapViewController: ViewController {
 
         view.addSubview(mapButtons)
         mapButtons.trailingAnchor.pin(to: view.layoutMarginsGuide.trailingAnchor)
-        mapButtons.bottomAnchor.pin(to: view.safeAreaLayoutGuide.bottomAnchor, constant: -40, priority: .defaultLow)
+        mapButtons.topAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor, constant: 20)
+
+        let compassButton = MKCompassButton(mapView: mapView)
+        view.addSubview(compassButton)
+        compassButton.pinEdges([.left, .top], to: view.safeAreaLayoutGuide, insets: .init(all: 20))
+        mapView.showsCompass = false
 
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let safeAreaBlurView = UIVisualEffectView(effect: blurEffect)
