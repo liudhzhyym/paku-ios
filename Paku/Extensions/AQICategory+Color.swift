@@ -12,15 +12,15 @@ extension AQICategory {
     var epaColor: UIColor {
         switch self {
         case .hazardous:
-            return UIColor(hex: "89117A")
+            return UIColor(hex: "7a106d")
         case .veryUnhealthy:
-            return UIColor(hex: "9D05C3")
+            return UIColor(hex: "a10e7a")
         case .unhealthy:
-            return UIColor(hex: "AD00FA")
+            return UIColor(hex: "e30e0e")
         case .unhealthyForSensitiveGroups:
-            return UIColor(hex: "FF4444")
+            return UIColor(hex: "faa70c")
         case .moderate:
-            return UIColor(hex: "FFC50B")
+            return UIColor(hex: "ffe30b")
         case .good:
             return UIColor(hex: "35C759")
         }
