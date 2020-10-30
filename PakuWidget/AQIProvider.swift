@@ -42,7 +42,9 @@ struct AQIProvider: TimelineProvider {
         func completeWithFailure() {
             let entry = SimpleEntry(date: currentDate, info: nil)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-            completion(timeline)
+            DispatchQueue.main.async {
+                completion(timeline)
+            }
         }
 
         LocationManager.shared.requestLocation { result in
@@ -58,8 +60,10 @@ struct AQIProvider: TimelineProvider {
 
                         let entry = SimpleEntry(date: currentDate, info: info)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                        completion(timeline)
 
+                        DispatchQueue.main.async {
+                            completion(timeline)
+                        }
                     } catch {
                         logger.error("Widget failed to load sensor")
                         completeWithFailure()
