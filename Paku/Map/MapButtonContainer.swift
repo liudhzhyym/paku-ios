@@ -12,7 +12,7 @@ class MapButtonContainer: UIView {
     private let backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
     private let stackView: UIStackView
 
-    init(buttons: [UIButton]) {
+    init(buttons: [UIView]) {
         stackView = UIStackView(arrangedSubviews: buttons)
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -20,8 +20,9 @@ class MapButtonContainer: UIView {
 
         super.init(frame: .zero)
 
-        let cornerRadius: CGFloat = 12
+        let cornerRadius: CGFloat = 10
 
+        layer.masksToBounds = true
         layer.cornerRadius = cornerRadius
         layer.cornerCurve = .continuous
         layer.shadowColor = UIColor.black.cgColor
@@ -32,7 +33,7 @@ class MapButtonContainer: UIView {
         addSubview(backgroundView)
         backgroundView.pinEdges(to: self)
         backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 8
+        backgroundView.layer.cornerRadius = cornerRadius
         backgroundView.layer.cornerCurve = .continuous
         backgroundView.layer.borderWidth = .pixel
 
@@ -40,6 +41,15 @@ class MapButtonContainer: UIView {
         stackView.pinEdges(to: self)
 
         updateColors()
+
+        for view in buttons.dropLast() {
+            let separator = UIView()
+            separator.backgroundColor = .separator
+            backgroundView.contentView.addSubview(separator)
+            separator.widthAnchor.pin(to: widthAnchor)
+            separator.bottomAnchor.pin(to: view.bottomAnchor)
+            separator.heightAnchor.pin(to: .pixel)
+        }
     }
 
     required init?(coder: NSCoder) {

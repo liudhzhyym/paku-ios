@@ -66,15 +66,22 @@ class MapViewController: ViewController {
         conversionButton.showsMenuAsPrimaryAction = true
         conversionButton.setImage(UIImage(symbol: "equal.circle", size: 16, weight: .medium), for: .normal)
 
-        let mapButtons = MapButtonContainer(buttons: [conversionButton, locationTypeButton, locationButton])
+        let settingButtons = MapButtonContainer(buttons: [conversionButton, locationTypeButton])
 
-        view.addSubview(mapButtons)
-        mapButtons.trailingAnchor.pin(to: view.layoutMarginsGuide.trailingAnchor)
-        mapButtons.topAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor, constant: 20)
+        view.addSubview(settingButtons)
+        settingButtons.trailingAnchor.pin(to: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        settingButtons.topAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor, constant: 20)
+
+        let locationContainer = MapButtonContainer(buttons: [locationButton])
+        view.addSubview(locationContainer)
+        locationContainer.trailingAnchor.pin(to: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        locationContainer.topAnchor.pin(to: settingButtons.bottomAnchor, constant: 5)
+
 
         let compassButton = MKCompassButton(mapView: mapView)
         view.addSubview(compassButton)
-        compassButton.pinEdges([.left, .top], to: view.safeAreaLayoutGuide, insets: .init(all: 20))
+        compassButton.centerXAnchor.pin(to: locationContainer.centerXAnchor)
+        compassButton.topAnchor.pin(to: locationContainer.bottomAnchor, constant: 10)
         mapView.showsCompass = false
 
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
@@ -107,7 +114,6 @@ class MapViewController: ViewController {
         detailContainer.view.pinEdges([.left, .right],
                                       to: view.safeAreaLayoutGuide,
                                       insets: .init(all: 10))
-        mapButtons.bottomAnchor.pin(lessThan: detailContainer.view.topAnchor, constant: -10)
 
         setDetailHidden(true, animated: false)
 
