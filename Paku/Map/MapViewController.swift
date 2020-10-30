@@ -116,6 +116,10 @@ class MapViewController: ViewController {
                 if sensor.aqiValue() != existing.sensor.aqiValue() {
                     self.annotations.remove(existing)
                     self.queuedSensors.append(sensor)
+
+                    DispatchQueue.main.async {
+                        self.mapView.removeAnnotation(existing)
+                    }
                 }
             } else {
                 self.queuedSensors.append(sensor)
@@ -154,9 +158,10 @@ class MapViewController: ViewController {
                                             .dropFirst(allowedInvisibleAnnotations))
             }
 
+            self.annotations.subtract(annotationsToRemove)
+
             DispatchQueue.main.async {
                 self.mapView.removeAnnotations(annotationsToRemove)
-                self.annotations.subtract(annotationsToRemove)
                 logger.debug("Trimming: removed \(annotationsToRemove.count) annotations")
             }
         }
