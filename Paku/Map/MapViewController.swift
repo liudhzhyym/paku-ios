@@ -14,6 +14,7 @@ private let queuedAnnotationDelay: TimeInterval = 0.1
 
 class MapViewController: ViewController {
 
+    private var settings: Settings?
     private var queuedSensors: [Sensor] = []
     private var needsAnnotationUpdate = false
     private let loader = SensorLoader()
@@ -25,6 +26,7 @@ class MapViewController: ViewController {
     private lazy var mapView = MKMapView()
 
     private lazy var detailContainer = MapDetailContainer()
+    private let locationTypeButton = UIButton(type: .system)
 
     private lazy var visibleDetailConstraints = [
         detailContainer.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -50,15 +52,24 @@ class MapViewController: ViewController {
         view.addSubview(mapView)
         mapView.pinEdges(to: view)
 
-        let locationButton = MapButton(symbolName: "location")
+        let locationButton = UIButton(type: .system)
+        locationButton.setImage(UIImage(symbol: "location", size: 16, weight: .medium), for: .normal)
         locationButton.addAction(UIAction { [weak self] _ in
             self?.centerOnCurrentLocation(animated: true)
         }, for: .touchUpInside)
 
-        view.addSubview(locationButton)
-        locationButton.pinEdges([.right, .top],
-                                to: view.safeAreaLayoutGuide,
-                                insets: .init(all: 10))
+        locationTypeButton.showsMenuAsPrimaryAction = true
+        locationTypeButton.menu = UIMenu(title: "Filter Sensors", options: [.displayInline], children: LocationType.allCases.map { location in
+            UIAction(title: location.name, image: UIImage(systemName: location.symbolName)) { _ in
+                UserDefaults.shared.settings.location = location
+            }
+        })
+
+        let mapButtons = MapButtonContainer(buttons: [locationTypeButton, locationButton])
+
+        view.addSubview(mapButtons)
+        mapButtons.trailingAnchor.pin(to: view.layoutMarginsGuide.trailingAnchor)
+        mapButtons.bottomAnchor.pin(to: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
 
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let safeAreaBlurView = UIVisualEffectView(effect: blurEffect)
@@ -90,6 +101,7 @@ class MapViewController: ViewController {
         detailContainer.view.pinEdges([.left, .right],
                                       to: view.safeAreaLayoutGuide,
                                       insets: .init(all: 10))
+        mapButtons.bottomAnchor.pin(lessThan: detailContainer.view.topAnchor, constant: -10)
 
         setDetailHidden(true, animated: false)
 
@@ -98,6 +110,29 @@ class MapViewController: ViewController {
             selector: #selector(refresh),
             name: UIApplication.didBecomeActiveNotification,
             object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateSettings),
+            name: UserDefaults.didChangeNotification,
+            object: nil)
+
+        updateSettings()
+    }
+
+    @objc private func updateSettings() {
+        guard UserDefaults.shared.settings != settings else { return }
+
+        settings = UserDefaults.shared.settings
+
+        DispatchQueue.main.async {
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.annotations.removeAll(keepingCapacity: true)
+            self.actuallyRefresh()
+
+            let image = UIImage(symbol: UserDefaults.shared.settings.location.symbolName, size: 16, weight: .medium)
+            self.locationTypeButton.setImage(image, for: .normal)
+        }
     }
 
     @objc func refresh() {
@@ -285,6 +320,24 @@ extension MapViewController: MKMapViewDelegate {
             display(annotations: annotations, animated: true)
         } else {
             setDetailHidden(true, animated: true)
+        }
+    }
+}
+
+private extension LocationType {
+    var symbolName: String {
+        switch self {
+        case .outdoors: return "sun.max.fill"
+        case .indoors: return "house.fill"
+        case .both: return "smallcircle.circle.fill"
+        }
+    }
+
+    var name: String {
+        switch self {
+        case .outdoors: return "Outside"
+        case .indoors: return "Inside"
+        case .both: return "All"
         }
     }
 }

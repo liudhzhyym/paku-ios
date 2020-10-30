@@ -12,7 +12,7 @@ class SensorAnnotationView: MKAnnotationView {
 
     private struct ImageKey: Hashable {
         let value: Int
-        let interfaceStyle: Int
+        let isOutdoor: Bool
     }
 
     private static var imageCache: [ImageKey: UIImage] = [:]
@@ -78,7 +78,7 @@ class SensorAnnotationView: MKAnnotationView {
 
     func display(aqi: Double, isOutdoor: Bool) {
         let aqi = Int(aqi)
-        let key = ImageKey(value: aqi, interfaceStyle: traitCollection.userInterfaceStyle.rawValue)
+        let key = ImageKey(value: aqi, isOutdoor: isOutdoor)
 
         if let image = Self.imageCache[key] {
             self.image = image
@@ -96,13 +96,6 @@ class SensorAnnotationView: MKAnnotationView {
             Self.snapshotView.removeFromSuperview()
             Self.imageCache[key] = image
             self.image = image
-        }
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            prepareForDisplay()
         }
     }
 

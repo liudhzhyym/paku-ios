@@ -111,12 +111,12 @@ class AQILoader: ObservableObject {
         }
     }
 
-    func loadSensor(near location: CLLocation, completion: @escaping (Result<Sensor, Error>) -> Void = { _ in }) {
+    func loadOutdoorSensor(near location: CLLocation, completion: @escaping (Result<Sensor, Error>) -> Void = { _ in }) {
         loadSensors { result in
             switch result {
             case .success(let sensors):
 
-                let closest = self.closestSensor(in: sensors, from: location)
+                let closest = self.closestOutdoorSensor(in: sensors, from: location)
 
                 self.loadSensor(from: closest.sensor) { result in
                     switch result {
@@ -132,7 +132,7 @@ class AQILoader: ObservableObject {
         }
     }
 
-    private func closestSensor(in sensors: [SensorInfo], from location: CLLocation) -> (sensor: SensorInfo, distance: CLLocationDistance) {
+    private func closestOutdoorSensor(in sensors: [SensorInfo], from location: CLLocation) -> (sensor: SensorInfo, distance: CLLocationDistance) {
         var closest: (sensor: SensorInfo?, distance: Double) = (nil, .greatestFiniteMagnitude)
         for sensor in sensors {
             let distance = sensor.location.distance(from: location)

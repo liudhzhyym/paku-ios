@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Settings: Codable {
+struct Settings: Equatable, Codable {
 
-    var location: Location
+    var location: LocationType
     var conversion: AQIConversion
 
     init() {
@@ -18,8 +18,8 @@ struct Settings: Codable {
     }
 }
 
-enum Location: Int, Codable {
-    case outdoors
-    case indoors
-    case both
+enum LocationType: Int, Codable, CaseIterable {
+    case outdoors = 0
+    case indoors = 1
+    case both = 2
 }

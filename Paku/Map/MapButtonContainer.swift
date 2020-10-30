@@ -7,23 +7,16 @@
 
 import UIKit
 
-class MapButton: Control {
+class MapButtonContainer: UIView {
 
     private let backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
-    private let content: UIView
+    private let stackView: UIStackView
 
-    convenience init(symbolName: String) {
-        let symbol = UIImage(systemName: symbolName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))!
-        let imageView = UIImageView(image: symbol)
-
-        imageView.tintColor = .systemBlue
-        imageView.contentMode = .center
-
-        self.init(content: imageView)
-    }
-
-    init(content: UIView) {
-        self.content = content
+    init(buttons: [UIButton]) {
+        stackView = UIStackView(arrangedSubviews: buttons)
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.axis = .vertical
 
         super.init(frame: .zero)
 
@@ -43,19 +36,18 @@ class MapButton: Control {
         backgroundView.layer.cornerCurve = .continuous
         backgroundView.layer.borderWidth = .pixel
 
-        addSubview(content)
-        content.pinEdges(to: self)
+        addSubview(stackView)
+        stackView.pinEdges(to: self)
 
         updateColors()
     }
 
-    override var intrinsicContentSize: CGSize {
-        CGSize(width: 44, height: 44)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    override func updateState() {
-        super.updateState()
-        content.alpha = isHighlighted ? 0.3 : 1
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: 48, height: 48 * stackView.arrangedSubviews.count)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

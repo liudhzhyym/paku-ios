@@ -14,7 +14,7 @@
 		2716EA9425317D6C00B8E2B0 /* MKAnnotation+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */; };
 		2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */; };
 		2716EAAC2531B08200B8E2B0 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */; };
-		2716EAB22531B33D00B8E2B0 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAB12531B33D00B8E2B0 /* MapButton.swift */; };
+		2716EAB22531B33D00B8E2B0 /* MapButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAB12531B33D00B8E2B0 /* MapButtonContainer.swift */; };
 		2716EAE6253563A200B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAE5253563A200B8E2B0 /* Solar */; };
 		2716EAEC253563A800B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAEB253563A800B8E2B0 /* Solar */; };
 		271CC62C253FB76C001EDCE1 /* AQIConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CC62B253FB76C001EDCE1 /* AQIConversion.swift */; };
@@ -63,6 +63,7 @@
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		2781B0CD2545429F0058AA33 /* SensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781B0CC2545429F0058AA33 /* SensorDetailView.swift */; };
 		278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D70A22535679E00146D37 /* Environment+Daytime.swift */; };
+		27A8333E254BFB6D0054DD68 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A8333D254BFB6D0054DD68 /* UIImage+Extensions.swift */; };
 		27C4D913254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
 		27C4D914254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
 		27C4D91E254B8DFE001E61A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D91D254B8DFE001E61A6 /* Settings.swift */; };
@@ -134,7 +135,7 @@
 		2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKAnnotation+Reusable.swift"; sourceTree = "<group>"; };
 		2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AQICategory+Color.swift"; sourceTree = "<group>"; };
 		2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		2716EAB12531B33D00B8E2B0 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
+		2716EAB12531B33D00B8E2B0 /* MapButtonContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonContainer.swift; sourceTree = "<group>"; };
 		271CC62B253FB76C001EDCE1 /* AQIConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIConversion.swift; sourceTree = "<group>"; };
 		2724852A2525ED0F00866F1A /* PakuWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PakuWidget.entitlements; sourceTree = "<group>"; };
 		27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanDirectionGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -171,6 +172,7 @@
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		2781B0CC2545429F0058AA33 /* SensorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDetailView.swift; sourceTree = "<group>"; };
 		278D70A22535679E00146D37 /* Environment+Daytime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Daytime.swift"; sourceTree = "<group>"; };
+		27A8333D254BFB6D0054DD68 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		27C4D912254B86A8001E61A6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		27C4D91D254B8DFE001E61A6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		27E16B83253010F6006D28B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */,
 				2716EA8125317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift */,
 				276E4B4B2526D65D00FA4D26 /* UILabel+Extensions.swift */,
+				27A8333D254BFB6D0054DD68 /* UIImage+Extensions.swift */,
 				2716EA8725317BB300B8E2B0 /* MKMapView+Extensions.swift */,
 				276E4B632526D6FE00FA4D26 /* NSAttributedString+Extensions.swift */,
 				272485632526745F00866F1A /* UIViewController+Extensions.swift */,
@@ -353,7 +356,7 @@
 				2781B0CC2545429F0058AA33 /* SensorDetailView.swift */,
 				272C98342547C53800E6D5B5 /* SensorListView.swift */,
 				27F271F42545F2FB005C32B3 /* SensorLoader.swift */,
-				2716EAB12531B33D00B8E2B0 /* MapButton.swift */,
+				2716EAB12531B33D00B8E2B0 /* MapButtonContainer.swift */,
 				2716EA7B2531798500B8E2B0 /* SensorAnnotationView.swift */,
 				27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */,
 			);
@@ -621,7 +624,7 @@
 				276F42C7253E9D5B004B86A1 /* CGFloat+Extensions.swift in Sources */,
 				276E4B5B2526D6CD00FA4D26 /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */,
-				2716EAB22531B33D00B8E2B0 /* MapButton.swift in Sources */,
+				2716EAB22531B33D00B8E2B0 /* MapButtonContainer.swift in Sources */,
 				276E4B522526D67800FA4D26 /* Control.swift in Sources */,
 				271CC62C253FB76C001EDCE1 /* AQIConversion.swift in Sources */,
 				276E4B5E2526D6CD00FA4D26 /* NSLayoutAnchor+AutoLayout.swift in Sources */,
@@ -654,6 +657,7 @@
 				2716EA7C2531798500B8E2B0 /* SensorAnnotationView.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
 				272C982F254673E000E6D5B5 /* MapDetailContainer.swift in Sources */,
+				27A8333E254BFB6D0054DD68 /* UIImage+Extensions.swift in Sources */,
 				2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */,
 				275BBAE9253FA57E007923BA /* Sensor.swift in Sources */,
 				2716EAAC2531B08200B8E2B0 /* Array+Extensions.swift in Sources */,
@@ -864,7 +868,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -887,7 +891,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -993,7 +997,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1017,7 +1021,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

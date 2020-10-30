@@ -54,18 +54,21 @@ class SensorLoader {
     }
 
     private func loadSensorsIfNeeded(completion: @escaping () -> Void) {
-        if sensors.isEmpty {
-            loader.loadSensors { result in
-                switch result {
-                case .success(let infos):
+        loader.loadSensors { result in
+            switch result {
+            case .success(let infos):
+                switch UserDefaults.shared.settings.location {
+                case .outdoors:
                     self.sensors = infos.filter(\.isOutdoor).map(SensorWrapper.init)
-                case .failure(let error):
-                    logger.debug("Failed to load sensors for SensorLoader: \(error.localizedDescription)")
+                case .indoors:
+                    self.sensors = infos.filter { !$0.isOutdoor } .map(SensorWrapper.init)
+                case .both:
+                    self.sensors = infos.map(SensorWrapper.init)
                 }
-
-                completion()
+            case .failure(let error):
+                logger.debug("Failed to load sensors for SensorLoader: \(error.localizedDescription)")
             }
-        } else {
+
             completion()
         }
     }

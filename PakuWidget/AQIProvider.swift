@@ -50,7 +50,7 @@ struct AQIProvider: TimelineProvider {
         LocationManager.shared.requestLocation { result in
             do {
                 let location = try result.get()
-                loader.loadSensor(near: location) { result in
+                loader.loadOutdoorSensor(near: location) { result in
                     do {
                         let sensor = try result.get()
                         let info = SimpleEntry.Info(
