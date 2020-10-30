@@ -11,13 +11,17 @@ class MapDetailContainer: UIViewController {
 
     var onClose: () -> Void = {}
 
+    private let containerView = UIView()
     private var detailView: UIView?
     private var detailBottomConstraint: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.clipsToBounds = true
+        view.addSubview(containerView)
+        containerView.clipsToBounds = true
+        containerView.pinEdges(to: view)
+
         view.backgroundColor = .systemBackground
 
         view.layer.cornerCurve = .continuous
@@ -45,7 +49,7 @@ class MapDetailContainer: UIViewController {
 
     func display(detail: UIView, animated: Bool) {
         detail.alpha = 0
-        view.insertSubview(detail, at: 0)
+        containerView.addSubview(detail)
         detail.pinEdges([.left, .right, .top], to: view, insets: .init(all: 20))
 
         if detailBottomConstraint == nil {

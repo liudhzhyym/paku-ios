@@ -269,8 +269,12 @@ extension MapViewController: MKMapViewDelegate {
         }.startAnimation()
 
         if view.isSelected, let annotation = view.annotation as? SensorAnnotation {
-            mapView.setCenter(annotation.sensor.info.location.coordinate, animated: true)
             display(sensor: annotation.sensor, animated: true)
+
+            let height = mapView.convert(detailContainer.view.bounds, toRegionFrom: nil).span.latitudeDelta
+            var sensorCoordinate = annotation.sensor.info.location.coordinate
+            sensorCoordinate.latitude -= height / 2
+            mapView.setCenter(sensorCoordinate, animated: true)
         } else if view.isSelected, let annotation = view.annotation as? MKClusterAnnotation {
             let annotations = annotation.memberAnnotations.compactMap { $0 as? SensorAnnotation }
             display(annotations: annotations, animated: true)
