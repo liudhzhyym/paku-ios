@@ -65,6 +65,8 @@
 		278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D70A22535679E00146D37 /* Environment+Daytime.swift */; };
 		27C4D913254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
 		27C4D914254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
+		27C4D91E254B8DFE001E61A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D91D254B8DFE001E61A6 /* Settings.swift */; };
+		27C4D91F254B8DFE001E61A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D91D254B8DFE001E61A6 /* Settings.swift */; };
 		27E16B84253010F6006D28B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E16B83253010F6006D28B1 /* MapViewController.swift */; };
 		27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */; };
 		27F271F52545F2FB005C32B3 /* SensorLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F271F42545F2FB005C32B3 /* SensorLoader.swift */; };
@@ -170,6 +172,7 @@
 		2781B0CC2545429F0058AA33 /* SensorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDetailView.swift; sourceTree = "<group>"; };
 		278D70A22535679E00146D37 /* Environment+Daytime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Daytime.swift"; sourceTree = "<group>"; };
 		27C4D912254B86A8001E61A6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		27C4D91D254B8DFE001E61A6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		27E16B83253010F6006D28B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		27F0DED4253178A0005BDE1D /* SensorAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorAnnotation.swift; sourceTree = "<group>"; };
 		27F271F42545F2FB005C32B3 /* SensorLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLoader.swift; sourceTree = "<group>"; };
@@ -325,6 +328,7 @@
 				275BBAE8253FA57E007923BA /* Sensor.swift */,
 				271CC62B253FB76C001EDCE1 /* AQIConversion.swift */,
 				2740BF23252D8CB900EDD771 /* AQICategory.swift */,
+				27C4D91D254B8DFE001E61A6 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -635,6 +639,7 @@
 				2740BEEB252D8B8500EDD771 /* URLSession+Extensions.swift in Sources */,
 				275712AC252D47E00050B473 /* LocationManager.swift in Sources */,
 				27C4D913254B86A8001E61A6 /* Logger.swift in Sources */,
+				27C4D91E254B8DFE001E61A6 /* Settings.swift in Sources */,
 				C24ED0672525BEAD001B3952 /* HomeViewController.swift in Sources */,
 				27F0DED5253178A0005BDE1D /* SensorAnnotation.swift in Sources */,
 				27F271F52545F2FB005C32B3 /* SensorLoader.swift in Sources */,
@@ -698,6 +703,7 @@
 				276E6C2A252D5AC000A13D6D /* AQIBarWidgetView.swift in Sources */,
 				276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */,
 				2740BF2A252D8D0500EDD771 /* SensorInfo.swift in Sources */,
+				27C4D91F254B8DFE001E61A6 /* Settings.swift in Sources */,
 				2738C383254566AA007BC1A4 /* Sensor+Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

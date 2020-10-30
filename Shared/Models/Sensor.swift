@@ -84,7 +84,7 @@ struct Sensor: Codable, Equatable {
         self.particleInfo = results.compactMap(ParticleInfo.init)
     }
 
-    func aqiValue(for conversion: AQIConversion = .EPA) -> Double {
+    func aqiValue(for conversion: AQIConversion = UserDefaults.shared.settings.conversion) -> Double {
         switch conversion {
         case .none:
             return aqiFrom(pm: average_pm2_5_cf_1)
@@ -95,7 +95,7 @@ struct Sensor: Codable, Equatable {
         }
     }
 
-    func aqiCategory(for conversion: AQIConversion = .EPA) -> AQICategory {
+    func aqiCategory(for conversion: AQIConversion = UserDefaults.shared.settings.conversion) -> AQICategory {
         return AQICategory(aqi: aqiValue(for: conversion))
     }
 

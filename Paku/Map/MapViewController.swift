@@ -14,7 +14,7 @@ private let queuedAnnotationDelay: TimeInterval = 0.1
 
 class MapViewController: ViewController {
 
-    private var queuedAnnotations: [MKAnnotation] = []
+    private var queuedSensors: [Sensor] = []
     private var needsAnnotationUpdate = false
     private let loader = SensorLoader()
 
@@ -60,15 +60,6 @@ class MapViewController: ViewController {
                                 to: view.safeAreaLayoutGuide,
                                 insets: .init(all: 10))
 
-        let settingsButton = MapButton(symbolName: "line.horizontal.3")
-        settingsButton.addAction(UIAction { [weak self] _ in
-            self?.openSettings()
-        }, for: .touchUpInside)
-
-        //        view.addSubview(settingsButton)
-        //        settingsButton.pinEdges([.left, .bottom], to: view.layoutMarginsGuide, insets: .init(vertical: 40, horizontal: 0))
-
-
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let safeAreaBlurView = UIVisualEffectView(effect: blurEffect)
 
@@ -101,30 +92,33 @@ class MapViewController: ViewController {
                                       insets: .init(all: 10))
 
         setDetailHidden(true, animated: false)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refresh),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil)
     }
 
-    func refresh() {
+    @objc func refresh() {
         item?.cancel()
         item = DispatchWorkItem(block: actuallyRefresh)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: item!)
     }
 
     func actuallyRefresh() {
-        queuedAnnotations.removeAll()
+        queuedSensors.removeAll()
 
         loader.loadAnnotations(in: mapView.visibleMapRect) { [weak self] sensor in
             guard let self = self else { return }
 
-            if let existing = self.annotations
-                .first(where: { $0.sensor.info.id == sensor.info.id }) {
-                if sensor != existing.sensor {
-                    existing.sensor = sensor
-                    self.mapView.view(for: existing)?.annotation = existing
+            if let existing = self.annotations.first(where: { $0.sensor.info.id == sensor.info.id }) {
+                if sensor.aqiValue() != existing.sensor.aqiValue() {
+                    self.annotations.remove(existing)
+                    self.queuedSensors.append(sensor)
                 }
             } else {
-                let annotation = SensorAnnotation(sensor: sensor)
-                self.annotations.insert(annotation)
-                self.queuedAnnotations.append(annotation)
+                self.queuedSensors.append(sensor)
             }
         }
     }
@@ -162,7 +156,7 @@ class MapViewController: ViewController {
 
             DispatchQueue.main.async {
                 self.mapView.removeAnnotations(annotationsToRemove)
-                self.annotations = self.annotations.subtracting(annotationsToRemove)
+                self.annotations.subtract(annotationsToRemove)
                 logger.debug("Trimming: removed \(annotationsToRemove.count) annotations")
             }
         }
@@ -205,11 +199,16 @@ class MapViewController: ViewController {
     }
 
     private func updateAnnotationsIfNeeded() {
-        if queuedAnnotations.count > 0 {
-            let annotations = queuedAnnotations
-            queuedAnnotations.removeAll(keepingCapacity: true)
-            logger.debug("Adding: \(annotations.count) queued annotations")
+        if queuedSensors.count > 0 {
+            let annotations = queuedSensors.map(SensorAnnotation.init)
+
+            logger.debug("Adding: \(annotations.count) queued sensor annotations")
+
+            queuedSensors.removeAll(keepingCapacity: true)
+
             mapView.addAnnotations(annotations)
+            self.annotations.formUnion(annotations)
+
             trimAnnotations()
         }
     }

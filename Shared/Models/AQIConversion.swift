@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AQIConversion {
+enum AQIConversion: Int, Codable {
     case none
     case AQAndU
     case EPA
