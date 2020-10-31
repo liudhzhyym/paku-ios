@@ -88,14 +88,16 @@ class AQILoader: ObservableObject {
         }
     }
 
-    func loadSensor(from info: SensorInfo, completion: @escaping (Result<Sensor, Error>) -> Void) {
+    @discardableResult
+    func loadSensor(from info: SensorInfo, completion: @escaping (Result<Sensor, Error>) -> Void) -> URLSessionDataTask? {
         let url = URL(string: "https://www.purpleair.com/json?show=\(info.id)")!
 
         if let cached = ExpiringCache.value(Sensor.self, forKey: sensorKey(info), expiration: 60) {
-            return completion(.success(cached.value))
+            completion(.success(cached.value))
+            return nil
         }
 
-        URLSession.shared.load(SensorResponse.self, from: url) { result in
+        return URLSession.shared.load(SensorResponse.self, from: url) { result in
             switch result {
             case .success(let response):
                 do {

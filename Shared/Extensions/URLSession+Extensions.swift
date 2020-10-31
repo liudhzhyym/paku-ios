@@ -16,8 +16,9 @@ extension URLSession {
 
     private static let decoder = JSONDecoder()
 
-    func load<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
+    @discardableResult
+    func load<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
             } else if let data = data {
@@ -30,6 +31,9 @@ extension URLSession {
             } else {
                 completion(.failure(URLSessionLoadingError.unknown))
             }
-        }.resume()
+        }
+
+        task.resume()
+        return task
     }
 }

@@ -87,6 +87,7 @@ private class SensorWrapper {
 
 private class SensorOperation: Operation {
 
+    private var dataTask: URLSessionDataTask?
     private let loader: AQILoader
 
     let wrapper: SensorWrapper
@@ -145,7 +146,7 @@ private class SensorOperation: Operation {
 
         isExecuting = true
 
-        loader.loadSensor(from: wrapper.info) { result in
+        self.dataTask = loader.loadSensor(from: wrapper.info) { result in
             switch result {
             case .success(let sensor):
                 self.wrapper.sensor = sensor
@@ -157,6 +158,13 @@ private class SensorOperation: Operation {
 
             self.isExecuting = false
             self.isFinished = true
+        }
+    }
+
+    override func cancel() {
+        if let dataTask = dataTask {
+            logger.debug("SensorOperation cancelling data task")
+            dataTask.cancel()
         }
     }
 }
