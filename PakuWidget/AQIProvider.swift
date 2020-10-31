@@ -32,9 +32,9 @@ struct AQIProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
 
         func completeWithFailure() {
+            let refreshDate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate)!
             let entry = SimpleEntry(date: currentDate, info: nil)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             DispatchQueue.main.async {
@@ -53,6 +53,7 @@ struct AQIProvider: TimelineProvider {
                             distance: sensor.info.location.distance(from: location)
                         )
 
+                        let refreshDate = Calendar.current.date(byAdding: .minute, value: 10, to: currentDate)!
                         let entry = SimpleEntry(date: currentDate, info: info)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
 
