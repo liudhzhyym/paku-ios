@@ -9,15 +9,6 @@
           "revision": "79b05a5da89557a4fa50647cc92488a3d9c3f478",
           "version": "0.3.0"
         }
-      },
-      {
-        "package": "Solar",
-        "repositoryURL": "https://github.com/kylebshr/Solar",
-        "state": {
-          "branch": "master",
-          "revision": "4fc8990300dd30289fbbafcbe0f0524905f85f70",
-          "version": null
-        }
       }
     ]
   },

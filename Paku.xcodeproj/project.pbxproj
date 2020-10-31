@@ -15,8 +15,6 @@
 		2716EA9E253185F000B8E2B0 /* AQICategory+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */; };
 		2716EAAC2531B08200B8E2B0 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */; };
 		2716EAB22531B33D00B8E2B0 /* MapButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716EAB12531B33D00B8E2B0 /* MapButtonContainer.swift */; };
-		2716EAE6253563A200B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAE5253563A200B8E2B0 /* Solar */; };
-		2716EAEC253563A800B8E2B0 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 2716EAEB253563A800B8E2B0 /* Solar */; };
 		271CC62C253FB76C001EDCE1 /* AQIConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CC62B253FB76C001EDCE1 /* AQIConversion.swift */; };
 		271CC62D253FB76C001EDCE1 /* AQIConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CC62B253FB76C001EDCE1 /* AQIConversion.swift */; };
 		27248552252673B100866F1A /* PanDirectionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248551252673B000866F1A /* PanDirectionGestureRecognizer.swift */; };
@@ -62,7 +60,6 @@
 		277F1C69252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		2781B0CD2545429F0058AA33 /* SensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781B0CC2545429F0058AA33 /* SensorDetailView.swift */; };
-		278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D70A22535679E00146D37 /* Environment+Daytime.swift */; };
 		27A8333E254BFB6D0054DD68 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A8333D254BFB6D0054DD68 /* UIImage+Extensions.swift */; };
 		27C4D913254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
 		27C4D914254B86A8001E61A6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4D912254B86A8001E61A6 /* Logger.swift */; };
@@ -171,7 +168,6 @@
 		276F42C6253E9D5B004B86A1 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		2781B0CC2545429F0058AA33 /* SensorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDetailView.swift; sourceTree = "<group>"; };
-		278D70A22535679E00146D37 /* Environment+Daytime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Daytime.swift"; sourceTree = "<group>"; };
 		27A8333D254BFB6D0054DD68 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		27C4D912254B86A8001E61A6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		27C4D91D254B8DFE001E61A6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -207,7 +203,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2716EAE6253563A200B8E2B0 /* Solar in Frameworks */,
 				C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +227,6 @@
 			files = (
 				C24ED0D62525DD1D001B3952 /* SwiftUI.framework in Frameworks */,
 				C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */,
-				2716EAEC253563A800B8E2B0 /* Solar in Frameworks */,
 				C24ED0D52525DD1D001B3952 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +432,6 @@
 				C24ED0D82525DD1D001B3952 /* Widgets.swift */,
 				2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */,
 				276E6C3E252D83B200A13D6D /* AQIProvider.swift */,
-				278D70A22535679E00146D37 /* Environment+Daytime.swift */,
 				276E6C4E252D853700A13D6D /* Views */,
 				C24ED0DB2525DD1F001B3952 /* Assets.xcassets */,
 				C24ED0DD2525DD1F001B3952 /* Info.plist */,
@@ -466,7 +459,6 @@
 			name = Paku;
 			packageProductDependencies = (
 				C24ED09B2525C171001B3952 /* AnyCodable */,
-				2716EAE5253563A200B8E2B0 /* Solar */,
 			);
 			productName = Paku;
 			productReference = C24ED05F2525BEAD001B3952 /* Paku.app */;
@@ -523,7 +515,6 @@
 			name = PakuWidget;
 			packageProductDependencies = (
 				C24ED0FA2525DE8E001B3952 /* AnyCodable */,
-				2716EAEB253563A800B8E2B0 /* Solar */,
 			);
 			productName = "aqi-widgetExtension";
 			productReference = C24ED0D42525DD1D001B3952 /* PakuWidget.appex */;
@@ -565,7 +556,6 @@
 			mainGroup = C24ED0562525BEAD001B3952;
 			packageReferences = (
 				C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */,
-				2716EAE4253563A200B8E2B0 /* XCRemoteSwiftPackageReference "Solar" */,
 			);
 			productRefGroup = C24ED0602525BEAD001B3952 /* Products */;
 			projectDirPath = "";
@@ -701,7 +691,6 @@
 				275BBAF1253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */,
 				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
 				2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */,
-				278D70A32535679E00146D37 /* Environment+Daytime.swift in Sources */,
 				275BBAEA253FA57E007923BA /* Sensor.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* Widgets.swift in Sources */,
 				276E6C2A252D5AC000A13D6D /* AQIBarWidgetView.swift in Sources */,
@@ -1089,14 +1078,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2716EAE4253563A200B8E2B0 /* XCRemoteSwiftPackageReference "Solar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kylebshr/Solar";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Flight-School/AnyCodable";
@@ -1108,16 +1089,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2716EAE5253563A200B8E2B0 /* Solar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2716EAE4253563A200B8E2B0 /* XCRemoteSwiftPackageReference "Solar" */;
-			productName = Solar;
-		};
-		2716EAEB253563A800B8E2B0 /* Solar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2716EAE4253563A200B8E2B0 /* XCRemoteSwiftPackageReference "Solar" */;
-			productName = Solar;
-		};
 		C24ED09B2525C171001B3952 /* AnyCodable */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C24ED09A2525C171001B3952 /* XCRemoteSwiftPackageReference "AnyCodable" */;

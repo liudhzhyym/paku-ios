@@ -6,7 +6,6 @@
 //
 
 import CoreLocation
-import Solar
 import WidgetKit
 
 struct SimpleEntry: TimelineEntry {
@@ -17,10 +16,6 @@ struct SimpleEntry: TimelineEntry {
 
     let date: Date
     let info: Info?
-
-    var isDaytime: Bool {
-        true
-    }
 }
 
 struct AQIProvider: TimelineProvider {

@@ -15,11 +15,9 @@ struct AQIWidgetWrapper<Wrapped: View>: View {
     var body: some View {
         if let info = entry.info {
             build(info)
-                .environment(\.isDayTime, entry.isDaytime)
         } else {
             ZStack {
                 SkyView(category: .good)
-                    .environment(\.isDayTime, entry.isDaytime)
                 HStack {
                     VStack {
                         Spacer()
