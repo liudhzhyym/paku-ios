@@ -23,3 +23,21 @@ enum LocationType: Int, Codable, CaseIterable {
     case indoors = 1
     case both = 2
 }
+
+extension LocationType {
+    var symbolName: String {
+        switch self {
+        case .outdoors: return "sun.max.fill"
+        case .indoors: return "house.fill"
+        case .both: return "smallcircle.circle.fill"
+        }
+    }
+
+    var name: String {
+        switch self {
+        case .outdoors: return "Outside"
+        case .indoors: return "Inside"
+        case .both: return "All"
+        }
+    }
+}

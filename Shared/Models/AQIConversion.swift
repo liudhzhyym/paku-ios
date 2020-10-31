@@ -12,3 +12,13 @@ enum AQIConversion: Int, Codable, CaseIterable {
     case AQAndU = 1
     case EPA = 2
 }
+
+extension AQIConversion {
+    var name: String {
+        switch self {
+        case .none: return "None"
+        case .AQAndU: return "AQAndU"
+        case .EPA: return "EPA Wood Smoke"
+        }
+    }
+}

@@ -61,6 +61,7 @@
 		277F1C6A252D9240002AB540 /* MKDistanceFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */; };
 		2781B0CD2545429F0058AA33 /* SensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781B0CC2545429F0058AA33 /* SensorDetailView.swift */; };
 		2788C8C7254D3FBD00F5F1E8 /* UILayoutPriority+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2788C8C6254D3FBD00F5F1E8 /* UILayoutPriority+Extensions.swift */; };
+		279FDB91254D479C0011AD39 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279FDB90254D479C0011AD39 /* Bundle+Extensions.swift */; };
 		27A8333E254BFB6D0054DD68 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A8333D254BFB6D0054DD68 /* UIImage+Extensions.swift */; };
 		27B6B10F254D07160062CF92 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6B10E254D07160062CF92 /* SettingsViewController.swift */; };
 		27B6B116254D07330062CF92 /* AppIconOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6B115254D07330062CF92 /* AppIconOption.swift */; };
@@ -181,6 +182,7 @@
 		277F1C68252D9240002AB540 /* MKDistanceFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKDistanceFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		2781B0CC2545429F0058AA33 /* SensorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDetailView.swift; sourceTree = "<group>"; };
 		2788C8C6254D3FBD00F5F1E8 /* UILayoutPriority+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutPriority+Extensions.swift"; sourceTree = "<group>"; };
+		279FDB90254D479C0011AD39 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		27A8333D254BFB6D0054DD68 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		27B6B10E254D07160062CF92 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		27B6B115254D07330062CF92 /* AppIconOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconOption.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				2716EA8D25317D3900B8E2B0 /* Reusable.swift */,
 				2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */,
 				2788C8C6254D3FBD00F5F1E8 /* UILayoutPriority+Extensions.swift */,
+				279FDB90254D479C0011AD39 /* Bundle+Extensions.swift */,
 				2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */,
 				276F42C6253E9D5B004B86A1 /* CGFloat+Extensions.swift */,
 				2716EA9325317D6C00B8E2B0 /* MKAnnotation+Reusable.swift */,
@@ -679,6 +682,7 @@
 				276E4B642526D6FE00FA4D26 /* NSAttributedString+Extensions.swift in Sources */,
 				27B6B116254D07330062CF92 /* AppIconOption.swift in Sources */,
 				2781B0CD2545429F0058AA33 /* SensorDetailView.swift in Sources */,
+				279FDB91254D479C0011AD39 /* Bundle+Extensions.swift in Sources */,
 				2740BF14252D8C7C00EDD771 /* SensorInfo.swift in Sources */,
 				276F42C7253E9D5B004B86A1 /* CGFloat+Extensions.swift in Sources */,
 				276E4B5B2526D6CD00FA4D26 /* NSLayoutDimension+AutoLayout.swift in Sources */,

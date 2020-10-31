@@ -252,7 +252,7 @@ class MapViewController: ViewController {
     }
 
     private func openSettings() {
-        let viewController = AppIconPickerViewController()
+        let viewController = SettingsViewController()
         viewController.navigationItem.title = "Settings"
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
@@ -374,34 +374,6 @@ extension MapViewController: MKMapViewDelegate {
             display(annotations: annotations, animated: true)
         } else {
             setDetailHidden(true, animated: true)
-        }
-    }
-}
-
-private extension LocationType {
-    var symbolName: String {
-        switch self {
-        case .outdoors: return "sun.max.fill"
-        case .indoors: return "house.fill"
-        case .both: return "smallcircle.circle.fill"
-        }
-    }
-
-    var name: String {
-        switch self {
-        case .outdoors: return "Outside"
-        case .indoors: return "Inside"
-        case .both: return "All"
-        }
-    }
-}
-
-private extension AQIConversion {
-    var name: String {
-        switch self {
-        case .none: return "None"
-        case .AQAndU: return "AQAndU"
-        case .EPA: return "EPA Wood Smoke"
         }
     }
 }
