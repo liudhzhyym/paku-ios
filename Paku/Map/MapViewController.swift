@@ -244,8 +244,7 @@ class MapViewController: ViewController {
     }
 
     private func openSettings() {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemBackground
+        let viewController = AppIconPickerViewController()
         viewController.navigationItem.title = "Settings"
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
