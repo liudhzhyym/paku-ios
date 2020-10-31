@@ -90,24 +90,24 @@ class SettingsViewController: UITableViewController {
 
     private func buildSettings() -> [Section] {
         [
-            Section(
-                items: [
-                    Item(
-                        name: "Normalization",
-                        setting: UserDefaults.shared.settings.conversion.name,
-                        icon: UIImage(systemName: "equal.circle.fill"),
-                        iconTint: .systemBlue,
-                        accessory: .disclosureIndicator
-                    ),
-                    Item(
-                        name: "Location Type",
-                        setting: UserDefaults.shared.settings.location.name,
-                        icon: UIImage(systemName: "sun.max.fill"),
-                        iconTint: .systemYellow,
-                        accessory: .disclosureIndicator
-                    )
-                ]
-            ),
+//            Section(
+//                items: [
+//                    Item(
+//                        name: "Normalization",
+//                        setting: UserDefaults.shared.settings.conversion.name,
+//                        icon: UIImage(systemName: "equal.circle.fill"),
+//                        iconTint: .systemBlue,
+//                        accessory: .disclosureIndicator
+//                    ),
+//                    Item(
+//                        name: "Location Type",
+//                        setting: UserDefaults.shared.settings.location.name,
+//                        icon: UIImage(systemName: "sun.max.fill"),
+//                        iconTint: .systemYellow,
+//                        accessory: .disclosureIndicator
+//                    )
+//                ]
+//            ),
 
             Section(
                 items: [
@@ -127,7 +127,7 @@ class SettingsViewController: UITableViewController {
                         action: { [weak self] in
                             self?.show(AppIconPickerViewController(), sender: self)
                         }
-                    ),
+                    )
                 ]
             ),
 
@@ -143,9 +143,9 @@ class SettingsViewController: UITableViewController {
                             self?.present(SFSafariViewController(url: url), animated: true)
                         }
                     ),
-                ],
-                footer: "Version \(Bundle.main.version())"
-            )
+                    Item(name: "Version", setting: Bundle.main.version(), icon: UIImage(systemName: "barcode"), iconTint: .label, accessory: .none)
+                ]
+            ),
         ]
     }
 }

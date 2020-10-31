@@ -17,6 +17,7 @@ class MapViewController: ViewController {
 
     private var settings: Settings?
     private var queuedSensors: [Sensor] = []
+    private var queuedRemovals: [SensorAnnotation] = []
     private var needsAnnotationUpdate = false
     private let loader = SensorLoader()
 
@@ -190,13 +191,14 @@ class MapViewController: ViewController {
     @objc func refresh() {
         item?.cancel()
         loader.cancel()
+        queuedSensors.removeAll()
+        queuedRemovals.removeAll()
+
         item = DispatchWorkItem(block: actuallyRefresh)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: item!)
     }
 
     func actuallyRefresh() {
-        queuedSensors.removeAll()
-
         loader.loadAnnotations(in: mapView.visibleMapRect) { [weak self] sensor in
             guard let self = self else { return }
 
@@ -204,10 +206,7 @@ class MapViewController: ViewController {
                 if sensor.aqiValue() != existing.sensor.aqiValue() {
                     self.annotations.remove(existing)
                     self.queuedSensors.append(sensor)
-
-                    DispatchQueue.main.async {
-                        self.mapView.removeAnnotation(existing)
-                    }
+                    self.queuedRemovals.append(existing)
                 }
             } else {
                 self.queuedSensors.append(sensor)
@@ -295,6 +294,9 @@ class MapViewController: ViewController {
     }
 
     private func updateAnnotationsIfNeeded() {
+        mapView.removeAnnotations(queuedRemovals)
+        queuedRemovals.removeAll(keepingCapacity: true)
+
         if queuedSensors.count > 0 {
             let annotations = queuedSensors.map(SensorAnnotation.init)
 
@@ -325,6 +327,10 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        refresh()
+    }
+
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         refresh()
     }
 
