@@ -22,7 +22,7 @@ struct AppIconOption {
         AppIconOption(name: "Paku Paku", key: "AppIcon-Pacman"),
     ]
 
-    static func name(for key: String?) -> String? {
-        all.first { $0.key == key }?.name
+    static func option(for key: String?) -> AppIconOption? {
+        all.first { $0.key == key }
     }
 }

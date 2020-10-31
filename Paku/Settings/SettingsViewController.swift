@@ -13,6 +13,8 @@ class SettingsViewController: UITableViewController {
     struct Item {
         var name: String
         var setting: String?
+        var icon: UIImage?
+        var iconTint: UIColor?
         var accessory: UITableViewCell.AccessoryType
         var action: (() -> Void)?
     }
@@ -23,12 +25,12 @@ class SettingsViewController: UITableViewController {
         var footer: String?
     }
 
-    private lazy var settings = buildSettings() {
+    private var settings: [Section] = [] {
         didSet { tableView.reloadData() }
     }
 
     init() {
-        super.init(style: .insetGrouped)
+        super.init(style: .grouped)
     }
 
     required init?(coder: NSCoder) {
@@ -65,6 +67,8 @@ class SettingsViewController: UITableViewController {
         cell.textLabel?.text = item.name
         cell.detailTextLabel?.text = item.setting
         cell.accessoryType = item.accessory
+        cell.imageView?.image = item.icon
+        cell.imageView?.tintColor = item.iconTint
         return cell
     }
 
@@ -92,6 +96,8 @@ class SettingsViewController: UITableViewController {
                     Item(
                         name: "Normalization",
                         setting: UserDefaults.shared.settings.conversion.name,
+                        icon: UIImage(systemName: "equal.circle.fill"),
+                        iconTint: .systemBlue,
                         accessory: .disclosureIndicator,
                         action: {
                             print("Normalization")
@@ -100,6 +106,8 @@ class SettingsViewController: UITableViewController {
                     Item(
                         name: "Location Type",
                         setting: UserDefaults.shared.settings.location.name,
+                        icon: UIImage(systemName: "sun.max.fill"),
+                        iconTint: .systemYellow,
                         accessory: .disclosureIndicator,
                         action: {
                             print("Location Type")
@@ -113,11 +121,15 @@ class SettingsViewController: UITableViewController {
                     Item(
                         name: "Hidden Sensors",
                         setting: "0",
+                        icon: UIImage(systemName: "eye.slash.fill"),
+                        iconTint: .systemFill,
                         accessory: .disclosureIndicator
                     ),
                     Item(
                         name: "App Icon",
-                        setting: AppIconOption.name(for: UIApplication.shared.alternateIconName),
+                        setting: AppIconOption.option(for: UIApplication.shared.alternateIconName)?.name,
+                        icon: UIImage(systemName: "app.fill"),
+                        iconTint: .systemPurple,
                         accessory: .disclosureIndicator,
                         action: { [weak self] in
                             self?.show(AppIconPickerViewController(), sender: self)
@@ -130,6 +142,8 @@ class SettingsViewController: UITableViewController {
                 items: [
                     Item(
                         name: "Privacy Policy",
+                        icon: UIImage(systemName: "doc.plaintext.fill"),
+                        iconTint: .systemGray,
                         accessory: .disclosureIndicator,
                         action: { [weak self] in
                             let url = URL(string: "https://paku.app/privacy")!

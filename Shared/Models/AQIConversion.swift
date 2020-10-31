@@ -21,4 +21,12 @@ extension AQIConversion {
         case .EPA: return "EPA Wood Smoke"
         }
     }
+
+    var symbolName: String {
+        switch self {
+        case .none: return "equal.circle"
+        case .AQAndU: return "plusminus.circle"
+        case .EPA: return "plusminus.circle"
+        }
+    }
 }

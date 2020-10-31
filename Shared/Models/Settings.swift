@@ -28,8 +28,8 @@ extension LocationType {
     var symbolName: String {
         switch self {
         case .outdoors: return "sun.max.fill"
-        case .indoors: return "house.fill"
-        case .both: return "smallcircle.circle.fill"
+        case .indoors: return "building.2.fill"
+        case .both: return "circle.grid.cross.fill"
         }
     }
 

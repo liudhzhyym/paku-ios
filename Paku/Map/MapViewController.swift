@@ -163,8 +163,11 @@ class MapViewController: ViewController {
             self.annotations.removeAll(keepingCapacity: true)
             self.actuallyRefresh()
 
-            let image = UIImage(symbol: UserDefaults.shared.settings.location.symbolName, size: 16, weight: .medium)
-            self.locationTypeButton.setImage(image, for: .normal)
+            let locationImage = UIImage(symbol: UserDefaults.shared.settings.location.symbolName, size: 16, weight: .medium)
+            self.locationTypeButton.setImage(locationImage, for: .normal)
+
+            let conversionImage = UIImage(symbol: UserDefaults.shared.settings.conversion.symbolName, size: 16, weight: .medium)
+            self.conversionButton.setImage(conversionImage, for: .normal)
 
             self.conversionButton.menu = UIMenu(title: "Normalization", options: [.displayInline], children: AQIConversion.allCases.map { conversion in
                 let current = UserDefaults.shared.settings.conversion
@@ -173,7 +176,7 @@ class MapViewController: ViewController {
                 }
             })
 
-            self.locationTypeButton.menu = UIMenu(title: "Filter Sensors", options: [.displayInline], children: LocationType.allCases.map { location in
+            self.locationTypeButton.menu = UIMenu(title: "Sensor Location", options: [.displayInline], children: LocationType.allCases.map { location in
                 let current = UserDefaults.shared.settings.location
                 return UIAction(title: location.name,
                          image: UIImage(systemName: location.symbolName),
