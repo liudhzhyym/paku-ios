@@ -101,6 +101,7 @@ class SensorAnnotationView: MKAnnotationView {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        image = nil
         layer.removeAllAnimations()
     }
 
