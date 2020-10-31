@@ -74,8 +74,8 @@ class MapViewController: ViewController {
 
         let settingsContainer = MapButtonContainer(buttons: [settingsButton])
         view.addSubview(settingsContainer)
-        settingsContainer.trailingAnchor.pin(to: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
-        settingsContainer.topAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor, constant: 8)
+        settingsContainer.trailingAnchor.pin(to: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        settingsContainer.topAnchor.pin(to: view.safeAreaLayoutGuide.topAnchor, constant: 10)
 
         let quickSettings = MapButtonContainer(buttons: [conversionButton, locationTypeButton])
         view.addSubview(quickSettings)
@@ -121,9 +121,17 @@ class MapViewController: ViewController {
         )
 
         view.addSubview(detailContainer.view)
-        detailContainer.view.pinEdges([.left, .right],
-                                      to: view.safeAreaLayoutGuide,
-                                      insets: .init(all: 10))
+        detailContainer.view.leadingAnchor.pin(
+            to: view.safeAreaLayoutGuide.leadingAnchor,
+            constant: 10,
+            priority: .defaultLow)
+        detailContainer.view.trailingAnchor.pin(
+            to: view.safeAreaLayoutGuide.trailingAnchor,
+            constant: -10,
+            priority: .defaultLow)
+
+        detailContainer.view.centerXAnchor.pin(to: view.centerXAnchor)
+        detailContainer.view.widthAnchor.pin(lessThan: 500)
 
         setDetailHidden(true, animated: false)
 

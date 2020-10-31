@@ -20,9 +20,9 @@ class SensorLoader {
     private var sensors: [SensorWrapper] = []
 
     func loadAnnotations(in area: MKMapRect, didLoadSensor: @escaping (Sensor) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.queue.cancelAllOperations()
+        self.queue.cancelAllOperations()
 
+        DispatchQueue.global(qos: .userInitiated).async {
             self.loadSensorsIfNeeded {
                 let sensors = self.sensors
                     .filter {
