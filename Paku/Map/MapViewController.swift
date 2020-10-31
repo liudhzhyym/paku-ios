@@ -189,6 +189,7 @@ class MapViewController: ViewController {
 
     @objc func refresh() {
         item?.cancel()
+        loader.cancel()
         item = DispatchWorkItem(block: actuallyRefresh)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: item!)
     }

@@ -91,40 +91,33 @@ class SettingsViewController: UITableViewController {
     private func buildSettings() -> [Section] {
         [
             Section(
-                header: "AQI Settings",
                 items: [
                     Item(
                         name: "Normalization",
                         setting: UserDefaults.shared.settings.conversion.name,
                         icon: UIImage(systemName: "equal.circle.fill"),
                         iconTint: .systemBlue,
-                        accessory: .disclosureIndicator,
-                        action: {
-                            print("Normalization")
-                        }
+                        accessory: .disclosureIndicator
                     ),
                     Item(
                         name: "Location Type",
                         setting: UserDefaults.shared.settings.location.name,
                         icon: UIImage(systemName: "sun.max.fill"),
                         iconTint: .systemYellow,
-                        accessory: .disclosureIndicator,
-                        action: {
-                            print("Location Type")
-                        }
+                        accessory: .disclosureIndicator
                     )
                 ]
             ),
 
-            Section(header: "App Settings",
+            Section(
                 items: [
-                    Item(
-                        name: "Hidden Sensors",
-                        setting: "0",
-                        icon: UIImage(systemName: "eye.slash.fill"),
-                        iconTint: .systemFill,
-                        accessory: .disclosureIndicator
-                    ),
+//                    Item(
+//                        name: "Hidden Sensors",
+//                        setting: "0",
+//                        icon: UIImage(systemName: "eye.slash.fill"),
+//                        iconTint: .systemFill,
+//                        accessory: .disclosureIndicator
+//                    ),
                     Item(
                         name: "App Icon",
                         setting: AppIconOption.option(for: UIApplication.shared.alternateIconName)?.name,
