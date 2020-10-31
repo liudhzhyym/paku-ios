@@ -124,11 +124,11 @@ class MapViewController: ViewController {
         detailContainer.view.leadingAnchor.pin(
             to: view.safeAreaLayoutGuide.leadingAnchor,
             constant: 10,
-            priority: .defaultHigh)
+            priority: .almostRequired)
         detailContainer.view.trailingAnchor.pin(
             to: view.safeAreaLayoutGuide.trailingAnchor,
             constant: -10,
-            priority: .defaultHigh)
+            priority: .almostRequired)
 
         detailContainer.view.centerXAnchor.pin(to: view.centerXAnchor)
         detailContainer.view.widthAnchor.pin(lessThan: 500)
