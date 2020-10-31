@@ -7,10 +7,12 @@
 
 import AnyCodable
 import CoreLocation
+import Combine
 import Foundation
 import UIKit
 
-struct AQILoader {
+class AQILoader: ObservableObject {
+
     enum AQILoaderError: Error {
         case failedToDecode(Error)
         case invalidAQI
@@ -47,11 +49,11 @@ struct AQILoader {
         }
     }
 
-    private let aqiKey = "aqi"
-    private let sensorsKey = "sensors"
+    private let sensorsKey = "sensors-v5"
+    private func sensorKey(_ info: SensorInfo) -> String { "sensor\(info.id)" }
 
-    private func loadSensors(completion: @escaping (Result<[Sensor], Error>) -> Void) {
-        if let cached = ExpiringCache.value([Sensor].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
+    func loadSensors(completion: @escaping (Result<[SensorInfo], Error>) -> Void) {
+        if let cached = ExpiringCache.value([SensorInfo].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
             return completion(.success(cached.value))
         }
 
@@ -65,29 +67,43 @@ struct AQILoader {
                 }
 
                 let sensors = response.data.compactMap {
-                    try? Sensor(fields: fields, data: $0)
+                    try? SensorInfo(fields: fields, data: $0)
+                }.filter {
+                    $0.age < 5
                 }
 
-                ExpiringCache.cache(sensors, forKey: sensorsKey)
-                completion(.success(sensors))
+                if sensors.isEmpty {
+                    completion(.failure(AQILoaderError.unknownError))
+                } else {
+                    ExpiringCache.cache(sensors, forKey: self.sensorsKey)
+                    completion(.success(sensors))
+                }
             case .failure(let error):
-                completion(.failure(error))
+                if let cached = ExpiringCache.value([SensorInfo].self, forKey: self.sensorsKey, expiration: 5 * 24 * 60 * 60) {
+                    return completion(.success(cached.value))
+                } else {
+                    return completion(.failure(error))
+                }
             }
         }
     }
 
-    private func loadAQI(from sensor: Sensor, completion: @escaping (Result<Double, Error>) -> Void) {
-        let url = URL(string: "https://www.purpleair.com/json?show=\(sensor.id)")!
+    func loadSensor(from info: SensorInfo, completion: @escaping (Result<Sensor, Error>) -> Void) {
+        let url = URL(string: "https://www.purpleair.com/json?show=\(info.id)")!
+
+        if let cached = ExpiringCache.value(Sensor.self, forKey: sensorKey(info), expiration: 60) {
+            return completion(.success(cached.value))
+        }
+
         URLSession.shared.load(SensorResponse.self, from: url) { result in
             switch result {
             case .success(let response):
-                let pm2_5Values = response.results.compactMap(pm2_5)
-                let pm2_5 = pm2_5Values.reduce(0, +) / Double(pm2_5Values.count)
-
-                if let aqi = aqanduAQIfrom(pm: pm2_5) {
-                    completion(.success(aqi))
-                } else {
-                    completion(.failure(AQILoaderError.invalidAQI))
+                do {
+                    let sensor = try Sensor(results: response.results, info: info)
+                    ExpiringCache.cache(sensor, forKey: self.sensorKey(info))
+                    completion(.success(sensor))
+                } catch {
+                    completion(.failure(error))
                 }
             case .failure(let error):
                 completion(.failure(error))
@@ -95,24 +111,17 @@ struct AQILoader {
         }
     }
 
-    private func loadClosestAQI(completion: @escaping (Result<AQI, Error>) -> Void) {
+    func loadOutdoorSensor(near location: CLLocation, completion: @escaping (Result<Sensor, Error>) -> Void = { _ in }) {
         loadSensors { result in
             switch result {
             case .success(let sensors):
-                LocationManager.shared.requestLocation { result in
+
+                let closest = self.closestOutdoorSensor(in: sensors, from: location)
+
+                self.loadSensor(from: closest.sensor) { result in
                     switch result {
-                    case .success(let location):
-                        let closest = closestSensor(in: sensors, from: location)
-                        loadAQI(from: closest.sensor) { result in
-                            switch result {
-                            case .success(let aqi):
-                                let aqi = AQI(value: aqi, distance: closest.distance, date: Date())
-                                ExpiringCache.cache(aqi, forKey: aqiKey)
-                                completion(.success(aqi))
-                            case .failure(let error):
-                                completion(.failure(error))
-                            }
-                        }
+                    case .success(let sensor):
+                        completion(.success(sensor))
                     case .failure(let error):
                         completion(.failure(error))
                     }
@@ -123,100 +132,14 @@ struct AQILoader {
         }
     }
 
-    func closestAQIOrCached(completion: @escaping (Result<AQI, Error>) -> Void) {
-        loadClosestAQI { result in
-            switch result {
-            case .success(let aqi):
-                completion(.success(aqi))
-            case .failure(let error):
-                if let cached = ExpiringCache.value(AQI.self, forKey: aqiKey, expiration: 60 * 60) {
-                    completion(.success(cached.value))
-                } else {
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-
-    private func closestSensor(in sensors: [Sensor], from location: CLLocation) -> (sensor: Sensor, distance: CLLocationDistance) {
-        var closest: (sensor: Sensor?, distance: Double) = (nil, .greatestFiniteMagnitude)
+    private func closestOutdoorSensor(in sensors: [SensorInfo], from location: CLLocation) -> (sensor: SensorInfo, distance: CLLocationDistance) {
+        var closest: (sensor: SensorInfo?, distance: Double) = (nil, .greatestFiniteMagnitude)
         for sensor in sensors {
             let distance = sensor.location.distance(from: location)
-            if distance < closest.distance {
+            if distance < closest.distance && sensor.isOutdoor {
                 closest = (sensor, distance)
             }
         }
         return (closest.sensor!, closest.distance)
-    }
-
-    private func pm2_5(from data: [String: AnyCodable]) -> Double? {
-        func isBusted() -> Bool {
-            for field in [
-                "p_0_3_um",
-                "p_0_5_um",
-                "p_1_0_um",
-                "p_2_5_um",
-                "p_5_0_um",
-                "p_10_0_um",
-                "pm1_0_cf_1",
-                "pm2_5_cf_1",
-                "pm10_0_cf_1",
-                "pm1_0_atm",
-                "pm2_5_atm",
-                "pm10_0_atm",
-            ] {
-                if let value = data[field]?.value as? String, value != "0.0" {
-                    return false
-                }
-            }
-
-            return true
-        }
-
-        if isBusted() {
-            return nil
-        }
-
-        guard let value = data["PM2_5Value"]?.value as? String, let double = Double(value) else {
-            return nil
-        }
-
-        return double
-    }
-
-    private func aqanduAQIfrom(pm: Double) -> Double? {
-        aqiFrom(pm: 0.778 * pm + 2.65)
-    }
-
-    private func aqiFrom(pm: Double) -> Double? {
-        if pm.isNaN { return nil }
-        if pm < 0 { return pm }
-        if pm > 1000 { return nil }
-
-        if pm > 350.5 {
-            return calcAQI(Cp: pm, Ih: 500, Il: 401, BPh: 500, BPl: 350.5)
-        } else if pm > 250.5 {
-            return calcAQI(Cp: pm, Ih: 400, Il: 301, BPh: 350.4, BPl: 250.5)
-        } else if pm > 150.5 {
-            return calcAQI(Cp: pm, Ih: 300, Il: 201, BPh: 250.4, BPl: 150.5)
-        } else if pm > 55.5 {
-            return calcAQI(Cp: pm, Ih: 200, Il: 151, BPh: 150.4, BPl: 55.5)
-        } else if pm > 35.5 {
-            return calcAQI(Cp: pm, Ih: 150, Il: 101, BPh: 55.4, BPl: 35.5)
-        } else if pm > 12.1 {
-            return calcAQI(Cp: pm, Ih: 100, Il: 51, BPh: 35.4, BPl: 12.1)
-        } else if pm >= 0 {
-            return calcAQI(Cp: pm, Ih: 50, Il: 0, BPh: 12, BPl: 0)
-        } else {
-            return nil
-        }
-    }
-
-    private func calcAQI(Cp: Double, Ih: Double, Il: Double, BPh: Double, BPl: Double) -> Double {
-        // The AQI equation https://forum.airnowtech.org/t/the-aqi-equation/169
-        let a = Ih - Il;
-        let b = BPh - BPl;
-        let c = Cp - BPl;
-        return round((a / b) * c + Il)
     }
 }

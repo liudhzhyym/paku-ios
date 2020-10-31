@@ -27,4 +27,9 @@ extension UserDefaults {
     func set<T: Codable>(codable value: T, forKey key: String) {
         set(try? Self.encoder.encode(value), forKey: key)
     }
+
+    var settings: Settings {
+        get { UserDefaults.shared.codable(Settings.self, forKey: "user-settings") ?? Settings() }
+        set { UserDefaults.shared.set(codable: newValue, forKey: "user-settings") }
+    }
 }

@@ -24,9 +24,7 @@ class OnboardingViewController: ViewController {
         let icon = UIImageView(image: #imageLiteral(resourceName: "in-app-icon"))
 
         let titleLabel = UILabel(font: .systemFont(ofSize: 38, weight: .bold))
-        let welcome = NSAttributedString(string: "Welcome to ")
-        let paku = NSAttributedString(string: "Paku", attributes: [.foregroundColor: UIColor.customPurple])
-        titleLabel.attributedText = welcome + paku
+        titleLabel.text = "Welcome to Paku"
         titleLabel.numberOfLines = 0
 
         let descriptionLabel = UILabel(font: .systemFont(ofSize: 17), color: .secondaryLabel)

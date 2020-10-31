@@ -12,4 +12,9 @@ class ViewController: UIViewController {
 
     var sink: Set<AnyCancellable> = []
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .systemBackground
+    }
 }

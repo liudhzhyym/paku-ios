@@ -15,8 +15,8 @@ struct AQIIndicatorBar: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                let AQICases = AQIClass.barIndicatorCases
-                let gradient = Gradient(colors: AQICases.map(\.color).map(Color.init))
+                let categories = AQICategory.allCases
+                let gradient = Gradient(colors: categories.map(\.color).map(Color.init))
                 let linearGradient = LinearGradient(gradient: gradient, startPoint: .leading, endPoint: .trailing)
 
                 Capsule()
@@ -25,7 +25,7 @@ struct AQIIndicatorBar: View {
                     .frame(height: 8)
 
                 let frame = geometry.frame(in: .local)
-                let maxAQI = AQICases.last!
+                let maxAQI = categories.last!
                 let percent = min(aqi, maxAQI.rawValue) / maxAQI.rawValue
 
                 let circleDimension: CGFloat = 12
@@ -40,22 +40,16 @@ struct AQIIndicatorBar: View {
     }
 
     func circle() -> some View {
-        let color = AQIClass.color(at: aqi)
+        let color = AQICategory.color(at: aqi)
         return Circle()
             .strokeBorder(Color.white, lineWidth: 1)
             .background(Circle().fill(Color(color)))
     }
 }
 
-private extension AQIClass {
-    static var barIndicatorCases: [AQIClass] {
-        allCases.dropLast()
-    }
-
+private extension AQICategory {
     var color: UIColor {
         switch self {
-        case .veryHazardous:
-            return UIColor(hex: "76212E")
         case .hazardous:
             return UIColor(hex: "89117A")
         case .veryUnhealthy:
@@ -72,17 +66,18 @@ private extension AQIClass {
     }
 
     static func color(at aqi: Double) -> UIColor {
-        let cases = AQIClass.barIndicatorCases
-        let maxAQI = cases.last!
+        let categories = AQICategory.allCases
+
+        let maxAQI = categories.last!
         let barFraction = min(aqi, maxAQI.rawValue) / maxAQI.rawValue
 
-        let barPosition = CGFloat(barFraction * Double(cases.count - 1))
+        let barPosition = CGFloat(barFraction * Double(categories.count - 1))
 
         let lowerIndex = Int(barPosition.rounded(.down))
         let upperIndex = Int(barPosition.rounded(.up))
 
-        let lowerColor = cases[lowerIndex].color
-        let upperColor = cases[upperIndex].color
+        let lowerColor = categories[lowerIndex].color
+        let upperColor = categories[upperIndex].color
 
         let colorFraction = barPosition - CGFloat(lowerIndex)
 
