@@ -18,6 +18,8 @@ class OnboardingViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.layoutMargins.left = 30
+        view.layoutMargins.right = 30
         view.layoutMargins.bottom = 20
         view.backgroundColor = .systemBackground
 
