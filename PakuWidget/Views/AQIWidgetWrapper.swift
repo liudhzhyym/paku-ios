@@ -16,20 +16,7 @@ struct AQIWidgetWrapper<Wrapped: View>: View {
         if let info = entry.info {
             build(info)
         } else {
-            ZStack {
-                SkyView(category: .good)
-                HStack {
-                    VStack {
-                        Spacer()
-                        Text("We couldn’t load anything 😕 try opening the app")
-                            .foregroundColor(.white)
-                            .font(.caption)
-                            .padding()
-                        Spacer()
-                    }
-                    Spacer()
-                }
-            }
+            WidgetErrorView(missingPermissions: LocationManager.shared.status != .authorizedAlways)
         }
     }
 }

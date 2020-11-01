@@ -21,6 +21,7 @@
 		27248558252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */; };
 		2724855E2526742C00866F1A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724855D2526742C00866F1A /* RootViewController.swift */; };
 		272485642526745F00866F1A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272485632526745F00866F1A /* UIViewController+Extensions.swift */; };
+		2724F9DF254E3B1500D68717 /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724F9DE254E3B1500D68717 /* WidgetErrorView.swift */; };
 		272C982F254673E000E6D5B5 /* MapDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */; };
 		272C98352547C53800E6D5B5 /* SensorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C98342547C53800E6D5B5 /* SensorListView.swift */; };
 		2738C383254566AA007BC1A4 /* Sensor+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */; };
@@ -152,6 +153,7 @@
 		27248557252673C200866F1A /* UIViewPropertyAnimator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+Extensions.swift"; sourceTree = "<group>"; };
 		2724855D2526742C00866F1A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		272485632526745F00866F1A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		2724F9DE254E3B1500D68717 /* WidgetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetErrorView.swift; sourceTree = "<group>"; };
 		272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailContainer.swift; sourceTree = "<group>"; };
 		272C98342547C53800E6D5B5 /* SensorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorListView.swift; sourceTree = "<group>"; };
 		2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensor+Placeholder.swift"; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				276E6C1A252D548C00A13D6D /* AQIIndicatorBar.swift */,
 				276E6C38252D5F7300A13D6D /* SkyView.swift */,
 				276E6C44252D84E700A13D6D /* AQIWidgetWrapper.swift */,
+				2724F9DE254E3B1500D68717 /* WidgetErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */,
 				2740BF05252D8BC800EDD771 /* AQILoader.swift in Sources */,
 				275BBAEA253FA57E007923BA /* Sensor.swift in Sources */,
+				2724F9DF254E3B1500D68717 /* WidgetErrorView.swift in Sources */,
 				C24ED0D92525DD1D001B3952 /* Widgets.swift in Sources */,
 				276E6C2A252D5AC000A13D6D /* AQIBarWidgetView.swift in Sources */,
 				276E6C45252D84E700A13D6D /* AQIWidgetWrapper.swift in Sources */,
@@ -933,7 +937,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -956,7 +960,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1062,7 +1066,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1086,7 +1090,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
