@@ -190,10 +190,6 @@ class MapViewController: ViewController {
 
     @objc func refresh() {
         item?.cancel()
-        loader.cancel()
-        queuedSensors.removeAll()
-        queuedRemovals.removeAll()
-
         item = DispatchWorkItem(block: actuallyRefresh)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: item!)
     }
