@@ -16,7 +16,7 @@ private let queuedAnnotationDelay: TimeInterval = 0.1
 class MapViewController: ViewController {
 
     private var settings: Settings?
-    private var queuedSensors: [Sensor] = []
+    private var queuedInsertions: [SensorAnnotation] = []
     private var queuedRemovals: [SensorAnnotation] = []
     private var needsAnnotationUpdate = false
     private let loader = SensorLoader()
@@ -201,11 +201,13 @@ class MapViewController: ViewController {
             if let existing = self.annotations.first(where: { $0.sensor.info.id == sensor.info.id }) {
                 if sensor.aqiValue() != existing.sensor.aqiValue() {
                     self.annotations.remove(existing)
-                    self.queuedSensors.append(sensor)
+                    let annotation = SensorAnnotation(sensor: sensor)
+                    annotation.shouldAnimateDisplay = false
+                    self.queuedInsertions.append(annotation)
                     self.queuedRemovals.append(existing)
                 }
             } else {
-                self.queuedSensors.append(sensor)
+                self.queuedInsertions.append(SensorAnnotation(sensor: sensor))
             }
         }
     }
@@ -290,18 +292,15 @@ class MapViewController: ViewController {
     }
 
     private func updateAnnotationsIfNeeded() {
-        mapView.removeAnnotations(queuedRemovals)
-        queuedRemovals.removeAll(keepingCapacity: true)
+        if queuedInsertions.count > 0 {
+            logger.debug("Adding: \(self.queuedInsertions.count) queued sensor annotations")
 
-        if queuedSensors.count > 0 {
-            let annotations = queuedSensors.map(SensorAnnotation.init)
+            mapView.addAnnotations(queuedInsertions)
+            annotations.formUnion(queuedInsertions)
+            queuedInsertions.removeAll(keepingCapacity: true)
 
-            logger.debug("Adding: \(annotations.count) queued sensor annotations")
-
-            queuedSensors.removeAll(keepingCapacity: true)
-
-            mapView.addAnnotations(annotations)
-            self.annotations.formUnion(annotations)
+            mapView.removeAnnotations(queuedRemovals)
+            queuedRemovals.removeAll(keepingCapacity: true)
 
             trimAnnotations()
         }

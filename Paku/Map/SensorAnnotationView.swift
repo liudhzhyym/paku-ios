@@ -108,6 +108,15 @@ class SensorAnnotationView: MKAnnotationView {
     override func prepareForDisplay() {
         super.prepareForDisplay()
 
+        guard let annotation = annotation as? SensorAnnotation else {
+            return
+        }
+
+        guard annotation.shouldAnimateDisplay else {
+            annotation.shouldAnimateDisplay = true
+            return
+        }
+
         let fadeIn = CABasicAnimation(keyPath: "opacity")
         fadeIn.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         fadeIn.duration = 0.1

@@ -33,7 +33,7 @@ class SensorLoader {
                         let point = MKMapPoint($0.info.location.coordinate)
                         return area.contains(point)
                     }
-                    .shuffled()
+                    .sorted(by: { $0.sortingKey > $1.sortingKey })
                     .prefix(300)
 
                 logger.debug("Loading: \(sensors.count) sensors out of \(self.sensors.count)")
@@ -79,13 +79,15 @@ class SensorLoader {
 }
 
 private class SensorWrapper {
-    var info: SensorInfo
-    var sensor: Sensor?
+    let sortingKey: Int
+    let info: SensorInfo
 
+    var sensor: Sensor?
     var didFail = false
 
     init(info: SensorInfo) {
         self.info = info
+        self.sortingKey = info.id.hashValue
     }
 }
 

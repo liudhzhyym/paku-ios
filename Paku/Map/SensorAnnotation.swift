@@ -14,6 +14,8 @@ class SensorAnnotation: NSObject, MKAnnotation {
 
     var sensor: Sensor
 
+    var shouldAnimateDisplay: Bool = true
+
     init(sensor: Sensor) {
         self.coordinate = sensor.info.location.coordinate
         self.sensor = sensor
