@@ -256,6 +256,7 @@ class MapViewController: ViewController {
         let viewController = SettingsViewController()
         viewController.navigationItem.title = "Settings"
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .formSheet
         present(navigationController, animated: true, completion: nil)
     }
 
