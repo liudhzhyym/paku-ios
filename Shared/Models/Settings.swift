@@ -14,7 +14,7 @@ struct Settings: Equatable, Codable {
 
     init() {
         location = .outdoors
-        conversion = .EPA
+        conversion = .none
     }
 }
 
