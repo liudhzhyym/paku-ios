@@ -5,10 +5,13 @@
 //  Created by Kyle Bashour on 10/30/20.
 //
 
+import StoreKit
 import UIKit
 import SafariServices
 
 class SettingsViewController: UITableViewController {
+
+    static var sessionID: String?
 
     struct Item {
         var name: String
@@ -35,6 +38,20 @@ class SettingsViewController: UITableViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if let sessionID = Self.sessionID {
+           if UserDefaults.standard.string(forKey: "rating-session") != sessionID,
+              let scene = view.window?.windowScene {
+                SKStoreReviewController.requestReview(in: scene)
+                UserDefaults.standard.setValue(Self.sessionID, forKey: "rating-session")
+           }
+        } else {
+            Self.sessionID = UUID().uuidString
+        }
     }
 
     override func viewDidLoad() {
@@ -144,7 +161,16 @@ class SettingsViewController: UITableViewController {
                         }
                     ),
                     Item(
-                        name: "Share Paku",
+                        name: "Leave a Review",
+                        icon: UIImage(systemName: "star.fill"),
+                        iconTint: .systemYellow,
+                        accessory: .disclosureIndicator,
+                        action: { [weak self] in
+                            self?.review()
+                        }
+                    ),
+                    Item(
+                        name: "Share a link to Paku",
                         icon: UIImage(systemName: "square.and.arrow.up"),
                         iconTint: .systemBlue,
                         accessory: .disclosureIndicator,
@@ -174,13 +200,22 @@ class SettingsViewController: UITableViewController {
         ]
     }
 
-    private func share() {
+    private func clearSelection() {
         if let selection = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selection, animated: true)
         }
+    }
 
+    private func share() {
+        clearSelection()
         let url = URL(string: "https://apps.apple.com/us/app/paku-for-purpleair/id1534130193")!
         let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
+    }
+
+    private func review() {
+        clearSelection()
+        let url = URL(string: "itms-apps://itunes.apple.com/us/app/id1534130193?action=write-review")!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
