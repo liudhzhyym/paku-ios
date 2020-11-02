@@ -30,6 +30,8 @@
 		2729CF8E254E8F160031DB42 /* AppIcon-PurpleRain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2729CF86254E8F160031DB42 /* AppIcon-PurpleRain@3x.png */; };
 		2729CF8F254E8F160031DB42 /* AppIcon-BlackWhite@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2729CF87254E8F160031DB42 /* AppIcon-BlackWhite@3x.png */; };
 		2729CF90254E8F160031DB42 /* AppIcon-Pacman@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2729CF88254E8F160031DB42 /* AppIcon-Pacman@3x.png */; };
+		272C2E3D254FC2510043A568 /* TippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C2E3C254FC2510043A568 /* TippingViewController.swift */; };
+		272C2E5A254FCF680043A568 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272C2E59254FCF680043A568 /* StoreKit.framework */; };
 		272C982F254673E000E6D5B5 /* MapDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */; };
 		272C98352547C53800E6D5B5 /* SensorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C98342547C53800E6D5B5 /* SensorListView.swift */; };
 		2738C383254566AA007BC1A4 /* Sensor+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */; };
@@ -162,6 +164,8 @@
 		2729CF86254E8F160031DB42 /* AppIcon-PurpleRain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-PurpleRain@3x.png"; sourceTree = "<group>"; };
 		2729CF87254E8F160031DB42 /* AppIcon-BlackWhite@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-BlackWhite@3x.png"; sourceTree = "<group>"; };
 		2729CF88254E8F160031DB42 /* AppIcon-Pacman@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Pacman@3x.png"; sourceTree = "<group>"; };
+		272C2E3C254FC2510043A568 /* TippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TippingViewController.swift; sourceTree = "<group>"; };
+		272C2E59254FCF680043A568 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailContainer.swift; sourceTree = "<group>"; };
 		272C98342547C53800E6D5B5 /* SensorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorListView.swift; sourceTree = "<group>"; };
 		2738C382254566AA007BC1A4 /* Sensor+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensor+Placeholder.swift"; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24ED09C2525C171001B3952 /* AnyCodable in Frameworks */,
+				272C2E5A254FCF680043A568 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +383,7 @@
 			children = (
 				27B6B10E254D07160062CF92 /* SettingsViewController.swift */,
 				27B6B157254D09140062CF92 /* AppIconPickerViewController.swift */,
+				272C2E3C254FC2510043A568 /* TippingViewController.swift */,
 				27B6B115254D07330062CF92 /* AppIconOption.swift */,
 			);
 			path = Settings;
@@ -485,6 +491,7 @@
 		C24ED0AE2525DC5B001B3952 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				272C2E59254FCF680043A568 /* StoreKit.framework */,
 				C24ED0AF2525DC5B001B3952 /* WidgetKit.framework */,
 				C24ED0B12525DC5B001B3952 /* SwiftUI.framework */,
 			);
@@ -686,6 +693,7 @@
 				27B6B116254D07330062CF92 /* AppIconOption.swift in Sources */,
 				2781B0CD2545429F0058AA33 /* SensorDetailView.swift in Sources */,
 				279FDB91254D479C0011AD39 /* Bundle+Extensions.swift in Sources */,
+				272C2E3D254FC2510043A568 /* TippingViewController.swift in Sources */,
 				2740BF14252D8C7C00EDD771 /* SensorInfo.swift in Sources */,
 				276F42C7253E9D5B004B86A1 /* CGFloat+Extensions.swift in Sources */,
 				276E4B5B2526D6CD00FA4D26 /* NSLayoutDimension+AutoLayout.swift in Sources */,
@@ -937,14 +945,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -960,14 +968,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Paku/Paku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/Paku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1066,7 +1074,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1074,7 +1082,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf.aqi-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1090,7 +1098,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PakuWidget/PakuWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = ZEAD23GG77;
 				INFOPLIST_FILE = "$(SRCROOT)/PakuWidget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1098,7 +1106,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebashour.aqi-wtf.aqi-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

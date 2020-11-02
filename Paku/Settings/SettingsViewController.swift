@@ -132,6 +132,31 @@ class SettingsViewController: UITableViewController {
             ),
 
             Section(
+                header: "Show the love",
+                items: [
+                    Item(
+                        name: "Tip Jar",
+                        icon: UIImage(systemName: "heart.fill"),
+                        iconTint: .systemRed,
+                        accessory: .disclosureIndicator,
+                        action: { [weak self] in
+                            self?.show(TippingViewController(), sender: self)
+                        }
+                    ),
+                    Item(
+                        name: "Share Paku",
+                        icon: UIImage(systemName: "square.and.arrow.up"),
+                        iconTint: .systemBlue,
+                        accessory: .disclosureIndicator,
+                        action: { [weak self] in
+                            self?.share()
+                        }
+                    ),
+                ]
+            ),
+
+            Section(
+                header: "Boring stuff",
                 items: [
                     Item(
                         name: "Privacy Policy",
@@ -147,5 +172,15 @@ class SettingsViewController: UITableViewController {
                 ]
             ),
         ]
+    }
+
+    private func share() {
+        if let selection = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selection, animated: true)
+        }
+
+        let url = URL(string: "https://apps.apple.com/us/app/paku-for-purpleair/id1534130193")!
+        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
 }
