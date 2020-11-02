@@ -252,6 +252,11 @@ class SettingsViewController: UITableViewController {
         let bounds = CGRect(origin: .zero, size: size)
         let imageView = UIImageView(frame: bounds)
 
+        UIApplication.shared.windows[0].addSubview(imageView)
+        defer { imageView.removeFromSuperview() }
+
+        imageView.layer.borderWidth = .pixel
+        imageView.layer.borderColor = UIColor.separator.cgColor
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerCurve = .continuous
