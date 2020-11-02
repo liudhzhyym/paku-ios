@@ -14,8 +14,13 @@ class SettingsViewController: UITableViewController {
     static var sessionID: String?
 
     struct Item {
+        enum Detail {
+            case none
+            case text(String)
+        }
+
         var name: String
-        var setting: String?
+        var detail: Detail = .none
         var icon: UIImage?
         var iconTint: UIColor?
         var accessory: UITableViewCell.AccessoryType
@@ -82,10 +87,19 @@ class SettingsViewController: UITableViewController {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         let item = settings[indexPath.section].items[indexPath.row]
         cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = item.setting
         cell.accessoryType = item.accessory
         cell.imageView?.image = item.icon
         cell.imageView?.tintColor = item.iconTint
+
+        cell.detailTextLabel?.text = ""
+
+        switch item.detail {
+        case .none:
+            break
+        case .text(let text):
+            cell.detailTextLabel?.text = text
+        }
+
         return cell
     }
 
@@ -108,45 +122,46 @@ class SettingsViewController: UITableViewController {
     private func buildSettings() -> [Section] {
         [
 //            Section(
+//                header: "Air Quality",
 //                items: [
 //                    Item(
-//                        name: "Normalization",
-//                        setting: UserDefaults.shared.settings.conversion.name,
-//                        icon: UIImage(systemName: "equal.circle.fill"),
+//                        name: "Correction",
+//                        detail: .text(UserDefaults.shared.settings.conversion.name),
+//                        icon: UIImage(systemName: "equal.circle"),
 //                        iconTint: .systemBlue,
 //                        accessory: .disclosureIndicator
 //                    ),
-//                    Item(
-//                        name: "Location Type",
-//                        setting: UserDefaults.shared.settings.location.name,
-//                        icon: UIImage(systemName: "sun.max.fill"),
-//                        iconTint: .systemYellow,
-//                        accessory: .disclosureIndicator
-//                    )
 //                ]
 //            ),
-
-            Section(
-                items: [
+//
+//            Section(
+//                header: "Map",
+//                items: [
+//                    Item(
+//                        name: "Location Type",
+//                        detail: .text(UserDefaults.shared.settings.location.name),
+//                        icon: UIImage(systemName: UserDefaults.shared.settings.location.symbolName),
+//                        iconTint: UserDefaults.shared.settings.location.tint,
+//                        accessory: .disclosureIndicator
+//                    ),
+//
+//                    Item(
+//                        name: "Group Sensors",
+//                        detail: .none,
+//                        icon: UIImage(systemName: "circlebadge.2.fill"),
+//                        iconTint: .systemGreen,
+//                        accessory: .none
+//                    ),
 //                    Item(
 //                        name: "Hidden Sensors",
-//                        setting: "0",
+//                        detail: .text("0"),
 //                        icon: UIImage(systemName: "eye.slash.fill"),
 //                        iconTint: .systemFill,
 //                        accessory: .disclosureIndicator
 //                    ),
-                    Item(
-                        name: "App Icon",
-                        setting: AppIconOption.option(for: UIApplication.shared.alternateIconName)?.name,
-                        icon: UIImage(systemName: "app.fill"),
-                        iconTint: .systemPurple,
-                        accessory: .disclosureIndicator,
-                        action: { [weak self] in
-                            self?.show(AppIconPickerViewController(), sender: self)
-                        }
-                    )
-                ]
-            ),
+//                ],
+//                footer: "Hidden sensors will also not show up in the widget."
+//            ),
 
             Section(
                 header: "Show the love",
@@ -182,6 +197,21 @@ class SettingsViewController: UITableViewController {
             ),
 
             Section(
+                items: [
+                    Item(
+                        name: "App Icon",
+                        detail: .text(AppIconOption.option(for: UIApplication.shared.alternateIconName).name),
+                        icon: appIcon(),
+                        iconTint: .systemPurple,
+                        accessory: .disclosureIndicator,
+                        action: { [weak self] in
+                            self?.show(AppIconPickerViewController(), sender: self)
+                        }
+                    )
+                ]
+            ),
+
+            Section(
                 header: "Boring stuff",
                 items: [
                     Item(
@@ -194,7 +224,13 @@ class SettingsViewController: UITableViewController {
                             self?.present(SFSafariViewController(url: url), animated: true)
                         }
                     ),
-                    Item(name: "Version", setting: Bundle.main.version(), icon: UIImage(systemName: "barcode"), iconTint: .label, accessory: .none)
+                    Item(
+                        name: "Version",
+                        detail: .text(Bundle.main.version()),
+                        icon: UIImage(systemName: "barcode"),
+                        iconTint: .label,
+                        accessory: .none
+                    )
                 ]
             ),
         ]
@@ -217,5 +253,20 @@ class SettingsViewController: UITableViewController {
         clearSelection()
         let url = URL(string: "itms-apps://itunes.apple.com/us/app/id1534130193?action=write-review")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+
+    private func appIcon() -> UIImage {
+        let size = CGSize(width: 24, height: 24)
+        let bounds = CGRect(origin: .zero, size: size)
+        let imageView = UIImageView(frame: bounds)
+
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = size.height * 0.2237
+        imageView.image = UIImage(named: AppIconOption.option(for: UIApplication.shared.alternateIconName).imageName)
+
+        return UIGraphicsImageRenderer(bounds: bounds).image { context in
+            imageView.layer.render(in: context.cgContext)
+        }
     }
 }

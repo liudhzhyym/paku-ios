@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Settings: Equatable, Codable {
 
@@ -38,6 +39,14 @@ extension LocationType {
         case .outdoors: return "Outside"
         case .indoors: return "Inside"
         case .both: return "All"
+        }
+    }
+
+    var tint: UIColor {
+        switch self {
+        case .outdoors: return .systemYellow
+        case .indoors: return .systemGray
+        case .both: return .systemGreen
         }
     }
 }

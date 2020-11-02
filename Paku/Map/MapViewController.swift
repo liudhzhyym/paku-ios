@@ -170,7 +170,7 @@ class MapViewController: ViewController {
             let conversionImage = UIImage(symbol: UserDefaults.shared.settings.conversion.symbolName, size: 16, weight: .medium)
             self.conversionButton.setImage(conversionImage, for: .normal)
 
-            self.conversionButton.menu = UIMenu(title: "Normalization", options: [.displayInline], children: AQIConversion.allCases.map { conversion in
+            self.conversionButton.menu = UIMenu(title: "Correction", options: [.displayInline], children: AQIConversion.allCases.map { conversion in
                 let current = UserDefaults.shared.settings.conversion
                 return UIAction(title: conversion.name, state: current == conversion ? .on : .off) { _ in
                     UserDefaults.shared.settings.conversion = conversion
