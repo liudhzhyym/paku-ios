@@ -254,6 +254,7 @@ class SettingsViewController: UITableViewController {
 
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.layer.cornerCurve = .continuous
         imageView.layer.cornerRadius = size.height * 0.2237
         imageView.image = UIImage(named: AppIconOption.option(for: UIApplication.shared.alternateIconName).imageName)
 
