@@ -34,7 +34,6 @@ struct SensorInfo: Equatable, Codable, Hashable {
               let latIndex = fields["Lat"],
               let lonIndex = fields["Lon"],
               let typeIndex = fields["Type"],
-              let ageIndex = fields["age"],
               let id = data[idIndex].intValue,
               let lat = data[latIndex].doubleValue,
               let lon = data[lonIndex].doubleValue,
