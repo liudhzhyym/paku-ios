@@ -26,7 +26,7 @@ extension AQIConversion {
         switch self {
         case .none: return "equal.circle"
         case .AQAndU: return "plusminus.circle"
-        case .EPA: return "plusminus.circle"
+        case .EPA: return "flame"
         }
     }
 }

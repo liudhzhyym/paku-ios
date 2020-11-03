@@ -82,6 +82,8 @@ class HiddenSensorsViewController: UITableViewController {
             UserDefaults.shared.settings.hiddenSensors.remove(sensor)
         })
 
+        controller.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
+
         present(controller, animated: true, completion: nil)
     }
 }

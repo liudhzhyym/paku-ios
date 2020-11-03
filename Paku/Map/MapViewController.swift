@@ -142,7 +142,9 @@ class MapViewController: ViewController {
                 title: "Correction",
                 children: AQIConversion.allCases.map { conversion in
                 let current = UserDefaults.shared.settings.conversion
-                return UIAction(title: conversion.name, state: current == conversion ? .on : .off) { _ in
+                return UIAction(title: conversion.name,
+                                image: UIImage(systemName: conversion.symbolName),
+                                state: current == conversion ? .on : .off) { _ in
                     UserDefaults.shared.settings.conversion = conversion
                 }
             })
