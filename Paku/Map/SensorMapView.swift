@@ -59,6 +59,7 @@ class SensorMapView: MKMapView {
 
     func clear() {
         removeAnnotations(annotations)
+        _annotations.removeAll(keepingCapacity: true)
     }
 
     @objc func refresh() {
@@ -68,9 +69,6 @@ class SensorMapView: MKMapView {
     }
 
     func actuallyRefresh() {
-
-        self._annotations.removeAll(keepingCapacity: true)
-
         loader.loadAnnotations(in: visibleMapRect) { [weak self] sensor in
             guard let self = self else { return }
 
