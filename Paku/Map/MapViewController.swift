@@ -120,7 +120,7 @@ class MapViewController: ViewController {
     }
 
     @objc private func updateSettings() {
-        guard UserDefaults.shared.settings.conversion != settings?.conversion &&
+        guard UserDefaults.shared.settings.conversion != settings?.conversion ||
                 UserDefaults.shared.settings.location != settings?.location else { return }
 
         // TODO: Move somewhere else
