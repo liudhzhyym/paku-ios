@@ -80,6 +80,18 @@ class SensorMapView: MKMapView {
         loader.loadAnnotations(in: visibleMapRect) { [weak self] sensor in
             guard let self = self else { return }
 
+            switch UserDefaults.shared.settings.location {
+            case .indoors:
+                if sensor.info.isOutdoor {
+                    return
+                }
+            case .outdoors:
+                if !sensor.info.isOutdoor {
+                    return
+                }
+            default: break
+            }
+
             if let existing = self._annotations.first(where: { $0.sensor.info.id == sensor.info.id }) {
                 if sensor.aqiValue() != existing.sensor.aqiValue() {
                     self._annotations.remove(existing)
