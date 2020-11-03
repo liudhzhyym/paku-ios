@@ -12,12 +12,10 @@ struct Settings: Equatable, Codable {
 
     var location: LocationType
     var conversion: AQIConversion
-    var hiddenSensors: Set<SensorInfo>
 
     init() {
         location = .outdoors
         conversion = .none
-        hiddenSensors = []
     }
 }
 

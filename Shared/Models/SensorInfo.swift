@@ -25,7 +25,7 @@ struct SensorInfo: Equatable, Codable, Hashable {
     }
 
     var isHidden: Bool {
-        UserDefaults.shared.settings.hiddenSensors.contains(self)
+        UserDefaults.shared.hiddenSensors.contains(self)
     }
 
     init(fields: [String: Int], data: [AnyCodable]) throws {

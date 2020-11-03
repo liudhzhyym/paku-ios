@@ -175,7 +175,7 @@ class MapViewController: ViewController {
             self?.openWebsite(for: $0)
         } hide: { [weak self] sensor in
             self?.mapView.remove(sensor: sensor)
-            UserDefaults.shared.settings.hiddenSensors.insert(sensor.info)
+            UserDefaults.shared.hiddenSensors.append(sensor.info)
 
             // TODO: Do this somewhere else
             WidgetCenter.shared.reloadAllTimelines()

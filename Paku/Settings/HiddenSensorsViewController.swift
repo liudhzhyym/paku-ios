@@ -20,7 +20,7 @@ class HiddenSensorsViewController: UITableViewController {
 
     private lazy var dataSource = makeDataSource()
 
-    private var hiddenSensors = UserDefaults.shared.settings.hiddenSensors {
+    private var hiddenSensors = UserDefaults.shared.hiddenSensors {
         didSet { reload(animated: true) }
     }
 
@@ -48,15 +48,15 @@ class HiddenSensorsViewController: UITableViewController {
     }
 
     @objc private func updateSettings() {
-        if UserDefaults.shared.settings.hiddenSensors != hiddenSensors {
-            hiddenSensors = UserDefaults.shared.settings.hiddenSensors
+        if UserDefaults.shared.hiddenSensors != hiddenSensors {
+            hiddenSensors = UserDefaults.shared.hiddenSensors
         }
     }
 
     private func reload(animated: Bool) {
         var snapshot = Snapshot()
         snapshot.appendSections(["Sensors"])
-        snapshot.appendItems(Array(UserDefaults.shared.settings.hiddenSensors))
+        snapshot.appendItems(UserDefaults.shared.hiddenSensors)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: animated)
         }
@@ -79,7 +79,7 @@ class HiddenSensorsViewController: UITableViewController {
         })
         controller.addAction(UIAlertAction(title: "Show Sensor", style: .default) { _ in
             self.clearSelection()
-            UserDefaults.shared.settings.hiddenSensors.remove(sensor)
+            UserDefaults.shared.hiddenSensors.removeAll(where: { $0 == sensor })
         })
 
         controller.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)

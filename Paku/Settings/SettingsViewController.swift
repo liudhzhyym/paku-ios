@@ -164,7 +164,7 @@ class SettingsViewController: UITableViewController {
                     ),
                     Item(
                         name: "Hidden Sensors",
-                        detail: .text("\(UserDefaults.shared.settings.hiddenSensors.count)"),
+                        detail: .text("\(UserDefaults.shared.hiddenSensors.count)"),
                         icon: UIImage(systemName: "eye.slash.fill"),
                         iconTint: .systemFill,
                         accessory: .disclosureIndicator,
