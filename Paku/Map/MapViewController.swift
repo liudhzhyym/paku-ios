@@ -174,6 +174,9 @@ class MapViewController: ViewController {
         } hide: { [weak self] sensor in
             self?.mapView.remove(sensor: sensor)
             UserDefaults.shared.settings.hiddenSensors.insert(sensor.info)
+
+            // TODO: Do this somewhere else
+            WidgetCenter.shared.reloadAllTimelines()
         }
         detailContainer.display(detail: view, animated: true)
         setDetailHidden(false, animated: true)
