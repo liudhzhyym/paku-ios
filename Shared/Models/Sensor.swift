@@ -79,7 +79,8 @@ struct Sensor: Codable, Equatable {
             throw InitializerError.failedToParse
         }
 
-        self.age = Calendar.current.date(byAdding: .minute, value: -age, to: Date())!
+        let adjustedAge = age == 1 ? 0 : age
+        self.age = Calendar.current.date(byAdding: .minute, value: -adjustedAge, to: Date())!
         self.humidity = humidity
         self.particleInfo = results.compactMap(ParticleInfo.init)
     }
