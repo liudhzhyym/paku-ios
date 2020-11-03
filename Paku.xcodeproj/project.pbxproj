@@ -100,6 +100,7 @@
 		C24ED0E22525DD1F001B3952 /* PakuWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C24ED0D42525DD1D001B3952 /* PakuWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
 		C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
+		C27366172550F876001BB445 /* SensorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27366162550F876001BB445 /* SensorMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +229,7 @@
 		C24ED0DD2525DD1F001B3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C24ED1022525E570001B3952 /* AQIEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIEntryView.swift; sourceTree = "<group>"; };
 		C24ED1192525EC4D001B3952 /* Paku.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Paku.entitlements; sourceTree = "<group>"; };
+		C27366162550F876001BB445 /* SensorMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				27E16B83253010F6006D28B1 /* MapViewController.swift */,
+				C27366162550F876001BB445 /* SensorMapView.swift */,
 				272C982E254673DF00E6D5B5 /* MapDetailContainer.swift */,
 				2781B0CC2545429F0058AA33 /* SensorDetailView.swift */,
 				272C98342547C53800E6D5B5 /* SensorListView.swift */,
@@ -733,6 +736,7 @@
 				2716EA7C2531798500B8E2B0 /* SensorAnnotationView.swift in Sources */,
 				276E4B5D2526D6CD00FA4D26 /* UIView+AutoLayout.swift in Sources */,
 				272C982F254673E000E6D5B5 /* MapDetailContainer.swift in Sources */,
+				C27366172550F876001BB445 /* SensorMapView.swift in Sources */,
 				27A8333E254BFB6D0054DD68 /* UIImage+Extensions.swift in Sources */,
 				2788C8C7254D3FBD00F5F1E8 /* UILayoutPriority+Extensions.swift in Sources */,
 				2716EA8E25317D3900B8E2B0 /* Reusable.swift in Sources */,
