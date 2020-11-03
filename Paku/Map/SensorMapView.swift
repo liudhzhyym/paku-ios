@@ -59,6 +59,7 @@ class SensorMapView: MKMapView {
 
     func clear() {
         removeAnnotations(annotations)
+        queuedInsertions.removeAll(keepingCapacity: true)
         _annotations.removeAll(keepingCapacity: true)
     }
 
