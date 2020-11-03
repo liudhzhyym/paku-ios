@@ -171,6 +171,8 @@ class MapViewController: ViewController {
     func display(sensor: Sensor, animated: Bool) {
         let view = SensorDetailView(sensor: sensor) {
             self.openWebsite(for: $0)
+        } hide: { sensor in
+            UserDefaults.shared.settings.hiddenSensorIDs.insert(sensor.info.id)
         }
         detailContainer.display(detail: view, animated: true)
         setDetailHidden(false, animated: true)

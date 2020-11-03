@@ -1,6 +1,6 @@
 import UIKit
 
-class Control: UIControl {
+class Control: UIButton {
 
     override var isHighlighted: Bool {
         didSet { if isHighlighted != oldValue { setNeedsStateUpdate() } }

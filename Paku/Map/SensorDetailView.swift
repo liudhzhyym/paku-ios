@@ -17,13 +17,38 @@ class SensorDetailView: UIView {
 
     private let titleLabel = UILabel(font: .systemFont(ofSize: 24, weight: .medium))
     private let detailLabel = UILabel(font: .systemFont(ofSize: 16, weight: .medium), color: .secondaryLabel)
-    private let button = UIButton(type: .system)
+    private let more = Button(
+        title: "•••",
+        background: .secondarySystemBackground,
+        textColor: .label
+    )
 
-    init(sensor: Sensor, open: @escaping (Sensor) -> Void) {
+    private let button = Button(
+        title: "Open in PurpleAir",
+        background: .secondarySystemBackground,
+        textColor: .label
+    )
+
+    init(sensor: Sensor, open: @escaping (Sensor) -> Void, hide: @escaping (Sensor) -> Void) {
         super.init(frame: .zero)
 
-        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
-        button.setTitle("Open in PurpleAir.com →", for: .normal)
+        more.setContentHuggingPriority(.required, for: .horizontal)
+        more.showsMenuAsPrimaryAction = true
+        more.menu = UIMenu(
+            title: "This will hide it from the map and prevent it from being used in the widget",
+            children: [
+                UIMenu(
+                    title: "Hide Sensor",
+                    children: [
+                        UIAction(title: "Hide Sensor", attributes: .destructive, handler: { _ in
+                            hide(sensor)
+                        }),
+                        UIAction(title: "Nevermind", handler: { _ in }),
+                    ]
+                )
+            ]
+        )
+
         button.addAction(.init { _ in open(sensor) }, for: .touchUpInside)
 
         titleLabel.text = sensor.info.label.localizedCapitalized
@@ -50,7 +75,10 @@ class SensorDetailView: UIView {
             return stack
         }
 
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, detailLabel] + guidance + [button])
+        let buttons = UIStackView(arrangedSubviews: [more, button])
+        buttons.spacing = 10
+
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, detailLabel] + guidance + [buttons])
 
         addSubview(stackView)
         stackView.pinEdges(to: safeAreaLayoutGuide)
