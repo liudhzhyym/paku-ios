@@ -33,8 +33,8 @@ extension UserDefaults {
         set { UserDefaults.shared.set(codable: newValue, forKey: "user-settings") }
     }
 
-    var hiddenSensors: [SensorInfo] {
-        get { UserDefaults.shared.codable([SensorInfo].self, forKey: "hidden-sensors") ?? [] }
+    var hiddenSensors: [Int] {
+        get { UserDefaults.shared.codable([Int].self, forKey: "hidden-sensors") ?? [] }
         set { UserDefaults.shared.set(codable: newValue, forKey: "hidden-sensors") }
     }
 }

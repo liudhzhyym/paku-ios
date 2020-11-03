@@ -120,8 +120,7 @@ class MapViewController: ViewController {
     }
 
     @objc private func updateSettings() {
-        guard UserDefaults.shared.settings.conversion != settings?.conversion ||
-                UserDefaults.shared.settings.location != settings?.location else { return }
+        guard UserDefaults.shared.settings != settings else { return }
 
         // TODO: Move somewhere else
         WidgetCenter.shared.reloadAllTimelines()
@@ -175,7 +174,7 @@ class MapViewController: ViewController {
             self?.openWebsite(for: $0)
         } hide: { [weak self] sensor in
             self?.mapView.remove(sensor: sensor)
-            UserDefaults.shared.hiddenSensors.append(sensor.info)
+            UserDefaults.shared.hiddenSensors.append(sensor.info.id)
 
             // TODO: Do this somewhere else
             WidgetCenter.shared.reloadAllTimelines()

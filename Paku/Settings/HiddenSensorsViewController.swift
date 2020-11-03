@@ -9,14 +9,14 @@ import UIKit
 
 class HiddenSensorsViewController: UITableViewController {
 
-    class DataSource: UITableViewDiffableDataSource<String, SensorInfo> {
+    class DataSource: UITableViewDiffableDataSource<String, Int> {
         override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
             return self.tableView(tableView, numberOfRowsInSection: section) == 0 ?
                 "If a sensor seems like it’s misreporting, or you just don’t want it to show up, you can hide it from the map." : nil
         }
     }
 
-    typealias Snapshot = NSDiffableDataSourceSnapshot<String, SensorInfo>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<String, Int>
 
     private lazy var dataSource = makeDataSource()
 
@@ -63,10 +63,9 @@ class HiddenSensorsViewController: UITableViewController {
     }
 
     private func makeDataSource() -> DataSource {
-        return .init(tableView: tableView) { tableView, indexPath, info in
+        return .init(tableView: tableView) { tableView, indexPath, sensorID in
             let cell = tableView.dequeue(for: indexPath) as Cell
-            cell.textLabel?.text = info.label
-            cell.detailTextLabel?.text = "ID \(info.id)"
+            cell.textLabel?.text = "Sensor ID \(sensorID)"
             return cell
         }
     }
@@ -90,9 +89,9 @@ class HiddenSensorsViewController: UITableViewController {
 
 private class Cell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        let font = detailTextLabel!.font!
-        detailTextLabel?.font = .monospacedDigitSystemFont(ofSize: font.pointSize, weight: .regular)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        let font = textLabel!.font!
+        textLabel?.font = .monospacedDigitSystemFont(ofSize: font.pointSize, weight: .regular)
     }
 
     required init?(coder: NSCoder) {
