@@ -25,6 +25,10 @@ struct SensorInfo: Equatable, Codable {
         CLLocation(latitude: lat, longitude: lon)
     }
 
+    var isHidden: Bool {
+        UserDefaults.shared.settings.hiddenSensorIDs.contains(id)
+    }
+
     init(fields: [String: Int], data: [AnyCodable]) throws {
         guard let idIndex = fields["ID"],
               let labelIndex = fields["Label"],

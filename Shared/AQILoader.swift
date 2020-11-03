@@ -53,8 +53,12 @@ class AQILoader: ObservableObject {
     private func sensorKey(_ info: SensorInfo) -> String { "sensor\(info.id)" }
 
     func loadSensors(completion: @escaping (Result<[SensorInfo], Error>) -> Void) {
+        func complete(with sensors: [SensorInfo]) {
+            completion(.success(sensors.filter { !$0.isHidden }))
+        }
+
         if let cached = ExpiringCache.value([SensorInfo].self, forKey: sensorsKey, expiration: 24 * 60 * 60) {
-            return completion(.success(cached.value))
+            return complete(with: cached.value)
         }
 
         let url = URL(string: "https://www.purpleair.com/data.json?opt=1/mAQI/a10/cC0&fetch=true&fields=,")!
@@ -76,11 +80,11 @@ class AQILoader: ObservableObject {
                     completion(.failure(AQILoaderError.unknownError))
                 } else {
                     ExpiringCache.cache(sensors, forKey: self.sensorsKey)
-                    completion(.success(sensors))
+                    complete(with: sensors)
                 }
             case .failure(let error):
                 if let cached = ExpiringCache.value([SensorInfo].self, forKey: self.sensorsKey, expiration: 5 * 24 * 60 * 60) {
-                    return completion(.success(cached.value))
+                    return complete(with: cached.value)
                 } else {
                     return completion(.failure(error))
                 }
