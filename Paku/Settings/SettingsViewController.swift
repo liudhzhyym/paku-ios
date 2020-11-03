@@ -121,7 +121,7 @@ class SettingsViewController: UITableViewController {
 
     private func buildSettings() -> [Section] {
         [
-//            Section(
+            Section(
 //                header: "Air Quality",
 //                items: [
 //                    Item(
@@ -136,7 +136,7 @@ class SettingsViewController: UITableViewController {
 //
 //            Section(
 //                header: "Map",
-//                items: [
+                items: [
 //                    Item(
 //                        name: "Location Type",
 //                        detail: .text(UserDefaults.shared.settings.location.name),
@@ -152,16 +152,29 @@ class SettingsViewController: UITableViewController {
 //                        iconTint: .systemGreen,
 //                        accessory: .none
 //                    ),
-//                    Item(
-//                        name: "Hidden Sensors",
-//                        detail: .text("0"),
-//                        icon: UIImage(systemName: "eye.slash.fill"),
-//                        iconTint: .systemFill,
-//                        accessory: .disclosureIndicator
-//                    ),
-//                ],
-//                footer: "Hidden sensors will also not show up in the widget."
-//            ),
+                    Item(
+                        name: "App Icon",
+                        detail: .text(AppIconOption.option(for: UIApplication.shared.alternateIconName).name),
+                        icon: appIcon(),
+                        iconTint: .systemPurple,
+                        accessory: .disclosureIndicator,
+                        action: { [weak self] in
+                            self?.show(AppIconPickerViewController(), sender: self)
+                        }
+                    ),
+                    Item(
+                        name: "Hidden Sensors",
+                        detail: .text("\(UserDefaults.shared.settings.hiddenSensors.count)"),
+                        icon: UIImage(systemName: "eye.slash.fill"),
+                        iconTint: .systemFill,
+                        accessory: .disclosureIndicator,
+                        action: { [weak self] in
+                            self?.show(HiddenSensorsViewController(), sender: self)
+                        }
+                    ),
+                ],
+                footer: "Hidden sensors will not be used in the widget."
+            ),
 
             Section(
                 header: "Show the love",
@@ -197,21 +210,6 @@ class SettingsViewController: UITableViewController {
             ),
 
             Section(
-                items: [
-                    Item(
-                        name: "App Icon",
-                        detail: .text(AppIconOption.option(for: UIApplication.shared.alternateIconName).name),
-                        icon: appIcon(),
-                        iconTint: .systemPurple,
-                        accessory: .disclosureIndicator,
-                        action: { [weak self] in
-                            self?.show(AppIconPickerViewController(), sender: self)
-                        }
-                    )
-                ]
-            ),
-
-            Section(
                 header: "Boring stuff",
                 items: [
                     Item(
@@ -234,12 +232,6 @@ class SettingsViewController: UITableViewController {
                 ]
             ),
         ]
-    }
-
-    private func clearSelection() {
-        if let selection = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selection, animated: true)
-        }
     }
 
     private func share() {

@@ -72,8 +72,6 @@ class AQILoader: ObservableObject {
 
                 let sensors = response.data.compactMap {
                     try? SensorInfo(fields: fields, data: $0)
-                }.filter {
-                    $0.age < 5
                 }
 
                 if sensors.isEmpty {

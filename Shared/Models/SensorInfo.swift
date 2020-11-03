@@ -9,7 +9,7 @@ import AnyCodable
 import CoreLocation
 import Foundation
 
-struct SensorInfo: Equatable, Codable {
+struct SensorInfo: Equatable, Codable, Hashable {
     enum InitializerError: Error {
         case failedToParse
     }
@@ -17,7 +17,6 @@ struct SensorInfo: Equatable, Codable {
     let id: Int
     let label: String
     let isOutdoor: Bool
-    let age: Int
     let lat: Double
     let lon: Double
 
@@ -26,7 +25,7 @@ struct SensorInfo: Equatable, Codable {
     }
 
     var isHidden: Bool {
-        UserDefaults.shared.settings.hiddenSensorIDs.contains(id)
+        UserDefaults.shared.settings.hiddenSensors.contains(self)
     }
 
     init(fields: [String: Int], data: [AnyCodable]) throws {
@@ -40,8 +39,7 @@ struct SensorInfo: Equatable, Codable {
               let lat = data[latIndex].doubleValue,
               let lon = data[lonIndex].doubleValue,
               let label = data[labelIndex].string,
-              let type = data[typeIndex].intValue,
-              let age = data[ageIndex].intValue
+              let type = data[typeIndex].intValue
         else {
             throw InitializerError.failedToParse
         }
@@ -49,7 +47,6 @@ struct SensorInfo: Equatable, Codable {
         self.id = id
         self.label = label
         self.isOutdoor = type == 0
-        self.age = age
         self.lat = lat
         self.lon = lon
     }

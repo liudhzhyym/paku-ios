@@ -129,7 +129,7 @@ struct Sensor: Codable, Equatable {
         } else if pm >= 0 {
             return calcAQI(Cp: pm, Ih: 50, Il: 0, BPh: 12, BPl: 0)
         } else {
-            return pm
+            return 0
         }
     }
 
@@ -138,7 +138,7 @@ struct Sensor: Codable, Equatable {
         let a = Ih - Il;
         let b = BPh - BPl;
         let c = Cp - BPl;
-        return round((a / b) * c + Il)
+        return round((a / b) * c + Il).aqiClamped()
     }
 }
 

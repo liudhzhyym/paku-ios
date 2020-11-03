@@ -17,7 +17,7 @@ class Button: Control {
 
         super.init(frame: .zero)
 
-        layer.cornerRadius = 16
+        layer.cornerRadius = 12
         layer.cornerCurve = .continuous
 
         addSubview(content)

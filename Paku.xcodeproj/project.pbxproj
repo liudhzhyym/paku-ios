@@ -101,6 +101,8 @@
 		C24ED0FB2525DE8E001B3952 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = C24ED0FA2525DE8E001B3952 /* AnyCodable */; };
 		C24ED1082525E57A001B3952 /* AQIEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24ED1022525E570001B3952 /* AQIEntryView.swift */; };
 		C27366172550F876001BB445 /* SensorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27366162550F876001BB445 /* SensorMapView.swift */; };
+		C273661D255123CC001BB445 /* HiddenSensorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273661C255123CC001BB445 /* HiddenSensorsViewController.swift */; };
+		C273662325512757001BB445 /* UITableViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273662225512757001BB445 /* UITableViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +232,8 @@
 		C24ED1022525E570001B3952 /* AQIEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIEntryView.swift; sourceTree = "<group>"; };
 		C24ED1192525EC4D001B3952 /* Paku.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Paku.entitlements; sourceTree = "<group>"; };
 		C27366162550F876001BB445 /* SensorMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorMapView.swift; sourceTree = "<group>"; };
+		C273661C255123CC001BB445 /* HiddenSensorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenSensorsViewController.swift; sourceTree = "<group>"; };
+		C273662225512757001BB445 /* UITableViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +309,7 @@
 			children = (
 				2716EA8D25317D3900B8E2B0 /* Reusable.swift */,
 				2716EA9D253185F000B8E2B0 /* AQICategory+Color.swift */,
+				C273662225512757001BB445 /* UITableViewController+Extensions.swift */,
 				2788C8C6254D3FBD00F5F1E8 /* UILayoutPriority+Extensions.swift */,
 				279FDB90254D479C0011AD39 /* Bundle+Extensions.swift */,
 				2716EAAB2531B08200B8E2B0 /* Array+Extensions.swift */,
@@ -384,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				27B6B10E254D07160062CF92 /* SettingsViewController.swift */,
+				C273661C255123CC001BB445 /* HiddenSensorsViewController.swift */,
 				27B6B157254D09140062CF92 /* AppIconPickerViewController.swift */,
 				272C2E3C254FC2510043A568 /* TippingViewController.swift */,
 				27B6B115254D07330062CF92 /* AppIconOption.swift */,
@@ -704,6 +710,7 @@
 				276E4B4C2526D65D00FA4D26 /* UILabel+Extensions.swift in Sources */,
 				2716EAB22531B33D00B8E2B0 /* MapButtonContainer.swift in Sources */,
 				276E4B522526D67800FA4D26 /* Control.swift in Sources */,
+				C273661D255123CC001BB445 /* HiddenSensorsViewController.swift in Sources */,
 				271CC62C253FB76C001EDCE1 /* AQIConversion.swift in Sources */,
 				276E4B5E2526D6CD00FA4D26 /* NSLayoutAnchor+AutoLayout.swift in Sources */,
 				276E4B342526D5BB00FA4D26 /* OnboardingViewController.swift in Sources */,
@@ -731,6 +738,7 @@
 				C24ED0632525BEAD001B3952 /* AppDelegate.swift in Sources */,
 				2716EA8825317BB300B8E2B0 /* MKMapView+Extensions.swift in Sources */,
 				272C98352547C53800E6D5B5 /* SensorListView.swift in Sources */,
+				C273662325512757001BB445 /* UITableViewController+Extensions.swift in Sources */,
 				275BBAF0253FACC0007923BA /* AnyCodable+Extensions.swift in Sources */,
 				2716EA8225317AA400B8E2B0 /* UIEdgeInsets+Extensions.swift in Sources */,
 				2716EA7C2531798500B8E2B0 /* SensorAnnotationView.swift in Sources */,

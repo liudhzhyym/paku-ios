@@ -9,13 +9,12 @@ import AnyCodable
 import Foundation
 
 extension SensorInfo {
-    static let placeholder = SensorInfo(id: 0, label: "Paku", isOutdoor: true, age: 5, lat: 37, lon: -122)
+    static let placeholder = SensorInfo(id: 0, label: "Paku", isOutdoor: true, lat: 37, lon: -122)
 
-    init(id: Int, label: String, isOutdoor: Bool, age: Int, lat: Double, lon: Double) {
+    init(id: Int, label: String, isOutdoor: Bool, lat: Double, lon: Double) {
         self.id = id
         self.label = label
         self.isOutdoor = isOutdoor
-        self.age = age
         self.lat = lat
         self.lon = lon
     }

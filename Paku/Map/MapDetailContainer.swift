@@ -29,7 +29,7 @@ class MapDetailContainer: UIViewController {
         view.layer.shadowOffset = .init(width: 0, height: 1)
         view.layer.shadowOpacity = 0.25
         view.layer.shadowRadius = 5
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 24
 
         let closeButton = UIButton(type: .system, primaryAction: UIAction { [weak self] _ in
             self?.onClose()

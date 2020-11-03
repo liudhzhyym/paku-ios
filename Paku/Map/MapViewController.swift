@@ -141,14 +141,18 @@ class MapViewController: ViewController {
             let conversionImage = UIImage(symbol: UserDefaults.shared.settings.conversion.symbolName, size: 16, weight: .medium)
             self.conversionButton.setImage(conversionImage, for: .normal)
 
-            self.conversionButton.menu = UIMenu(title: "Correction", options: [.displayInline], children: AQIConversion.allCases.map { conversion in
+            self.conversionButton.menu = UIMenu(
+                title: "Correction",
+                children: AQIConversion.allCases.map { conversion in
                 let current = UserDefaults.shared.settings.conversion
                 return UIAction(title: conversion.name, state: current == conversion ? .on : .off) { _ in
                     UserDefaults.shared.settings.conversion = conversion
                 }
             })
 
-            self.locationTypeButton.menu = UIMenu(title: "Sensor Location", options: [.displayInline], children: LocationType.allCases.map { location in
+            self.locationTypeButton.menu = UIMenu(
+                title: "Sensor Location",
+                children: LocationType.allCases.map { location in
                 let current = UserDefaults.shared.settings.location
                 return UIAction(title: location.name,
                          image: UIImage(systemName: location.symbolName),
@@ -158,7 +162,6 @@ class MapViewController: ViewController {
             })
         }
     }
-
 
     private func openSettings() {
         let viewController = SettingsViewController()
@@ -172,7 +175,7 @@ class MapViewController: ViewController {
         let view = SensorDetailView(sensor: sensor) {
             self.openWebsite(for: $0)
         } hide: { sensor in
-            UserDefaults.shared.settings.hiddenSensorIDs.insert(sensor.info.id)
+            UserDefaults.shared.settings.hiddenSensors.insert(sensor.info)
         }
         detailContainer.display(detail: view, animated: true)
         setDetailHidden(false, animated: true)
