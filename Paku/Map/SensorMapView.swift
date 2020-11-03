@@ -62,6 +62,13 @@ class SensorMapView: MKMapView {
         _annotations.removeAll(keepingCapacity: true)
     }
 
+    func remove(sensor: Sensor) {
+        if let annotation = _annotations.first(where: { $0.sensor.info.id == sensor.info.id }) {
+            _annotations.remove(annotation)
+            removeAnnotation(annotation)
+        }
+    }
+
     @objc func refresh() {
         item?.cancel()
         item = DispatchWorkItem(block: actuallyRefresh)

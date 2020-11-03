@@ -15,11 +15,8 @@ class MapViewController: ViewController {
 
     private var settings: Settings?
 
-
     private lazy var mapView = SensorMapView()
-
     private lazy var detailContainer = MapDetailContainer()
-
     private let conversionButton = UIButton(type: .system)
     private let locationTypeButton = UIButton(type: .system)
 
@@ -30,7 +27,6 @@ class MapViewController: ViewController {
     private lazy var hiddenDetailConstraints = [
         detailContainer.view.topAnchor.constraint(equalTo: view.bottomAnchor)
     ]
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +120,8 @@ class MapViewController: ViewController {
     }
 
     @objc private func updateSettings() {
-        guard UserDefaults.shared.settings != settings else { return }
+        guard UserDefaults.shared.settings.conversion != settings?.conversion &&
+                UserDefaults.shared.settings.location != settings?.location else { return }
 
         // TODO: Move somewhere else
         WidgetCenter.shared.reloadAllTimelines()
@@ -172,9 +169,10 @@ class MapViewController: ViewController {
     }
 
     func display(sensor: Sensor, animated: Bool) {
-        let view = SensorDetailView(sensor: sensor) {
-            self.openWebsite(for: $0)
-        } hide: { sensor in
+        let view = SensorDetailView(sensor: sensor) { [weak self] in
+            self?.openWebsite(for: $0)
+        } hide: { [weak self] sensor in
+            self?.mapView.remove(sensor: sensor)
             UserDefaults.shared.settings.hiddenSensors.insert(sensor.info)
         }
         detailContainer.display(detail: view, animated: true)

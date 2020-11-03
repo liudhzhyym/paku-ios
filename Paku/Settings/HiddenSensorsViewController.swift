@@ -89,6 +89,8 @@ class HiddenSensorsViewController: UITableViewController {
 private class Cell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        let font = detailTextLabel!.font!
+        detailTextLabel?.font = .monospacedDigitSystemFont(ofSize: font.pointSize, weight: .regular)
     }
 
     required init?(coder: NSCoder) {
